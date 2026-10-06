@@ -1,8 +1,6 @@
 ﻿import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 
 import {
   ArrowRight,
@@ -142,7 +140,7 @@ const propertyOptions = [
 export default function Home() {
   return (
     <>
-      <Navbar />
+     
       <main className="overflow-hidden bg-[#F5F2EA] text-[#272922]">
 
       {/* =====================================================
@@ -593,14 +591,6 @@ export default function Home() {
                   </p>
 
                 </div>
-
-                <Link
-                  to="/film-city"
-                  className="mt-10 inline-flex w-fit items-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-semibold shadow-sm transition hover:-translate-y-1"
-                >
-                  Discover Film City
-                  <ArrowUpRight size={17} />
-                </Link>
 
               </div>
 
@@ -1279,7 +1269,6 @@ export default function Home() {
       </section>
 
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -6,7 +5,6 @@ import {
   BadgeCheck,
   Building2,
   CheckCircle2,
-  ChevronDown,
   FileCheck2,
   Handshake,
   Home,
@@ -120,7 +118,7 @@ const growthDrivers = [
     icon: Factory,
     title: "Industrial Growth",
     text: "Industrial, logistics and commercial development are expanding the economic footprint around the corridor.",
-    link: "/jattari",
+    link: "/jattari-growth",
   },
 ];
 
@@ -175,37 +173,7 @@ const processSteps = [
   },
 ];
 
-const faqs = [
-  {
-    question: "What type of properties can I explore?",
-    answer:
-      "The platform can be used to explore residential plots, commercial opportunities and other property options in the Jewar and Jattari growth region.",
-  },
-  {
-    question: "Why is the Jewar region attracting attention?",
-    answer:
-      "The region is experiencing major infrastructure and economic development around Noida International Airport, Yamuna Expressway, Film City and related industrial and commercial corridors.",
-  },
-  {
-    question: "Do you provide site visit assistance?",
-    answer:
-      "Yes. Visitors can submit an enquiry to discuss suitable properties and arrange a site visit based on their requirements.",
-  },
-  {
-    question: "Can I get documentation guidance?",
-    answer:
-      "Yes. Documentation and transaction support can be discussed with the property team. Buyers should independently verify all legal and ownership documents before purchasing.",
-  },
-  {
-    question: "Is every property automatically legally approved?",
-    answer:
-      "No property should be assumed to be approved solely from a website listing. Buyers should verify ownership, land use, authority status, registry records and other applicable documents before making a purchase.",
-  },
-];
-
 function Aboutus() {
-  const [openFaq, setOpenFaq] = useState(0);
-
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
@@ -365,7 +333,6 @@ function Aboutus() {
             ["Why Us", "why-us"],
             ["Growth Region", "growth-region"],
             ["Process", "process"],
-            ["FAQ", "faq"],
           ].map(([label, id]) => (
             <button
               key={id}
@@ -990,102 +957,6 @@ function Aboutus() {
       </section>
 
       {/* =========================================================
-          FAQ
-      ========================================================== */}
-      <section
-        id="faq"
-        className="scroll-mt-20 px-5 py-20 sm:px-8 lg:px-12 lg:py-28"
-      >
-
-        <div className="mx-auto grid max-w-[1100px] gap-12 lg:grid-cols-[0.7fr_1.3fr]">
-
-          <div>
-
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#C87550]">
-              FAQ
-            </p>
-
-            <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
-              Common
-              <span className="block text-[#8C6E3F]">
-                questions.
-              </span>
-            </h2>
-
-            <p className="mt-5 text-sm leading-6 text-[#77786D]">
-              Some useful things to understand before exploring property
-              opportunities in the region.
-            </p>
-
-          </div>
-
-          <div className="space-y-3">
-
-            {faqs.map((faq, index) => {
-
-              const isOpen = openFaq === index;
-
-              return (
-                <div
-                  key={faq.question}
-                  className={`overflow-hidden rounded-2xl border transition ${
-                    isOpen
-                      ? "border-[#C8B99A] bg-white shadow-sm"
-                      : "border-[#DDD6C8] bg-white/50"
-                  }`}
-                >
-
-                  <button
-                    onClick={() =>
-                      setOpenFaq(isOpen ? -1 : index)
-                    }
-                    className="flex w-full items-center justify-between gap-4 p-5 text-left"
-                  >
-
-                    <span className="text-sm font-black sm:text-base">
-                      {faq.question}
-                    </span>
-
-                    <ChevronDown
-                      size={18}
-                      className={`shrink-0 transition-transform ${
-                        isOpen
-                          ? "rotate-180 text-[#C87550]"
-                          : ""
-                      }`}
-                    />
-
-                  </button>
-
-                  <div
-                    className={`grid transition-all duration-300 ${
-                      isOpen
-                        ? "grid-rows-[1fr] opacity-100"
-                        : "grid-rows-[0fr] opacity-0"
-                    }`}
-                  >
-
-                    <div className="overflow-hidden">
-
-                      <p className="px-5 pb-5 text-sm leading-6 text-[#707168]">
-                        {faq.answer}
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
-              );
-            })}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* =========================================================
           CONTACT / LEAD CTA
       ========================================================== */}
       <section className="px-5 pb-20 sm:px-8 lg:px-12 lg:pb-28">
@@ -1239,49 +1110,6 @@ function Aboutus() {
               </div>
 
             </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* =========================================================
-          FINAL CTA
-      ========================================================== */}
-      <section className="border-t border-[#DDD6C8] bg-[#F5F2EA] px-5 py-16 sm:px-8 lg:px-12">
-
-        <div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-8 sm:flex-row sm:items-center">
-
-          <div>
-
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#C87550]">
-              Explore More
-            </p>
-
-            <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
-              Discover the growth story around Jattari.
-            </h2>
-
-          </div>
-
-          <div className="flex flex-col gap-3 sm:flex-row">
-
-            <Link
-              to="/jewar-airport"
-              className="inline-flex items-center justify-center gap-3 rounded-full border border-[#C8B99A] px-6 py-3.5 text-sm font-bold transition hover:bg-[#272922] hover:text-white"
-            >
-              Jewar Airport
-              <ArrowUpRight size={17} />
-            </Link>
-
-            <Link
-              to="/jattari"
-              className="inline-flex items-center justify-center gap-3 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#C87550]"
-            >
-              Explore Jattari
-              <ArrowRight size={17} />
-            </Link>
 
           </div>
 

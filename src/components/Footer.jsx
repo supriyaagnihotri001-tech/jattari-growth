@@ -29,7 +29,7 @@ const quickLinks = [
   },
   {
     name: "Jattari Growth",
-    path: "/jattari",
+    path: "/jattari-growth",
   },
 ];
 
@@ -132,27 +132,27 @@ function Footer() {
     href="https://www.facebook.com/anugrahhomesjattari1/"
     target="_blank"
     rel="noopener noreferrer"
-    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-all duration-300 hover:bg-[#1877F2] hover:text-white"
+    className="group flex h-10 w-10 items-center justify-center rounded-full border border-white bg-white transition-all duration-300 hover:bg-[#1877F2]"
   >
-    <FaFacebookF size={17} className="text-[#1877F2] " />
+    <FaFacebookF size={17} className="text-[#1877F2] transition-colors group-hover:text-white" />
   </a>
 
   <a
     href="https://www.instagram.com/anugr_ahhomes/"
     target="_blank"
     rel="noopener noreferrer"
-    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-all duration-300 hover:bg-[#E4405F] hover:text-white"
+    className="group flex h-10 w-10 items-center justify-center rounded-full border border-white bg-white transition-all duration-300 hover:bg-[#E4405F]"
   >
-    <FaInstagram size={19} className="text-[#E4405F]" />
+    <FaInstagram size={19} className="text-[#E4405F] transition-colors group-hover:text-white" />
   </a>
 
   <a
     href="https://www.youtube.com/@AnugrahHomes-Jattar"
     target="_blank"
     rel="noopener noreferrer"
-    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-all duration-300 hover:bg-[#FF0000] hover:text-white"
+    className="group flex h-10 w-10 items-center justify-center rounded-full border border-white bg-white transition-all duration-300 hover:bg-[#FF0000]"
   >
-    <FaYoutube size={19} className="text-[#FF0000]" />
+    <FaYoutube size={19} className="text-[#FF0000] transition-colors group-hover:text-white" />
   </a>
 </div>
           </div>
@@ -342,14 +342,7 @@ function Footer() {
             >
               Get Property Options
 
-              <ArrowUpRight
-                size={16}
-                className="
-                  transition duration-300
-                  group-hover:-translate-y-0.5
-                  group-hover:translate-x-0.5
-                "
-              />
+              
             </Link>
 
           </div>
@@ -397,11 +390,6 @@ function Footer() {
             </Link>
 
             <span className="hidden h-1 w-1 rounded-full bg-white/20 sm:block" />
-
-            <span className="flex items-center gap-2">
-              Made for Jattari
-              <ArrowRight size={13} />
-            </span>
 
           </div>
 

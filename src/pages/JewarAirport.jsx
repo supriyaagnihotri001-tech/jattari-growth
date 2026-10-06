@@ -249,41 +249,41 @@ function JewarAirport() {
       {/* =========================================================
           HERO
       ========================================================== */}
-      <section className="relative isolate min-h-[720px] overflow-hidden bg-gradient-to-br from-[#F2F8FF] via-[#ECF5FF] to-[#E7F8F7] px-5 pb-16 pt-28 sm:px-8 lg:px-12 lg:pb-20 lg:pt-32">
-        <div className="pointer-events-none absolute -left-40 top-20 h-[440px] w-[440px] rounded-full bg-[#DDEBFF]/80 blur-3xl" />
-        <div className="pointer-events-none absolute -right-32 top-6 h-[520px] w-[520px] rounded-full bg-[#CFF5F0]/70 blur-3xl" />
-        <div className="pointer-events-none absolute right-[12%] top-[14%] h-[440px] w-[440px] rounded-full border border-[#49C7D8]/15" />
-        <div className="pointer-events-none absolute right-[16%] top-[19%] h-[350px] w-[350px] rounded-full border border-[#49C7D8]/15" />
+      <section className="relative isolate min-h-[720px] overflow-hidden bg-[#F5F2EA] px-5 pb-16 pt-28 sm:px-8 lg:px-12 lg:pb-20 lg:pt-32">
+        <div className="pointer-events-none absolute -left-40 top-20 h-[440px] w-[440px] rounded-full bg-[#EAE3D6]/80 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 top-6 h-[520px] w-[520px] rounded-full bg-[#EFE7DC]/70 blur-3xl" />
+        <div className="pointer-events-none absolute right-[12%] top-[14%] h-[440px] w-[440px] rounded-full border border-[#C87550]/10" />
+        <div className="pointer-events-none absolute right-[16%] top-[19%] h-[350px] w-[350px] rounded-full border border-[#C87550]/10" />
 
         <img
-          src="/Images/Heroimg.png"
+          src="/Images/Heroimg1.png"
           alt="Jewar Airport and the growing Jattari region"
           className="pointer-events-none absolute inset-y-0 right-0 z-0 h-full w-full object-contain object-right opacity-20 sm:opacity-40 lg:w-[64%] lg:opacity-100"
         />
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#F2F8FF] via-[#F2F8FF]/90 to-[#F2F8FF]/10 lg:via-[#F2F8FF]/85 lg:to-transparent" />
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#F2F8FF]/45 via-transparent to-[#F2F8FF]/20" />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#F5F2EA] via-[#F5F2EA]/90 to-[#F5F2EA]/10 lg:via-[#F5F2EA]/85 lg:to-transparent" />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#F5F2EA]/45 via-transparent to-[#F5F2EA]/20" />
 
         <div className="relative z-10 mx-auto flex min-h-[540px] max-w-7xl items-center">
           <div className="max-w-[690px]">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#1762EA]/15 bg-white/70 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#1762EA] backdrop-blur-sm">
-              <span className="h-2 w-2 rounded-full bg-[#08B7D6]" />
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#C87550]/25 bg-[#FFFEFB]/75 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#B95F3D] backdrop-blur-sm">
+              <span className="h-2 w-2 rounded-full bg-[#C87550]" />
               Now Operational · DXN
             </div>
 
-            <h1 className="text-[clamp(3.4rem,6.6vw,6.6rem)] font-extrabold leading-[0.92] tracking-[-0.065em] text-[#102A58]">
+            <h1 className="text-[clamp(3.4rem,6.6vw,6.6rem)] font-extrabold leading-[0.92] tracking-[-0.065em] text-[#292923]">
               Jewar Airport
               <br />
-              <span className="bg-gradient-to-r from-[#165DEB] via-[#1682F2] to-[#08B7D6] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#B95F3D] via-[#C87550] to-[#D28B65] bg-clip-text text-transparent">
                 Connecting the
               </span>
               <br />
               growth corridor.
             </h1>
-            <svg aria-hidden="true" viewBox="0 0 340 18" className="mt-3 h-4 w-64 text-[#F5B728] sm:w-[340px]">
+            <svg aria-hidden="true" viewBox="0 0 340 18" className="mt-3 h-4 w-64 text-[#D9B878] sm:w-[340px]">
               <path d="M2 10c28-14 40 14 68 0s40 14 68 0 40 14 68 0 40 14 68 0 40 14 64 0" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="5" />
             </svg>
 
-            <p className="mt-6 max-w-[570px] text-base leading-7 text-[#536780] sm:text-lg sm:leading-8">
+            <p className="mt-6 max-w-[570px] text-base leading-7 text-[#766F66] sm:text-lg sm:leading-8">
               Noida International Airport is reshaping connectivity across
               Jewar, the Yamuna corridor and Western Uttar Pradesh, opening a
               new gateway for the wider region.
@@ -291,7 +291,7 @@ function JewarAirport() {
 
             <a
               href="#airport-overview"
-              className="mt-8 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#165DEB] to-[#08B7D6] px-8 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(21,93,235,0.22)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(21,93,235,0.28)]"
+              className="mt-8 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#B95F3D] to-[#D28B65] px-8 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(150,85,55,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(150,85,55,0.28)]"
             >
               Explore Airport
               <ArrowRight size={17} />
@@ -739,7 +739,7 @@ function JewarAirport() {
                 </p>
 
                 <Link
-                  to="/jattari"
+                  to="/jattari-growth"
                   className="mt-9 inline-flex items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#C87550]"
                 >
                   Explore Jattari Growth
@@ -1339,7 +1339,7 @@ function JewarAirport() {
               <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
 
                 <Link
-                  to="/jattari"
+                  to="/jattari-growth"
                   className="inline-flex items-center justify-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#C87550]"
                 >
                   Explore Jattari

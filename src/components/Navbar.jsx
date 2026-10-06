@@ -1,157 +1,182 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import "./Navbar.css";
 
 const navItems = [
   { name: "Home", path: "/" },
   { name: "Jewar Airport", path: "/jewar-airport" },
   { name: "About Us", path: "/aboutus" },
-  { name: "Jattari Growth", path: "/jattari" },
+  { name: "Jattari Growth", path: "/jattari-growth" },
   { name: "Projects", path: "/projects" },
   { name: "Contact", path: "/contact" },
 ];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFlipping, setIsFlipping] = useState(false);
+
+  const location = useLocation();
+  const previousPath = useRef(location.pathname);
 
   const closeMenu = () => {
     setIsOpen(false);
   };
 
+  // ==========================================
+  // 3D NAVBAR PAGE CHANGE ANIMATION
+  // ==========================================
+  useEffect(() => {
+    if (previousPath.current === location.pathname) return;
+
+    previousPath.current = location.pathname;
+    setIsFlipping(true);
+
+    const timer = setTimeout(() => {
+      setIsFlipping(false);
+    }, 750);
+
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
   return (
-    <header className="fixed top-0 left-0 right-0  z-50 px-4 sm:px-6 lg:px-8 pt-4">
-      <nav className="mx-auto max-w-7xl  ">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto max-w-7xl">
+
+        {/* ================= NAVBAR 3D WRAPPER ================= */}
         <div
-          className="
-            flex items-center justify-between
-            rounded-2xl
-            border border-[#D5C8B7]
-            bg-[#FFFEFB]/90
-            px-4 sm:px-6
-            py-5
-            shadow-[0_8px_30px_rgba(150,85,55,0.10)]
-            backdrop-blur-xl
-          "
+          className={`navbar-3d-wrapper ${
+            isFlipping ? "navbar-page-flip" : ""
+          }`}
         >
-          {/* ================= LOGO ================= */}
-          <Link
-            to="/"
-            onClick={closeMenu}
-            className="group flex items-center gap-3"
+          <div
+            className="
+              flex items-center justify-between
+              rounded-2xl
+              border border-[#D5C8B7]
+              bg-[#FFFEFB]/90
+              px-4 sm:px-6
+              py-5
+              shadow-[0_8px_30px_rgba(150,85,55,0.10)]
+              backdrop-blur-xl
+              navbar-inner
+            "
           >
-            {/* Logo Icon */}
-            <div
+
+            {/* ================= LOGO ================= */}
+            <Link
+              to="/"
+              onClick={closeMenu}
+              className="group flex items-center gap-3"
+            >
+              {/* Logo Icon */}
+              <div
+                className="
+                  flex h-10 w-10 items-center justify-center
+                  rounded-xl
+                  bg-gradient-to-br from-[#B95F3D] to-[#D28B65]
+                  shadow-md shadow-[#E9E1D5]
+                  transition-transform duration-300
+                  group-hover:scale-105
+                "
+              >
+                <span className="text-lg font-bold text-white">
+                  J
+                </span>
+              </div>
+
+              {/* Logo Text */}
+              <div className="leading-none">
+                <div className="text-[15px] font-extrabold tracking-tight text-[#292923] sm:text-base">
+                  JATTARI
+                </div>
+
+                <div className="mt-1 text-[8px] font-semibold uppercase tracking-[0.18em] text-[#B95F3D] sm:text-[9px]">
+                  Growth Destination
+                </div>
+              </div>
+            </Link>
+
+            {/* ================= DESKTOP NAV ================= */}
+            <div className="hidden items-center gap-1 lg:flex">
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.name}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `
+                    relative rounded-lg px-3 py-2
+                    text-sm font-medium
+                    transition-all duration-300
+                    ${
+                      isActive
+                        ? "text-[#B95F3D]"
+                        : "text-[#5C574F] hover:bg-[#F5F2EA] hover:text-[#B95F3D]"
+                    }
+                    `
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      {item.name}
+
+                      {isActive && (
+                        <span
+                          className="
+                            absolute bottom-0.5 left-1/2
+                            h-1 w-1
+                            -translate-x-1/2
+                            rounded-full
+                            bg-[#C87550]
+                          "
+                        />
+                      )}
+                    </>
+                  )}
+                </NavLink>
+              ))}
+            </div>
+
+            {/* ================= DESKTOP CTA ================= */}
+            <div className="hidden lg:block">
+              <Link
+                to="/contact"
+                className="
+                  group flex items-center gap-2
+                  rounded-xl
+                  bg-[#C87550]
+                  px-5 py-2.5
+                  text-sm font-semibold text-white
+                  shadow-lg shadow-[#E9E1D5]
+                  transition-all duration-300
+                  hover:-translate-y-0.5
+                  hover:bg-[#B95F3D]
+                  hover:shadow-xl hover:shadow-[#E9E1D5]
+                "
+              >
+                Explore Properties
+              </Link>
+            </div>
+
+            {/* ================= MOBILE BUTTON ================= */}
+            <button
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
               className="
                 flex h-10 w-10 items-center justify-center
                 rounded-xl
-                bg-gradient-to-br from-[#B95F3D] to-[#D28B65]
-                shadow-md shadow-[#E9E1D5]
-                transition-transform duration-300
-                group-hover:scale-105
-              "
-            >
-              <span className="text-lg font-bold text-white">J</span>
-            </div>
-
-            {/* Logo Text */}
-            <div className="leading-none">
-              <div className="text-[15px] font-extrabold tracking-tight text-[#292923] sm:text-base">
-                JATTARI
-              </div>
-
-              <div className="mt-1 text-[8px] font-semibold uppercase tracking-[0.18em] text-[#B95F3D] sm:text-[9px]">
-                Growth Destination
-              </div>
-            </div>
-          </Link>
-
-          {/* ================= DESKTOP NAV ================= */}
-          <div className="hidden items-center gap-1 lg:flex">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.path}
-                className={({ isActive }) =>
-                  `
-                  relative rounded-lg px-3 py-2
-                  text-sm font-medium
-                  transition-all duration-300
-                  ${
-                    isActive
-                      ? "text-[#B95F3D]"
-                      : "text-[#5C574F] hover:bg-[#F5F2EA] hover:text-[#B95F3D]"
-                  }
-                `
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {item.name}
-
-                    {isActive && (
-                      <span
-                        className="
-                          absolute bottom-0.5 left-1/2
-                          h-1 w-1
-                          -translate-x-1/2
-                          rounded-full
-                          bg-[#C87550]
-                        "
-                      />
-                    )}
-                  </>
-                )}
-              </NavLink>
-            ))}
-          </div>
-
-          {/* ================= DESKTOP CTA ================= */}
-          <div className="hidden lg:block">
-            <Link
-              to="/contact"
-              className="
-                group flex items-center gap-2
-                rounded-xl
-                bg-[#C87550]
-                px-5 py-2.5
-                text-sm font-semibold text-white
-                shadow-lg shadow-[#E9E1D5]
+                border border-[#D5C8B7]
+                bg-[#F5F2EA]
+                text-[#B95F3D]
                 transition-all duration-300
-                hover:-translate-y-0.5
-                hover:bg-[#B95F3D] hover:shadow-xl hover:shadow-[#E9E1D5]
+                hover:bg-[#E9E1D5]
+                lg:hidden
               "
             >
-              Explore Properties
-
-              <ArrowUpRight
-                size={16}
-                className="
-                  transition-transform duration-300
-                  group-hover:translate-x-0.5
-                  group-hover:-translate-y-0.5
-                "
-              />
-            </Link>
+              {isOpen ? <X size={21} /> : <Menu size={21} />}
+            </button>
           </div>
-
-          {/* ================= MOBILE BUTTON ================= */}
-          <button
-            type="button"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="
-              flex h-10 w-10 items-center justify-center
-              rounded-xl
-              border border-[#D5C8B7]
-              bg-[#F5F2EA]
-              text-[#B95F3D]
-              transition-all duration-300
-              hover:bg-[#E9E1D5]
-              lg:hidden
-            "
-          >
-            {isOpen ? <X size={21} /> : <Menu size={21} />}
-          </button>
         </div>
 
         {/* ================= MOBILE MENU ================= */}
@@ -190,7 +215,7 @@ function Navbar() {
                       ? "bg-[#F5F2EA] text-[#B95F3D]"
                       : "text-[#5C574F] hover:bg-[#F5F2EA] hover:text-[#B95F3D]"
                   }
-                `
+                  `
                 }
               >
                 {item.name}
@@ -211,10 +236,10 @@ function Navbar() {
               "
             >
               Explore Properties
-              <ArrowUpRight size={16} />
             </Link>
           </div>
         </div>
+
       </nav>
     </header>
   );
