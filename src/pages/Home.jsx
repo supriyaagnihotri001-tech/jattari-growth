@@ -1,5 +1,9 @@
 ﻿import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+
 import {
   ArrowRight,
   ArrowUpRight,
@@ -137,223 +141,180 @@ const propertyOptions = [
 
 export default function Home() {
   return (
-    <main className="overflow-hidden bg-[#F7F4EC] text-[#272922]">
+    <>
+      <Navbar />
+      <main className="overflow-hidden bg-[#F5F2EA] text-[#272922]">
 
       {/* =====================================================
           HERO
       ====================================================== */}
-      <section className="relative min-h-[850px] overflow-hidden px-5 pb-20 pt-28 sm:px-8 lg:px-12">
+      <section
+        id="home"
+        className="relative min-h-screen overflow-hidden bg-[#F5F2EA] px-5 pb-16 pt-28 sm:px-8 lg:px-10"
+      >
+        {/* Soft warm background glow */}
+        <div className="pointer-events-none absolute -left-40 top-24 h-[420px] w-[420px] rounded-full bg-[#EAE3D6] blur-3xl opacity-70" />
+        <div className="pointer-events-none absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-[#EFE7DC] blur-3xl opacity-70" />
+        <div className="pointer-events-none absolute bottom-0 left-1/3 h-[220px] w-[520px] rounded-full bg-[#F0EAE0] blur-3xl" />
 
-        {/* Decorative background shapes */}
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full border border-[#B99552]/20" />
-        <div className="pointer-events-none absolute -right-10 top-16 h-[360px] w-[360px] rounded-full bg-[#DCE3D4]/70 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 left-[-100px] h-[300px] w-[300px] rounded-full bg-[#E9DFC9] blur-3xl" />
-
-        <div className="relative z-10 mx-auto max-w-7xl">
-
-          {/* Small top label */}
+        <img
+          src="/Images/Heroimg1.png"
+          alt="Jattari growth corridor"
+          className="pointer-events-none absolute inset-y-0 right-0 z-0 h-full w-full object-contain object-right opacity-20 sm:opacity-35 lg:w-[64%] lg:opacity-100"
+        />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#F5F2EA] via-[#F5F2EA]/90 to-[#F5F2EA]/20 lg:from-[#F5F2EA] lg:via-[#F5F2EA]/85 lg:to-transparent" />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#F5F2EA]/60 via-transparent to-[#F5F2EA]/20" />
+        <div className="relative z-10 mx-auto max-w-[1440px]">
+          {/* Hero top location label */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="flex items-center gap-3"
           >
-            <span className="h-2 w-2 rounded-full bg-[#B99552]" />
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#E9E1D5] text-[#C76F4B]">
+              <MapPin size={14} />
+            </span>
 
-            <span className="text-xs font-bold uppercase tracking-[0.28em] text-[#8D7041]">
+            <span className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#8C8173] sm:text-xs">
               Jattari / Aligarh / Uttar Pradesh
             </span>
           </motion.div>
 
-          <div className="mt-10 grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-
-            {/* LEFT */}
-            <div className="relative z-20">
-
+          <div className="mt-8 grid items-center gap-12 lg:min-h-[650px] lg:grid-cols-1">
+            {/* =================================================
+                LEFT CONTENT
+            ================================================== */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={stagger}
+              className="relative z-20"
+            >
               <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="max-w-4xl text-[clamp(3.4rem,7vw,7.8rem)] font-medium leading-[0.9] tracking-[-0.07em]"
+                variants={fadeUp}
+                className="max-w-[720px] text-[clamp(3.2rem,6.8vw,6.9rem)] font-extrabold leading-[0.94] tracking-[-0.065em] text-[#292923]"
               >
-                A new horizon,
+                Jattari's next
                 <br />
-                rooted in{" "}
-                <span className="relative inline-block text-[#B99552]">
-                  Jattari
-                  <span className="absolute -bottom-2 left-1/2 h-1 w-16 -translate-x-1/2 rounded-full bg-[#B99552]/40" />
+                <span className="bg-gradient-to-r from-[#B95F3D] via-[#C87550] to-[#D28B65] bg-clip-text text-transparent">
+                  growth story
                 </span>
+                <br />
+                starts here.
               </motion.h1>
 
               <motion.p
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="mt-8 max-w-xl text-base leading-7 text-black/55 sm:text-lg"
+                variants={fadeUp}
+                className="mt-7 max-w-[590px] text-base leading-7 text-[#766F66] sm:text-lg sm:leading-8"
               >
-                A town with its own rhythm, connected to a region in motion.
-                Get to know the places, everyday essentials and changing
-                connections shaping Jattari's next chapter.
+                Connected to Jewar Airport, powered by Film City, and surrounded
+                by growing opportunities in real estate, education and modern
+                living.
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.35 }}
-                className="mt-9 flex flex-col gap-3 sm:flex-row"
+                variants={fadeUp}
+                className="mt-8 flex flex-col gap-3 sm:flex-row"
               >
                 <a
                   href="#airport"
-                  className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#B99552]"
+                  className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#C87550] px-7 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(150,85,55,0.2)] transition duration-300 hover:-translate-y-1 hover:bg-[#B95F3D] hover:shadow-[0_18px_42px_rgba(150,85,55,0.25)]"
                 >
-                  Explore the Location
+                  Explore Jattari
                   <ArrowRight
                     size={17}
                     className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </a>
 
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center gap-3 rounded-full border border-[#272922]/15 bg-white/50 px-7 py-4 text-sm font-semibold backdrop-blur-md transition hover:border-[#B99552] hover:bg-white"
+                <a
+                  href="#growth"
+                  className="group inline-flex items-center justify-center gap-3 rounded-full border border-[#D5C8B7] bg-[#FFFEFB] px-7 py-4 text-sm font-bold text-[#3A3832] transition duration-300 hover:-translate-y-1 hover:border-[#C87550] hover:shadow-lg"
                 >
-                  Find Property Options
-                  <ArrowUpRight size={17} />
-                </Link>
+                  View Growth Story
+                  <ArrowUpRight
+                    size={17}
+                    className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                  />
+                </a>
               </motion.div>
-
-            </div>
-
-            {/* RIGHT VISUAL */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-              className="relative mx-auto h-[520px] w-full max-w-[560px]"
-            >
-
-              {/* Main image */}
-              <div className="absolute right-0 top-0 h-[430px] w-[88%] overflow-hidden rounded-[3rem] rounded-bl-[9rem] bg-[#DCE3D4] shadow-2xl shadow-black/10">
-
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition duration-1000 hover:scale-105"
-                  style={{
-                    backgroundImage:
-                      "url('/images/jattari-hero.jpg')",
-                  }}
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-[#272922]/45 via-transparent to-transparent" />
-
-                <div className="absolute bottom-7 left-7">
-                  <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-semibold backdrop-blur-md">
-                    <MapPin size={14} className="text-[#B99552]" />
-                    Jattari, Aligarh
-                  </div>
-                </div>
-              </div>
-
-              {/* Airport floating card */}
-              <motion.div
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute bottom-4 left-0 z-20 w-[235px] rounded-[1.7rem] bg-white p-5 shadow-2xl shadow-black/10"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="rounded-xl bg-[#F1E8D5] p-3 text-[#927238]">
-                    <Plane size={20} />
-                  </div>
-
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-black/30">
-                    Regional link 01
-                  </span>
-                </div>
-
-                <p className="mt-5 text-xl font-semibold">
-                  Jewar Airport
-                </p>
-
-                <p className="mt-2 text-xs leading-5 text-black/45">
-                  A new gateway connecting the wider region.
-                </p>
-              </motion.div>
-
-              {/* Film City floating card */}
-              <motion.div
-                animate={{
-                  y: [0, 8, 0],
-                }}
-                transition={{
-                  duration: 4.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute right-[-8px] top-24 z-20 rounded-2xl bg-[#DCE3D4] px-5 py-4 shadow-xl"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="rounded-full bg-white p-2 text-[#718064]">
-                    <Clapperboard size={17} />
-                  </div>
-
-                  <div>
-                    <p className="text-xs font-bold">
-                      Film City
-                    </p>
-
-                    <p className="mt-0.5 text-[10px] text-black/40">
-                      A changing landscape
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Decorative number */}
-              <div className="absolute bottom-0 right-8 text-[8rem] font-semibold leading-none tracking-[-0.1em] text-[#272922]/[0.045]">
-                01
-              </div>
 
             </motion.div>
 
-          </div>
-
-          {/* Bottom strip */}
-          <div className="mt-14 grid border-y border-black/10 sm:grid-cols-3">
-
-            <div className="border-b border-black/10 py-5 sm:border-b-0 sm:border-r sm:pr-6">
-              <p className="text-xs uppercase tracking-widest text-black/35">
-                Regional Anchor
-              </p>
-              <p className="mt-2 font-semibold">
-                Jewar Airport
-              </p>
-            </div>
-
-            <div className="border-b border-black/10 py-5 sm:border-b-0 sm:px-6 sm:border-r">
-              <p className="text-xs uppercase tracking-widest text-black/35">
-                New Possibilities
-              </p>
-              <p className="mt-2 font-semibold">
-                Film City
-              </p>
-            </div>
-
-            <div className="py-5 sm:pl-6">
-              <p className="text-xs uppercase tracking-widest text-black/35">
-                Location
-              </p>
-              <p className="mt-2 font-semibold">
-                Jattari â€¢ Aligarh
-              </p>
-            </div>
 
           </div>
 
+          {/* =================================================
+              WHY JATTARI STRIP
+          ================================================== */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mt-8 overflow-hidden rounded-[2rem] border border-[#D5C8B7] bg-[#FFFEFB] shadow-[0_12px_40px_rgba(90,65,40,0.06)] lg:mt-2"
+          >
+            <div className="grid lg:grid-cols-[1.2fr_repeat(5,1fr)]">
+                  <div className="border-b border-[#E9E1D5] p-6 sm:p-7 lg:border-b-0 lg:border-r">
+                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#8C8173]">
+                  Why Jattari?
+                </p>
+                <h2 className="mt-3 max-w-[230px] text-2xl font-extrabold leading-tight tracking-[-0.03em] text-[#292923]">
+                  A location full of possibilities.
+                </h2>
+              </div>
+
+              {[
+                {
+                  icon: Plane,
+                  title: "Airport Connectivity",
+                  text: "Jewar International Airport nearby",
+                },
+                {
+                  icon: Clapperboard,
+                  title: "Film City",
+                  text: "Entertainment & job opportunities",
+                },
+                {
+                  icon: GraduationCap,
+                  title: "Education",
+                  text: "Local education institutions",
+                },
+                {
+                  icon: Building2,
+                  title: "Townships",
+                  text: "Modern residential projects",
+                },
+                {
+                  icon: MapPin,
+                  title: "Strategic Location",
+                  text: "Connected to major cities",
+                },
+              ].map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.title}
+                    className="border-b border-[#E9E1D5] p-5 last:border-b-0 sm:p-6 lg:border-b-0 lg:border-r lg:last:border-r-0"
+                  >
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#E9E1D5] text-[#C87550]">
+                      <Icon size={19} />
+                    </div>
+
+                    <h3 className="mt-4 text-sm font-bold text-[#292923]">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-2 text-xs leading-5 text-[#8C8173]">
+                      {item.text}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -372,7 +333,7 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B99552]">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#C87550]">
                 The Bigger Picture
               </span>
 
@@ -411,14 +372,34 @@ export default function Home() {
       </section>
 
       {/* =====================================================
-          JEWAR AIRPORT â€” HERO FEATURE
+          JEWAR AIRPORT � HERO FEATURE
       ====================================================== */}
       <section
         id="airport"
-        className="relative overflow-hidden bg-[#E8EFE4] px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
+        className="relative overflow-hidden bg-[#E9E1D5] px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
       >
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 240 180"
+          className="pointer-events-none absolute -right-5 -top-8 z-0 h-44 w-60 text-[#C87550]/15 sm:h-56 sm:w-72"
+          fill="none"
+        >
+          <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
+          <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
+          <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
+        </svg>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 240 180"
+          className="pointer-events-none absolute -bottom-8 -left-5 z-0 h-44 w-60 -scale-x-100 -scale-y-100 text-[#C87550]/15 sm:h-56 sm:w-72"
+          fill="none"
+        >
+          <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
+          <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
+          <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
+        </svg>
 
-        <div className="mx-auto max-w-7xl">
+        <div className="relative z-10 mx-auto max-w-7xl">
 
           <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
 
@@ -427,7 +408,7 @@ export default function Home() {
               initial={{ opacity: 0, x: -35 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative min-h-[520px] overflow-hidden rounded-[3rem] bg-[#CBD7C5]"
+              className="relative min-h-[520px] overflow-hidden rounded-[3rem] bg-[#D5C8B7]"
             >
 
               <div
@@ -438,16 +419,16 @@ export default function Home() {
                 }}
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#273126]/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#292923]/60 to-transparent" />
 
-              <div className="absolute left-7 top-7 rounded-full bg-white/85 px-5 py-2 text-xs font-bold uppercase tracking-widest text-[#52604D] backdrop-blur-md">
+              <div className="absolute left-7 top-7 rounded-full bg-white/85 px-5 py-2 text-xs font-bold uppercase tracking-widest text-[#766F66] backdrop-blur-md">
                 The biggest highlight
               </div>
 
               <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
 
                 <div>
-                  <div className="mb-3 inline-flex rounded-full bg-white p-3 text-[#718064]">
+                  <div className="mb-3 inline-flex rounded-full bg-white p-3 text-[#766F66]">
                     <Plane size={20} />
                   </div>
 
@@ -472,7 +453,7 @@ export default function Home() {
               viewport={{ once: true }}
             >
 
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#718064]">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#766F66]">
                 Growth Anchor
               </p>
 
@@ -480,7 +461,7 @@ export default function Home() {
                 The airport
                 <br />
                 changes the
-                <span className="text-[#B99552]">
+                <span className="text-[#C87550]">
                   {" "}conversation.
                 </span>
               </h2>
@@ -494,18 +475,14 @@ export default function Home() {
               <div className="mt-9 grid grid-cols-2 gap-3">
 
                 <div className="rounded-2xl bg-white/70 p-5">
-                  <p className="text-2xl font-semibold text-[#718064]">
-                    âœˆ
-                  </p>
+                 
                   <p className="mt-4 text-sm font-semibold">
                     Regional Connectivity
                   </p>
                 </div>
 
                 <div className="rounded-2xl bg-white/70 p-5">
-                  <p className="text-2xl font-semibold text-[#B99552]">
-                    â†—
-                  </p>
+                 
                   <p className="mt-4 text-sm font-semibold">
                     Development Story
                   </p>
@@ -515,7 +492,7 @@ export default function Home() {
 
               <Link
                 to="/jewar-airport"
-                className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#B99552]"
+                className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#C87550]"
               >
                 Explore Jewar Airport
                 <ArrowRight size={17} />
@@ -554,9 +531,30 @@ export default function Home() {
 
           </div>
 
-          <div className="relative overflow-hidden rounded-[3rem] bg-[#D9D2C5]">
+          <div className="relative overflow-hidden rounded-[3rem] bg-[#D5C8B7]">
 
-            <div className="grid min-h-[550px] lg:grid-cols-[1.2fr_0.8fr]">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 240 180"
+              className="pointer-events-none absolute -right-5 -top-8 z-0 h-52 w-64 text-[#B96E4B]/15 sm:h-60 sm:w-80"
+              fill="none"
+            >
+              <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
+              <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
+              <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
+            </svg>
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 240 180"
+              className="pointer-events-none absolute -bottom-8 -left-5 z-0 h-52 w-64 -scale-x-100 -scale-y-100 text-[#B96E4B]/15 sm:h-60 sm:w-80"
+              fill="none"
+            >
+              <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
+              <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
+              <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
+            </svg>
+
+            <div className="relative z-10 grid min-h-[550px] lg:grid-cols-[1.2fr_0.8fr]">
 
               <div
                 className="relative min-h-[430px] bg-cover bg-center"
@@ -565,7 +563,7 @@ export default function Home() {
                     "url('/images/film-city.jpg')",
                 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#D9D2C5]/20" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#D5C8B7]/20" />
 
                 <div className="absolute bottom-8 left-8">
                   <div className="rounded-full bg-white/90 p-4 text-[#B96E4B]">
@@ -622,7 +620,7 @@ export default function Home() {
 
           <div className="max-w-3xl">
 
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#D9B878]">
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#D28B65]">
               Why Jattari?
             </span>
 
@@ -649,12 +647,12 @@ export default function Home() {
                 <motion.div
                   key={item.number}
                   variants={fadeUp}
-                  className="group bg-[#272922] p-7 transition duration-500 hover:bg-[#33362D]"
+                  className="group bg-[#272922] p-7 transition duration-500 hover:bg-[#3A3832]"
                 >
 
                   <div className="flex items-start justify-between">
 
-                    <div className="rounded-xl bg-white/10 p-3 text-[#D9B878] transition group-hover:bg-[#D9B878] group-hover:text-[#272922]">
+                    <div className="rounded-xl bg-white/10 p-3 text-[#D28B65] transition group-hover:bg-[#D28B65] group-hover:text-[#272922]">
                       <Icon size={20} />
                     </div>
 
@@ -672,7 +670,7 @@ export default function Home() {
                     {item.text}
                   </p>
 
-                  <div className="mt-7 h-px w-8 bg-[#D9B878] transition-all duration-500 group-hover:w-full" />
+                  <div className="mt-7 h-px w-8 bg-[#D28B65] transition-all duration-500 group-hover:w-full" />
 
                 </motion.div>
               );
@@ -692,14 +690,14 @@ export default function Home() {
 
           <div className="mb-12">
 
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B99552]">
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#C87550]">
               Featured Residential Project
             </span>
 
             <h2 className="mt-5 max-w-4xl text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
               Anugrah Homes
-              <span className="text-[#B99552]">
-                {" "}â€” Jattari
+              <span className="text-[#C87550]">
+                {" "} Jattari
               </span>
             </h2>
 
@@ -717,7 +715,7 @@ export default function Home() {
 
             <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
 
-              <div className="flex items-center gap-3 text-[#B99552]">
+              <div className="flex items-center gap-3 text-[#C87550]">
                 <Sparkles size={19} />
                 <span className="text-xs font-bold uppercase tracking-widest">
                   Our Featured Option
@@ -725,7 +723,7 @@ export default function Home() {
               </div>
 
               <h3 className="mt-6 text-3xl font-medium sm:text-4xl">
-                A residential opportunity positioned around the Jattariâ€“Jewar
+                A residential opportunity positioned around the JattariJewar
                 growth corridor.
               </h3>
 
@@ -745,7 +743,7 @@ export default function Home() {
                 ].map((item) => (
                   <span
                     key={item}
-                    className="rounded-full bg-[#F1E8D5] px-4 py-2 text-xs font-semibold text-[#80622F]"
+                    className="rounded-full bg-[#E9E1D5] px-4 py-2 text-xs font-semibold text-[#B95F3D]"
                   >
                     {item}
                   </span>
@@ -755,7 +753,7 @@ export default function Home() {
 
               <Link
                 to="/anugrah-homes"
-                className="mt-9 inline-flex w-fit items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#B99552]"
+                className="mt-9 inline-flex w-fit items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#C87550]"
               >
                 Explore Anugrah Homes
                 <ArrowRight size={17} />
@@ -771,7 +769,7 @@ export default function Home() {
       {/* =====================================================
           SKYLINE
       ====================================================== */}
-      <section className="bg-[#F0E8DB] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section className="bg-[#F5F2EA] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
 
         <div className="mx-auto max-w-7xl">
 
@@ -779,14 +777,14 @@ export default function Home() {
 
             <div>
 
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#80622F]">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
                 Featured Township
               </span>
 
               <h2 className="mt-5 text-5xl font-medium tracking-[-0.06em] sm:text-6xl">
                 Skyline
                 <br />
-                <span className="text-[#80622F]">
+                <span className="text-[#B95F3D]">
                   Aero Homes.
                 </span>
               </h2>
@@ -868,7 +866,7 @@ export default function Home() {
 
             <div>
 
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#7D8B72]">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#8C8173]">
                 Life in Jattari
               </span>
 
@@ -897,12 +895,12 @@ export default function Home() {
                     duration: 0.5,
                     delay: index * 0.1,
                   }}
-                  className="group flex items-center justify-between rounded-[1.5rem] border border-black/10 bg-white p-5 transition duration-300 hover:-translate-x-1 hover:border-[#B99552]"
+                  className="group flex items-center justify-between rounded-[1.5rem] border border-black/10 bg-white p-5 transition duration-300 hover:-translate-x-1 hover:border-[#C87550]"
                 >
 
                   <div className="flex items-center gap-5">
 
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#E8EFE4] text-sm font-bold text-[#718064]">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#E9E1D5] text-sm font-bold text-[#766F66]">
                       {item.number}
                     </span>
 
@@ -922,7 +920,7 @@ export default function Home() {
 
                   <ArrowUpRight
                     size={19}
-                    className="mr-1 text-black/20 transition group-hover:text-[#B99552]"
+                    className="mr-1 text-black/20 transition group-hover:text-[#C87550]"
                   />
 
                 </motion.div>
@@ -938,15 +936,36 @@ export default function Home() {
       {/* =====================================================
           LOCAL LIFE
       ====================================================== */}
-      <section className="bg-[#DCE3D4] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section className="relative overflow-hidden bg-[#D5C8B7] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
 
-        <div className="mx-auto max-w-7xl">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 240 180"
+          className="pointer-events-none absolute -right-5 -top-8 z-0 h-48 w-64 text-[#B96E4B]/20 sm:h-60 sm:w-80"
+          fill="none"
+        >
+          <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
+          <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
+          <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
+        </svg>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 240 180"
+          className="pointer-events-none absolute -bottom-8 -left-5 z-0 h-48 w-64 -scale-x-100 -scale-y-100 text-[#B96E4B]/20 sm:h-60 sm:w-80"
+          fill="none"
+        >
+          <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
+          <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
+          <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
+        </svg>
+
+        <div className="relative z-10 mx-auto max-w-7xl">
 
           <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
 
             <div>
 
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#718064]">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#766F66]">
                 Everyday Jattari
               </span>
 
@@ -976,7 +995,7 @@ export default function Home() {
                   className="group rounded-[1.7rem] bg-white p-7 transition duration-500 hover:-translate-y-2 hover:shadow-xl"
                 >
 
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F1E8D5] text-[#80622F]">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#E9E1D5] text-[#B95F3D]">
                     <Icon size={21} />
                   </div>
 
@@ -988,7 +1007,7 @@ export default function Home() {
                     {item.text}
                   </p>
 
-                  <div className="mt-7 h-1 w-8 rounded-full bg-[#B99552] transition-all duration-500 group-hover:w-16" />
+                  <div className="mt-7 h-1 w-8 rounded-full bg-[#C87550] transition-all duration-500 group-hover:w-16" />
 
                 </div>
               );
@@ -1002,10 +1021,10 @@ export default function Home() {
       {/* =====================================================
           LOCAL STORE SPOTLIGHT
       ====================================================== */}
-      <section className="bg-[#F7F4EC] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <section className="bg-[#F5F2EA] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#80622F]">
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
               A local useful-to-know
             </span>
             <h2 className="mt-4 text-4xl font-medium tracking-[-0.05em] sm:text-5xl">
@@ -1021,24 +1040,24 @@ export default function Home() {
             <div className="p-7 sm:p-10">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-[#E8EFE4] px-3 py-1.5 text-xs font-semibold text-[#59694D]">
-                    <span className="h-2 w-2 rounded-full bg-[#718064]" />
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[#E9E1D5] px-3 py-1.5 text-xs font-semibold text-[#766F66]">
+                    <span className="h-2 w-2 rounded-full bg-[#766F66]" />
                     Local store guide
                   </span>
                   <h3 className="mt-5 text-2xl font-semibold sm:text-3xl">
                     Patanjali Arogya Kendra
                   </h3>
                   <p className="mt-2 text-sm text-black/45">
-                    Grocery · Natural care · Ayurvedic products
+                    Grocery ? Natural care ? Ayurvedic products
                   </p>
                 </div>
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F1E8D5] text-[#80622F]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#E9E1D5] text-[#B95F3D]">
                   <ShoppingBag size={22} />
                 </div>
               </div>
 
               <div className="mt-8 flex gap-4 border-t border-black/10 pt-6">
-                <MapPin className="mt-0.5 shrink-0 text-[#B99552]" size={19} />
+                <MapPin className="mt-0.5 shrink-0 text-[#C87550]" size={19} />
                 <p className="text-sm leading-6 text-black/60">
                   Ground Floor, Usarah Road,
                   <br />
@@ -1049,7 +1068,7 @@ export default function Home() {
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
                   href="tel:+919761427569"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#80622F]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#B95F3D]"
                 >
                   <PhoneCall size={16} />
                   Call store
@@ -1058,7 +1077,7 @@ export default function Home() {
                   href="https://www.google.com/maps/dir/?api=1&destination=28.0233337,77.656476"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-black/15 px-5 py-3 text-sm font-semibold transition hover:border-[#B99552] hover:bg-[#F7F4EC]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-black/15 px-5 py-3 text-sm font-semibold transition hover:border-[#C87550] hover:bg-[#F5F2EA]"
                 >
                   <Navigation size={16} />
                   Directions
@@ -1066,28 +1085,28 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-[#F1F3EC] p-7 sm:p-10">
+            <div className="bg-[#F5F2EA] p-7 sm:p-10">
               <div className="flex items-center gap-3">
-                <Clock3 size={19} className="text-[#718064]" />
+                <Clock3 size={19} className="text-[#766F66]" />
                 <div>
                   <p className="font-semibold">Plan your visit</p>
-                  <p className="mt-1 text-sm text-black/45">Listed hours: 9:00 AM – 9:00 PM daily</p>
+                  <p className="mt-1 text-sm text-black/45">Listed hours: 9:00 AM ? 9:00 PM daily</p>
                 </div>
               </div>
 
               <details className="group mt-6 border-y border-black/10 py-4">
                 <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold">
                   View weekly hours
-                  <span className="text-xl leading-none text-[#80622F] transition group-open:rotate-45">+</span>
+                  <span className="text-xl leading-none text-[#B95F3D] transition group-open:rotate-45">+</span>
                 </summary>
                 <div className="mt-4 grid grid-cols-2 gap-y-2 text-sm text-black/55">
-                  <span>Monday – Sunday</span>
-                  <span className="text-right">9:00 AM – 9:00 PM</span>
+                  <span>Monday ? Sunday</span>
+                  <span className="text-right">9:00 AM ? 9:00 PM</span>
                 </div>
               </details>
 
               <div className="mt-6 flex gap-3">
-                <CreditCard size={18} className="mt-0.5 shrink-0 text-[#718064]" />
+                <CreditCard size={18} className="mt-0.5 shrink-0 text-[#766F66]" />
                 <div>
                   <p className="text-sm font-semibold">Payment methods listed</p>
                   <p className="mt-1 text-sm text-black/50">Cash, credit card and debit card</p>
@@ -1114,7 +1133,7 @@ export default function Home() {
 
             <div>
 
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B99552]">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#C87550]">
                 Connected Region
               </span>
 
@@ -1141,11 +1160,9 @@ export default function Home() {
                     duration: 0.35,
                     delay: index * 0.05,
                   }}
-                  className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold transition hover:-translate-y-1 hover:border-[#B99552] hover:shadow-md"
+                  className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold transition hover:-translate-y-1 hover:border-[#C87550] hover:shadow-md"
                 >
-                  <span className="mr-2 text-[#B99552]">
-                    â€¢
-                  </span>
+                 
                   {city}
                 </motion.div>
               ))}
@@ -1160,13 +1177,13 @@ export default function Home() {
       {/* =====================================================
           PROPERTY DISCOVERY
       ====================================================== */}
-      <section className="bg-[#F0E8DB] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section className="bg-[#F5F2EA] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
 
         <div className="mx-auto max-w-7xl">
 
           <div className="text-center">
 
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#80622F]">
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
               Explore Property
             </span>
 
@@ -1189,7 +1206,7 @@ export default function Home() {
                 className="rounded-[1.7rem] bg-white p-7 transition duration-500 hover:-translate-y-2 hover:shadow-xl"
               >
 
-                <span className="text-5xl font-semibold text-[#B99552]/20">
+                <span className="text-5xl font-semibold text-[#C87550]/20">
                   0{index + 1}
                 </span>
 
@@ -1203,7 +1220,7 @@ export default function Home() {
 
                 <Link
                   to="/contact"
-                  className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#80622F]"
+                  className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#B95F3D]"
                 >
                   Get Options
                   <ArrowRight size={16} />
@@ -1220,7 +1237,7 @@ export default function Home() {
       {/* =====================================================
           FINAL CTA
       ====================================================== */}
-      <section className="relative overflow-hidden bg-[#B99552] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <section className="relative overflow-hidden bg-[#C87550] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
 
         <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full border border-white/20" />
         <div className="absolute -right-10 -top-20 h-[300px] w-[300px] rounded-full border border-white/15" />
@@ -1261,6 +1278,8 @@ export default function Home() {
         </div>
       </section>
 
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
