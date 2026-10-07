@@ -16,7 +16,7 @@ import {
 
 const upcomingProjects = [
   {
-    number: "01",
+   
     status: "Upcoming",
     icon: Clapperboard,
     title: "Film City",
@@ -36,7 +36,7 @@ const upcomingProjects = [
 
 const currentProjects = [
   {
-    number: "01",
+   
     status: "Current Project",
     title: "Anugrah Homes",
     subtitle: "Residential development in Jattari",
@@ -98,22 +98,22 @@ const exploreProperties = [
 
 const projectFactors = [
   {
-    number: "01",
+    
     title: "Location",
     text: "Understand where the project is situated and how it connects to nearby towns, highways and development centres.",
   },
   {
-    number: "02",
+   
     title: "Connectivity",
     text: "Consider road access and proximity to important regional destinations before making a property decision.",
   },
   {
-    number: "03",
+    
     title: "Development",
     text: "Look at the infrastructure and development taking place around the property, not only the project itself.",
   },
   {
-    number: "04",
+    
     title: "Documentation",
     text: "Always independently verify ownership, title, approvals, land use and other relevant property documents.",
   },
@@ -185,10 +185,7 @@ function Projects() {
                 className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#292c26] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#9b773b]"
               >
                 View Current Projects
-                <ArrowRight
-                  size={17}
-                  className="transition-transform group-hover:translate-x-1"
-                />
+               
               </a>
 
               <a
@@ -196,7 +193,8 @@ function Projects() {
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-[#c5b695] bg-[#f8f5ed]/80 px-6 py-3.5 text-sm font-semibold text-[#514a3c] backdrop-blur-sm transition hover:bg-white"
               >
                 Explore Properties
-                <ArrowUpRight size={17} />
+                
+                
               </a>
             </div>
 
@@ -210,32 +208,87 @@ function Projects() {
       </section>
 
       {/* =========================================================
-          INTRO
+          FEATURED PROJECTS / STICKY SCROLL
       ========================================================== */}
-      <section className="py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div>
-              <SectionLabel>Our Property Portfolio</SectionLabel>
+      <section className="bg-white py-20 sm:py-24 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-12">
+          <div className="lg:sticky lg:top-28 lg:h-fit">
+            <SectionLabel>Featured Projects</SectionLabel>
 
-              <h2 className="max-w-xl text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
-                From current communities to future possibilities.
-              </h2>
-            </div>
+            <h2 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-[-0.05em] text-[#202027] sm:text-5xl lg:text-6xl">
+              Property opportunities near Jewar Airport.
+            </h2>
 
-            <div className="max-w-2xl lg:ml-auto">
-              <p className="text-base leading-8 text-[#696b63]">
-                Our project portfolio brings together residential opportunities
-                and the larger developments influencing the Jattari region.
-                Whether you are looking for a current property project or want
-                to understand future opportunities, this is your starting
-                point.
-              </p>
-            </div>
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#777C89] sm:text-lg">
+              Explore residential projects in Jattari and the surrounding
+              growth corridor. Scroll through each property to see its location,
+              overview and official website.
+            </p>
+
+            <a
+              href="#current-projects"
+              className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#E5B51B] px-7 py-4 text-sm font-bold text-white shadow-[0_12px_28px_rgba(190,148,18,0.22)] transition hover:-translate-y-1 hover:bg-[#D3A30B]"
+            >
+              View All Projects
+              <ArrowRight size={18} />
+            </a>
+          </div>
+
+          <div className="relative space-y-8 lg:space-y-10">
+            {currentProjects.map((project, index) => (
+              <div
+                key={project.title}
+                className="lg:sticky lg:top-28"
+                style={{ top: `calc(7rem + ${index * 20}px)`, zIndex: index + 1 }}
+              >
+                <article className="grid overflow-hidden rounded-[2rem] border border-[#E3E5E9] bg-white shadow-[0_18px_50px_rgba(32,32,39,0.08)] md:grid-cols-[1fr_0.85fr]">
+                  <div className="flex flex-col items-start p-6 sm:p-8 lg:p-9">
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#30313A]">
+                      <span className="inline-flex items-center gap-2">
+                        <Navigation size={17} className="text-[#E5B51B]" />
+                        {project.location}
+                      </span>
+                      <span className="text-[#777C89]">Township</span>
+                    </div>
+
+                    <h3 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-[#202027] sm:text-4xl">
+                      {project.title}
+                    </h3>
+
+                    <p className="mt-4 text-sm leading-7 text-[#777C89] sm:text-base">
+                      {project.description}
+                    </p>
+
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${project.title} official website`}
+                      className="mt-7 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#E5B51B] text-white transition hover:-translate-y-1 hover:bg-[#D3A30B]"
+                    >
+                      <ArrowUpRight size={23} />
+                    </a>
+                  </div>
+
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${project.title} official website`}
+                    className="group relative min-h-[250px] overflow-hidden md:min-h-[320px]"
+                  >
+                    <img
+                      src={project.image}
+                      alt={`${project.title} property`}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </a>
+                </article>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-
       {/* =========================================================
           UPCOMING PROJECT
       ========================================================== */}
@@ -335,7 +388,8 @@ function Projects() {
                       className="mt-9 inline-flex items-center gap-2 rounded-full bg-[#292c26] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#9b773b]"
                     >
                       Explore Development
-                      <ArrowRight size={17} />
+                      
+                      
                     </Link>
                   </div>
                 </div>
@@ -431,7 +485,7 @@ function Projects() {
 
                     <span className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#7e622f] transition group-hover:gap-3">
                       Visit Project Website
-                      <ArrowUpRight size={16} />
+                      
                     </span>
                   </div>
                 </a>
@@ -465,7 +519,7 @@ function Projects() {
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#d4b877] px-6 py-3.5 text-sm font-bold text-[#292e29] transition hover:bg-white"
               >
                 Talk to Our Team
-                <ArrowRight size={17} />
+                
               </Link>
             </div>
 
@@ -489,7 +543,8 @@ function Projects() {
                   className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#d8bd80]"
                 >
                   Find a property
-                  <ArrowRight size={15} />
+                  
+                  
                 </Link>
               </div>
 
@@ -512,7 +567,7 @@ function Projects() {
                   className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#d8bd80]"
                 >
                   Explore growth
-                  <ArrowRight size={15} />
+                  
                 </Link>
               </div>
             </div>
@@ -556,10 +611,7 @@ function Projects() {
                       <Icon size={21} strokeWidth={1.7} />
                     </div>
 
-                    <ArrowUpRight
-                      size={18}
-                      className="text-[#b5a78f] transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#8c6b35]"
-                    />
+                   
                   </div>
 
                   <h3 className="mt-7 text-lg font-semibold">
@@ -575,7 +627,7 @@ function Projects() {
                     className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[#876934]"
                   >
                     Explore
-                    <ArrowRight size={14} />
+                   
                   </Link>
                 </div>
               );
@@ -588,7 +640,7 @@ function Projects() {
               className="inline-flex items-center gap-2 rounded-full border border-[#bdaa87] bg-[#f8f5ed] px-6 py-3.5 text-sm font-bold text-[#695532] transition hover:bg-[#292e29] hover:text-white"
             >
               Explore Jattari Growth
-              <ArrowUpRight size={17} />
+             
             </Link>
           </div>
         </div>
@@ -667,7 +719,7 @@ function Projects() {
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#292e29] px-7 py-4 text-sm font-bold text-white transition hover:bg-[#9b773b]"
             >
               Contact Us
-              <ArrowRight size={17} />
+              
             </Link>
 
             <Link

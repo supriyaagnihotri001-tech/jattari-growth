@@ -147,10 +147,7 @@ function Contact() {
                 className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#292c26] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#9b773b]"
               >
                 Send An Enquiry
-                <ArrowRight
-                  size={17}
-                  className="transition-transform group-hover:translate-x-1"
-                />
+                
               </a>
 
               <a
@@ -319,7 +316,7 @@ function Contact() {
                   className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#80632f]"
                 >
                   Start a conversation
-                  <ArrowUpRight size={16} />
+                 
                 </a>
               </div>
             </div>
@@ -620,7 +617,7 @@ function Contact() {
                 className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#bdaa87] bg-[#f8f5ed] px-6 py-3.5 text-sm font-bold text-[#665333] transition hover:bg-[#292e29] hover:text-white"
               >
                 Explore Jattari
-                <ArrowUpRight size={17} />
+                
               </Link>
             </div>
 
@@ -717,10 +714,7 @@ function Contact() {
                   <Building2 size={21} />
                 </div>
 
-                <ArrowUpRight
-                  size={18}
-                  className="text-[#b3a68e] transition group-hover:-translate-y-1 group-hover:translate-x-1"
-                />
+              
               </div>
 
               <h3 className="mt-7 text-xl font-semibold">
@@ -742,10 +736,7 @@ function Contact() {
                   <Navigation size={21} />
                 </div>
 
-                <ArrowUpRight
-                  size={18}
-                  className="text-[#b3a68e] transition group-hover:-translate-y-1 group-hover:translate-x-1"
-                />
+               
               </div>
 
               <h3 className="mt-7 text-xl font-semibold">
@@ -767,10 +758,7 @@ function Contact() {
                   <Sparkles size={21} />
                 </div>
 
-                <ArrowUpRight
-                  size={18}
-                  className="text-[#b3a68e] transition group-hover:-translate-y-1 group-hover:translate-x-1"
-                />
+              
               </div>
 
               <h3 className="mt-7 text-xl font-semibold">

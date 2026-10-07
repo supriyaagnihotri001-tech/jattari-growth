@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logo from "../assets/Images/logo-transparent.png";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -42,30 +43,20 @@ function Navbar() {
               onClick={closeMenu}
               className="group flex items-center gap-3"
             >
-              {/* Logo Icon */}
-              <div
-                className="
-                  flex h-10 w-10 items-center justify-center
-                  rounded-xl
-                  bg-gradient-to-br from-[#B95F3D] to-[#D28B65]
-                  shadow-md shadow-[#E9E1D5]
-                  transition-transform duration-300
-                  group-hover:scale-105
-                "
-              >
-                <span className="text-lg font-bold text-white">
-                  J
-                </span>
-              </div>
+              <img
+                src={logo}
+                alt="Jattari Growth Destination logo"
+                className="h-12 w-14 shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
+              />
 
               {/* Logo Text */}
               <div className="leading-none">
                 <div className="text-[15px] font-extrabold tracking-tight text-[#292923] sm:text-base">
-                  JATTARI
+                  𝒋𝒂𝒕𝒕𝒂𝒓𝒊
                 </div>
 
                 <div className="mt-1 text-[8px] font-semibold uppercase tracking-[0.18em] text-[#B95F3D] sm:text-[9px]">
-                  Growth Destination
+                  𝒈𝒓𝒐𝒘𝒕𝒉 𝒅𝒆𝒔𝒕𝒊𝒏𝒂𝒕𝒊𝒐𝒏
                 </div>
               </div>
             </Link>
@@ -89,23 +80,7 @@ function Navbar() {
                     `
                   }
                 >
-                  {({ isActive }) => (
-                    <>
-                      {item.name}
-
-                      {isActive && (
-                        <span
-                          className="
-                            absolute bottom-0.5 left-1/2
-                            h-1 w-1
-                            -translate-x-1/2
-                            rounded-full
-                            bg-[#C87550]
-                          "
-                        />
-                      )}
-                    </>
-                  )}
+                  {item.name}
                 </NavLink>
               ))}
             </div>

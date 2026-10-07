@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import corridorImage from "../assets/Images/corridor.png";
+import propertyShowcaseImage from "../assets/Images/Anugrahimg2.webp";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -58,37 +60,37 @@ const trustPoints = [
 
 const services = [
   {
-    number: "01",
+    
     icon: Home,
     title: "Residential Properties",
     text: "Explore residential plot opportunities for families, future homes and long-term property planning.",
   },
   {
-    number: "02",
+   
     icon: Building2,
     title: "Commercial Opportunities",
     text: "Discover commercial property options positioned around emerging roads, markets and growth corridors.",
   },
   {
-    number: "03",
+   
     icon: Landmark,
     title: "Authority & Planned Areas",
     text: "Understand planned development zones and the documentation relevant to property selection.",
   },
   {
-    number: "04",
+    
     icon: WalletCards,
     title: "Investment Guidance",
     text: "Compare locations, connectivity and development drivers before making an investment decision.",
   },
   {
-    number: "05",
+    
     icon: Navigation,
     title: "Site Visit Assistance",
     text: "Get practical support in understanding the location, surroundings, approach roads and available options.",
   },
   {
-    number: "06",
+   
     icon: FileCheck2,
     title: "Buying Support",
     text: "Receive assistance from initial enquiry and property selection through documentation and transaction stages.",
@@ -147,27 +149,27 @@ const buyerTypes = [
 
 const processSteps = [
   {
-    number: "01",
+    
     title: "Tell Us Your Requirement",
     text: "Share your preferred location, property type, budget and purpose.",
   },
   {
-    number: "02",
+    
     title: "Shortlist Options",
     text: "Compare suitable properties according to location and requirement.",
   },
   {
-    number: "03",
+    
     title: "Visit & Verify",
     text: "Visit the site and review the surrounding area and available documentation.",
   },
   {
-    number: "04",
+    
     title: "Documentation",
     text: "Review the relevant property documents and transaction requirements.",
   },
   {
-    number: "05",
+  
     title: "Move Forward",
     text: "Proceed with the property that matches your requirements after due verification.",
   },
@@ -185,141 +187,101 @@ function Aboutus() {
     <main className="overflow-hidden bg-[#F5F2EA] text-[#272922]">
 
       {/* =========================================================
-          HERO
+          ABOUT INTRO
       ========================================================== */}
-      <section className="relative overflow-hidden pt-24 lg:pt-28">
+      <section className="bg-white px-5 pb-20 pt-28 sm:px-8 lg:px-12 lg:pb-28 lg:pt-36">
+        <div className="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-[0.95fr_1.25fr] lg:gap-16">
+          <div className="grid grid-cols-[1.05fr_0.95fr] items-center gap-4 sm:gap-6">
+            <img
+              src={corridorImage}
+              alt="Open land and regional road in the Jewar growth corridor"
+              className="mt-14 h-[300px] w-full rounded-[1.5rem] object-cover sm:mt-16 sm:h-[430px] sm:rounded-[2rem]"
+            />
 
-        {/* Decorative background */}
-        <div className="absolute -right-40 top-10 h-[500px] w-[500px] rounded-full bg-[#DCE3D4] opacity-70 blur-3xl" />
+            <div className="flex flex-col gap-4 sm:gap-6">
+              <img
+                src={propertyShowcaseImage}
+                alt="Anugrah Homes residential entrance"
+                className="h-[205px] w-full rounded-[1.5rem] object-cover sm:h-[300px] sm:rounded-[2rem]"
+              />
 
-        <div className="absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[#EBD7C8] opacity-60 blur-3xl" />
+              <div className="rounded-[1.5rem] border border-[#DDD6C8] bg-white p-4 shadow-[0_16px_45px_rgba(39,41,34,0.06)] sm:rounded-[2rem] sm:p-6">
+                <p className="text-center text-3xl font-black tracking-tight text-[#D9AA18] sm:text-5xl">
+                  Local
+                </p>
+                <div className="mx-auto mt-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#F5F2EA] text-[#C87550] sm:h-12 sm:w-12">
+                  <BadgeCheck size={22} />
+                </div>
+                <p className="mt-3 text-center text-xs font-bold text-[#272922] sm:text-sm">
+                  Guidance you can trust
+                </p>
+                <p className="mt-1 text-center text-[10px] leading-4 text-[#77786D] sm:text-xs">
+                  Support from search to site visit
+                </p>
+              </div>
+            </div>
+          </div>
 
-        <div className="relative mx-auto grid max-w-[1400px] items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12 lg:py-20">
-
-          {/* Hero Content */}
           <div>
-
-            <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-[#C8B99A] bg-white/60 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#806331] backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-[#C87550]" />
-              About Our Approach
+            <div className="mb-4 flex items-center gap-3 text-sm font-bold uppercase tracking-wide text-[#D9AA18]">
+              About Us
+              <span className="h-px w-12 bg-[#C87550]" />
             </div>
 
-            <h1 className="max-w-3xl text-5xl font-black leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-7xl xl:text-[84px]">
-              Property.
-              <span className="block text-[#C87550]">
-                People.
-              </span>
-              <span className="block">
-                Possibilities.
-              </span>
+            <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-[-0.05em] text-[#202027] sm:text-5xl lg:text-6xl">
+              Your Trusted Property Partner in Jewar
             </h1>
 
-            <p className="mt-7 max-w-xl text-base leading-7 text-[#66685F] sm:text-lg">
-              A property journey should begin with the right information,
-              location understanding and documentation — not just a sales
-              conversation.
+            <p className="mt-6 text-base leading-7 text-[#777C89] sm:text-lg sm:leading-8">
+              We help homebuyers and investors explore property opportunities
+              across Jewar and Jattari with clear information, local context and
+              practical guidance at every step.
             </p>
 
-            <p className="mt-4 max-w-xl text-sm leading-6 text-[#77786D]">
-              Our focus is to connect buyers with property opportunities across
-              the rapidly developing Jewar–Jattari region while keeping
-              transparency and informed decision-making at the centre.
+            <p className="mt-5 text-base leading-7 text-[#777C89] sm:text-lg sm:leading-8">
+              From residential plots and communities to emerging commercial
+              options, we help you compare locations, understand connectivity
+              and plan a site visit that fits your requirements.
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <p className="mt-5 text-base leading-7 text-[#777C89] sm:text-lg sm:leading-8">
+              Our local perspective covers the wider Jewar growth corridor,
+              including Noida International Airport, the Yamuna Expressway and
+              planned regional developments. We encourage informed decisions,
+              careful document review and transparent communication throughout
+              your property journey.
+            </p>
+
+            <div className="mt-8 grid gap-5 border-b border-[#DDD6C8] pb-7 sm:grid-cols-2 sm:gap-8">
+              <div className="flex items-center gap-3 text-[#565963]">
+                <Building2 className="shrink-0 text-[#C87550]" size={30} />
+                <span className="font-bold">Property options across the corridor</span>
+              </div>
+              <div className="flex items-center gap-3 text-[#565963]">
+                <Users className="shrink-0 text-[#C87550]" size={30} />
+                <span className="font-bold">Experienced local guidance</span>
+              </div>
+            </div>
+
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={() => scrollToSection("who-we-are")}
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#C87550]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#C87550]"
               >
                 Discover More
-                <ArrowRight
-                  size={17}
-                  className="transition-transform group-hover:translate-x-1"
-                />
+                <ArrowRight size={17} />
               </button>
-
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-3 rounded-full border border-[#C8B99A] bg-white/60 px-6 py-3.5 text-sm font-bold transition hover:border-[#C87550] hover:text-[#C87550]"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D5C8B7] px-6 py-3.5 text-sm font-bold text-[#272922] transition hover:border-[#C87550] hover:text-[#B95F3D]"
               >
                 Talk to Our Team
                 <ArrowUpRight size={17} />
               </Link>
             </div>
-
           </div>
-
-          {/* Hero Visual */}
-          <div className="relative">
-
-            <div className="absolute -right-4 -top-5 z-20 rounded-2xl border border-white/80 bg-white/90 p-4 shadow-xl backdrop-blur sm:right-5">
-              <div className="flex items-center gap-3">
-                <div className="rounded-xl bg-[#F1E6D8] p-3 text-[#C87550]">
-                  <BadgeCheck size={21} />
-                </div>
-
-                <div>
-                  <p className="text-xs font-black uppercase tracking-wider">
-                    Buyer First
-                  </p>
-
-                  <p className="text-xs text-[#77786D]">
-                    Transparency matters
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-[42px] border-[10px] border-white shadow-[0_30px_80px_rgba(39,41,34,0.16)]">
-
-              <img
-                src="/Images/Heroimg.png"
-                alt="Jewar and Jattari real estate growth region"
-                className="h-[470px] w-full object-cover sm:h-[570px]"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-[#272922]/80 via-transparent to-transparent" />
-
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-                  Jewar • Jattari • Growth Corridor
-                </p>
-
-                <h2 className="mt-2 max-w-lg text-2xl font-black text-white sm:text-3xl">
-                  Helping buyers understand the opportunity before they invest.
-                </h2>
-
-              </div>
-
-            </div>
-
-            {/* Floating card */}
-            <div className="absolute -bottom-7 -left-3 max-w-[260px] rounded-2xl border border-[#E4DCCF] bg-white p-4 shadow-2xl sm:-left-8">
-              <div className="flex gap-3">
-
-                <div className="rounded-xl bg-[#DCE3D4] p-3">
-                  <MapPin size={20} />
-                </div>
-
-                <div>
-                  <p className="text-xs font-black uppercase tracking-wider text-[#8A7A5A]">
-                    Focus Region
-                  </p>
-
-                  <p className="mt-1 text-sm font-bold">
-                    Jewar & Jattari Growth Belt
-                  </p>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-
         </div>
       </section>
-
       {/* =========================================================
           QUICK NAV
       ========================================================== */}
@@ -702,10 +664,7 @@ function Aboutus() {
                       <Icon size={21} />
                     </div>
 
-                    <ArrowUpRight
-                      size={18}
-                      className="text-[#AAA18F] transition group-hover:text-[#C87550]"
-                    />
+                  
 
                   </div>
 
@@ -719,10 +678,7 @@ function Aboutus() {
 
                   <div className="mt-6 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#9A6E48]">
                     Explore
-                    <ArrowRight
-                      size={14}
-                      className="transition-transform group-hover:translate-x-1"
-                    />
+                    
                   </div>
 
                 </Link>

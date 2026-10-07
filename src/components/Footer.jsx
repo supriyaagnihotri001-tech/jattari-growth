@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/Images/logo-transparent.png";
 import {
   FaFacebookF,
   FaInstagram,
@@ -24,8 +25,8 @@ const quickLinks = [
     path: "/jewar-airport",
   },
   {
-    name: "Film City",
-    path: "/film-city",
+    name: "Aboutus",
+    path: "/aboutus",
   },
   {
     name: "Jattari Growth",
@@ -71,23 +72,11 @@ function Footer() {
               to="/"
               className="group inline-flex items-center gap-3"
             >
-              <div
-                className="
-                  flex h-11 w-11 items-center justify-center
-                  rounded-xl
-                  bg-gradient-to-br
-                  from-[#C87550]
-                  to-[#D99A78]
-                  shadow-lg
-                  shadow-black/20
-                  transition duration-300
-                  group-hover:scale-105
-                "
-              >
-                <span className="text-xl font-extrabold text-white">
-                  J
-                </span>
-              </div>
+              <img
+                src={logo}
+                alt="Jattari Growth Destination logo"
+                className="h-14 w-16 shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
+              />
 
               <div className="leading-none">
                 <p className="text-base font-extrabold tracking-tight">

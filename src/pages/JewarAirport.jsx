@@ -52,7 +52,7 @@ const airportStats = [
 
 const developmentPhases = [
   {
-    number: "01",
+    
     status: "Operational",
     title: "Phase One",
     capacity: "12 Million Passengers",
@@ -60,7 +60,7 @@ const developmentPhases = [
       "The first development stage brings one passenger terminal, one runway and a dedicated cargo ecosystem together to establish DXN as a new gateway for the NCR and Western Uttar Pradesh.",
   },
   {
-    number: "02",
+   
     status: "Expansion",
     title: "Phase Two",
     capacity: "30 Million Passengers",
@@ -68,7 +68,7 @@ const developmentPhases = [
       "Future expansion is planned to increase passenger capacity and strengthen the airport's multimodal connectivity through additional infrastructure and transit links.",
   },
   {
-    number: "03",
+    
     status: "Growth",
     title: "Phase Three",
     capacity: "50 Million Passengers",
@@ -76,7 +76,7 @@ const developmentPhases = [
       "The airport's larger development vision includes additional terminal and runway infrastructure along with stronger cargo, logistics and aerotropolis activity.",
   },
   {
-    number: "04",
+   
     status: "Long Term",
     title: "Phase Four",
     capacity: "70 Million Passengers",
@@ -294,7 +294,7 @@ function JewarAirport() {
               className="mt-8 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#B95F3D] to-[#D28B65] px-8 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(150,85,55,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(150,85,55,0.28)]"
             >
               Explore Airport
-              <ArrowRight size={17} />
+            
             </a>
           </div>
         </div>
@@ -468,22 +468,22 @@ function JewarAirport() {
 
             {[
               {
-                number: "01",
+                
                 title: "Travel",
                 text: "A new gateway for passengers across NCR and Western Uttar Pradesh.",
               },
               {
-                number: "02",
+               
                 title: "Business",
                 text: "Improved access can strengthen regional business and commercial activity.",
               },
               {
-                number: "03",
+                
                 title: "Logistics",
                 text: "Cargo infrastructure creates opportunities for faster regional movement of goods.",
               },
               {
-                number: "04",
+                
                 title: "Growth",
                 text: "New infrastructure can accelerate development around connected corridors.",
               },
@@ -500,10 +500,7 @@ function JewarAirport() {
                     {item.number}
                   </span>
 
-                  <ArrowUpRight
-                    size={19}
-                    className="text-[#D28B65] transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                  />
+                 
 
                 </div>
 
@@ -684,7 +681,7 @@ function JewarAirport() {
 
                     <div className="mt-7 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#B95F3D]">
                       Explore connection
-                      <ArrowRight size={14} />
+                      
                     </div>
 
                   </div>
@@ -743,7 +740,7 @@ function JewarAirport() {
                   className="mt-9 inline-flex items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#C87550]"
                 >
                   Explore Jattari Growth
-                  <ArrowRight size={17} />
+                 
                 </Link>
 
               </div>
@@ -1343,7 +1340,7 @@ function JewarAirport() {
                   className="inline-flex items-center justify-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#C87550]"
                 >
                   Explore Jattari
-                  <ArrowRight size={17} />
+                 
                 </Link>
 
                 <Link
@@ -1351,7 +1348,7 @@ function JewarAirport() {
                   className="inline-flex items-center justify-center gap-3 rounded-full border border-black/10 bg-white px-7 py-4 text-sm font-bold transition hover:-translate-y-1"
                 >
                   Explore Film City
-                  <ArrowUpRight size={17} />
+                  
                 </Link>
 
               </div>

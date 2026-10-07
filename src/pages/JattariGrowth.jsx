@@ -24,25 +24,25 @@ import {
 const growthHighlights = [
   {
     icon: Plane,
-    number: "01",
+    
     title: "Noida International Airport",
     text: "Jewar Airport is transforming the wider region through new aviation, logistics and connectivity opportunities.",
   },
   {
     icon: Clapperboard,
-    number: "02",
+   
     title: "International Film City",
     text: "The planned Film City in the YEIDA region is adding another major development layer to the surrounding corridor.",
   },
   {
     icon: Route,
-    number: "03",
+   
     title: "Better Connectivity",
     text: "Road and regional transport connections are strengthening access between Jattari, Tappal, Aligarh and the wider NCR region.",
   },
   {
     icon: Building2,
-    number: "04",
+    
     title: "Urban Expansion",
     text: "Growing infrastructure, housing and commercial activity are creating new possibilities around Jattari.",
   },
@@ -228,10 +228,7 @@ function JattariGrowth() {
                 className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#9b773b]"
               >
                 Explore Opportunities
-                <ArrowRight
-                  size={17}
-                  className="transition-transform group-hover:translate-x-1"
-                />
+               
               </Link>
 
               <a
@@ -239,7 +236,7 @@ function JattariGrowth() {
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-[#bda978] bg-[#f7f4ec]/80 px-6 py-3.5 text-sm font-semibold text-[#554b38] backdrop-blur-sm transition hover:bg-white"
               >
                 Discover Jattari
-                <ArrowUpRight size={17} />
+               
               </a>
             </div>
 
@@ -312,7 +309,7 @@ function JattariGrowth() {
                 className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#80652f] transition hover:gap-3"
               >
                 Learn more about our approach
-                <ArrowRight size={16} />
+               
               </Link>
             </div>
 
@@ -390,7 +387,7 @@ function JattariGrowth() {
                 className="mt-9 inline-flex items-center gap-2 rounded-full bg-[#d3b875] px-6 py-3.5 text-sm font-bold text-[#272922] transition hover:bg-white"
               >
                 Explore Jewar Airport
-                <ArrowRight size={17} />
+               
               </Link>
             </div>
 
@@ -571,10 +568,6 @@ function JattariGrowth() {
                         <Icon size={21} strokeWidth={1.7} />
                       </div>
 
-                      <ArrowUpRight
-                        size={19}
-                        className="text-[#b8aa91] transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#80652f]"
-                      />
                     </div>
 
                     <h3 className="mt-7 text-xl font-semibold">
@@ -686,22 +679,22 @@ function JattariGrowth() {
 
             {[
               {
-                year: "01",
+               
                 title: "Local Foundation",
                 text: "Jattari already serves as a local centre for surrounding communities through education, retail and everyday services.",
               },
               {
-                year: "02",
+                
                 title: "Connectivity Improves",
                 text: "Better regional road and transport connections strengthen movement between Jattari and nearby cities.",
               },
               {
-                year: "03",
+                
                 title: "Airport Era",
                 text: "The operational Noida International Airport adds a major new aviation gateway to the wider region.",
               },
               {
-                year: "04",
+               
                 title: "Regional Ecosystem",
                 text: "Airport-linked development, planned projects and urban expansion can create a broader ecosystem of opportunity.",
               },
@@ -808,7 +801,7 @@ function JattariGrowth() {
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d5b978] px-6 py-3.5 text-sm font-bold text-[#292e29] transition hover:bg-white"
                 >
                   Request a Site Visit
-                  <ArrowRight size={17} />
+                  
                 </Link>
 
                 <a
