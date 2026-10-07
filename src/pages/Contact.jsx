@@ -88,21 +88,90 @@ function Contact() {
 
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    let updatedValue = value;
+
+    if (name === "phone") {
+      updatedValue = value.replace(/\D/g, "").slice(0, 10);
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: updatedValue,
     }));
+
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    const name = formData.name.trim();
+    const phone = formData.phone.trim();
+    const email = formData.email.trim();
+    const today = new Date().toISOString().split("T")[0];
+
+    if (!name) {
+      newErrors.name = "Please enter your full name.";
+    } else if (name.length < 2) {
+      newErrors.name = "Name must be at least 2 characters.";
+    } else if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s.'-]+$/.test(name)) {
+      newErrors.name = "Please enter a valid name.";
+    }
+
+    if (!phone) {
+      newErrors.phone = "Please enter your phone number.";
+    } else if (!/^\d{10}$/.test(phone)) {
+      newErrors.phone = "Phone number must be exactly 10 digits.";
+    } else if (!/^[6-9]/.test(phone)) {
+      newErrors.phone = "Please enter a valid Indian mobile number.";
+    }
+
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      newErrors.email = "Please enter a valid email address.";
+    }
+
+    if (!formData.project) {
+      newErrors.project = "Please select a project.";
+    }
+
+    if (!formData.enquiryType) {
+      newErrors.enquiryType = "Please select an enquiry type.";
+    }
+
+    if (formData.preferredDate && formData.preferredDate < today) {
+      newErrors.preferredDate = "Please select today or a future date.";
+    }
+
+    return newErrors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Frontend-only submission for now.
-    // Connect this form later with your backend/API/Formspree/EmailJS/etc.
+    const validationErrors = validateForm();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+
+      const firstErrorField = Object.keys(validationErrors)[0];
+      document.getElementById(firstErrorField)?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+
+      return;
+    }
+
+    setErrors({});
 
     console.log("Contact Enquiry:", formData);
 
@@ -347,6 +416,7 @@ function Contact() {
                     type="button"
                     onClick={() => {
                       setSubmitted(false);
+                      setErrors({});
                       setFormData({
                         name: "",
                         phone: "",
@@ -393,12 +463,16 @@ function Contact() {
                           id="name"
                           name="name"
                           type="text"
-                          required
                           value={formData.name}
                           onChange={handleChange}
                           placeholder="Enter your name"
-                          className="w-full rounded-2xl border border-[#d8d0c1] bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition placeholder:text-[#aaa79e] focus:border-[#a9854a] focus:bg-white"
+                          className={`w-full rounded-2xl border ${errors.name ? "border-red-400" : "border-[#d8d0c1]"} bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition placeholder:text-[#aaa79e] focus:border-[#a9854a] focus:bg-white`}
                         />
+                        {errors.name && (
+                          <p className="mt-2 text-xs font-medium text-red-500">
+                            {errors.name}
+                          </p>
+                        )}
                       </div>
 
                       <div>
@@ -413,12 +487,16 @@ function Contact() {
                           id="phone"
                           name="phone"
                           type="tel"
-                          required
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="Enter phone number"
-                          className="w-full rounded-2xl border border-[#d8d0c1] bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition placeholder:text-[#aaa79e] focus:border-[#a9854a] focus:bg-white"
+                          className={`w-full rounded-2xl border ${errors.phone ? "border-red-400" : "border-[#d8d0c1]"} bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition placeholder:text-[#aaa79e] focus:border-[#a9854a] focus:bg-white`}
                         />
+                        {errors.phone && (
+                          <p className="mt-2 text-xs font-medium text-red-500">
+                            {errors.phone}
+                          </p>
+                        )}
                       </div>
                     </div>
 
@@ -439,8 +517,13 @@ function Contact() {
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="Enter email address"
-                          className="w-full rounded-2xl border border-[#d8d0c1] bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition placeholder:text-[#aaa79e] focus:border-[#a9854a] focus:bg-white"
+                          className={`w-full rounded-2xl border ${errors.email ? "border-red-400" : "border-[#d8d0c1]"} bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition placeholder:text-[#aaa79e] focus:border-[#a9854a] focus:bg-white`}
                         />
+                        {errors.email && (
+                          <p className="mt-2 text-xs font-medium text-red-500">
+                            {errors.email}
+                          </p>
+                        )}
                       </div>
 
                       <div>
@@ -454,10 +537,9 @@ function Contact() {
                         <select
                           id="project"
                           name="project"
-                          required
                           value={formData.project}
                           onChange={handleChange}
-                          className="w-full appearance-none rounded-2xl border border-[#d8d0c1] bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition focus:border-[#a9854a] focus:bg-white"
+                          className={`w-full appearance-none rounded-2xl border ${errors.project ? "border-red-400" : "border-[#d8d0c1]"} bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition focus:border-[#a9854a] focus:bg-white`}
                         >
                           <option value="">Select a project</option>
 
@@ -467,6 +549,11 @@ function Contact() {
                             </option>
                           ))}
                         </select>
+                        {errors.project && (
+                          <p className="mt-2 text-xs font-medium text-red-500">
+                            {errors.project}
+                          </p>
+                        )}
                       </div>
                     </div>
 
@@ -483,10 +570,9 @@ function Contact() {
                         <select
                           id="enquiryType"
                           name="enquiryType"
-                          required
                           value={formData.enquiryType}
                           onChange={handleChange}
-                          className="w-full appearance-none rounded-2xl border border-[#d8d0c1] bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition focus:border-[#a9854a] focus:bg-white"
+                          className={`w-full appearance-none rounded-2xl border ${errors.enquiryType ? "border-red-400" : "border-[#d8d0c1]"} bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition focus:border-[#a9854a] focus:bg-white`}
                         >
                           <option value="">Select enquiry type</option>
 
@@ -496,6 +582,11 @@ function Contact() {
                             </option>
                           ))}
                         </select>
+                        {errors.enquiryType && (
+                          <p className="mt-2 text-xs font-medium text-red-500">
+                            {errors.enquiryType}
+                          </p>
+                        )}
                       </div>
 
                       <div>
@@ -510,10 +601,16 @@ function Contact() {
                           id="preferredDate"
                           name="preferredDate"
                           type="date"
+                           min={new Date().toISOString().split("T")[0]}
                           value={formData.preferredDate}
                           onChange={handleChange}
-                          className="w-full rounded-2xl border border-[#d8d0c1] bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition focus:border-[#a9854a] focus:bg-white"
+                          className={`w-full rounded-2xl border ${errors.preferredDate ? "border-red-400" : "border-[#d8d0c1]"} bg-[#f8f5ed] px-4 py-3.5 text-sm text-[#292c26] outline-none transition focus:border-[#a9854a] focus:bg-white`}
                         />
+                        {errors.preferredDate && (
+                          <p className="mt-2 text-xs font-medium text-red-500">
+                            {errors.preferredDate}
+                          </p>
+                        )}
                       </div>
                     </div>
 

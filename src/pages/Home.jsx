@@ -1,3 +1,4 @@
+﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import airportImage from "../assets/Images/airport.png";
@@ -7,6 +8,10 @@ import goldenCityImage from "../assets/Images/goldencity.png";
 import patanjaliImage from "../assets/Images/patanjali.png";
 import terminalCityImage from "../assets/Images/terminalcity.avif";
 import filmCityImage from "../assets/Images/filmcity.png";
+import dailyEssentialsImage from "../assets/Images/dailyessentials.png";
+import educationImage from "../assets/Images/education.png";
+import greenLifeImage from "../assets/Images/greenlife.png";
+import strategicLocationImage from "../assets/Images/strategiclocation.png";
 
 
 import {
@@ -24,8 +29,51 @@ import {
   PhoneCall,
   Clock3,
   Navigation,
-  CreditCard,
 } from "lucide-react";
+
+const HERO_PHRASES = ["growth story", "bright future", "new horizons"];
+
+function TypewriterText() {
+  const [text, setText] = useState(HERO_PHRASES[0]);
+
+  useEffect(() => {
+    let phraseIndex = 0;
+    let characterIndex = HERO_PHRASES[0].length;
+    let deleting = true;
+    let timer;
+
+    const tick = () => {
+      const phrase = HERO_PHRASES[phraseIndex];
+
+      if (deleting) {
+        characterIndex -= 1;
+        setText(phrase.slice(0, characterIndex));
+        if (characterIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % HERO_PHRASES.length;
+          timer = window.setTimeout(tick, 350);
+        } else {
+          timer = window.setTimeout(tick, 45);
+        }
+        return;
+      }
+
+      characterIndex += 1;
+      setText(phrase.slice(0, characterIndex));
+      if (characterIndex === phrase.length) {
+        deleting = true;
+        timer = window.setTimeout(tick, 1500);
+      } else {
+        timer = window.setTimeout(tick, 90);
+      }
+    };
+
+    timer = window.setTimeout(tick, 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  return <span className="hero-typewriter" aria-live="off">{text}</span>;
+}
 
 const fadeUp = {
   hidden: {
@@ -111,21 +159,25 @@ const localLife = [
     icon: ShoppingBag,
     title: "Daily Essentials",
     text: "Local grocery, shopping and everyday services around the town.",
+    image: dailyEssentialsImage,
   },
   {
     icon: GraduationCap,
     title: "Education",
     text: "Schools, academies and coaching institutions for local families.",
+    image: educationImage,
   },
   {
     icon: Trees,
     title: "Green Lifestyle",
     text: "A developing town environment with residential and open spaces.",
+    image: greenLifeImage,
   },
   {
     icon: MapPin,
     title: "Strategic Location",
     text: "Positioned within a wider network of important regional destinations.",
+    image: strategicLocationImage,
   },
 ];
 
@@ -134,21 +186,25 @@ const propertyOptions = [
     title: "Anugrah Homes",
     text: "Explore a residential community in the Jattari growth corridor.",
     image: anugrahHomesImage,
+    url: "/contact#enquiry",
   },
   {
     title: "Skyline Aero Homes",
     text: "Discover a township near Jewar Airport and Yamuna Expressway.",
     image: skylineAeroHomesImage,
+    url: "/contact#enquiry",
   },
   {
     title: "Golden City",
     text: "See another residential option around the Jattari region.",
     image: goldenCityImage,
+    url: "/contact#enquiry",
   },
   {
     title: "Terminal City",
     text: "Explore a destination connected to the Film City growth story.",
     image: terminalCityImage,
+    url: "/contact#enquiry",
   },
 ];
 
@@ -206,12 +262,13 @@ export default function Home() {
             >
               <motion.h1
                 variants={fadeUp}
+                aria-label="Jattari's next growth story starts here."
                 className="max-w-[720px] text-[clamp(3.2rem,6.8vw,6.9rem)] font-extrabold leading-[0.94] tracking-[-0.065em] text-[#292923]"
               >
                 Jattari's next
                 <br />
                 <span className="bg-gradient-to-r from-[#B95F3D] via-[#C87550] to-[#D28B65] bg-clip-text text-transparent">
-                  growth story
+                  <TypewriterText />
                 </span>
                 <br />
                 starts here.
@@ -260,7 +317,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="mt-8 overflow-hidden rounded-[2rem] border border-[#D5C8B7] bg-[#FFFEFB] shadow-[0_12px_40px_rgba(90,65,40,0.06)] lg:mt-2"
+            className="mt-8 overflow-hidden rounded-[2rem] border border-[#D5C8B7] bg-[#FFFEFB] shadow-[0_12px_40px_rgba(90,65,40,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(90,65,40,0.14)] lg:mt-2"
           >
             <div className="grid lg:grid-cols-[1.2fr_repeat(5,1fr)]">
                   <div className="border-b border-[#E9E1D5] p-6 sm:p-7 lg:border-b-0 lg:border-r">
@@ -328,7 +385,7 @@ export default function Home() {
       {/* =====================================================
           PROPERTY DISCOVERY
       ====================================================== */}
-      <section className="bg-[#F5F2EA] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section id="properties" className="scroll-mt-28 bg-[#F5F2EA] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
 
         <div className="mx-auto max-w-7xl">
 
@@ -349,46 +406,59 @@ export default function Home() {
 
           </div>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="property-marquee mt-12" aria-label="Explore property options">
+            <div className="property-marquee-track">
+              {[false, true].map((isClone) => (
+                <div
+                  key={isClone ? "property-copy" : "property-cards"}
+                  className="property-marquee-group"
+                  aria-hidden={isClone || undefined}
+                  inert={isClone || undefined}
+                >
+                  {propertyOptions.map((item, index) => {
+                    const CardLink = item.external ? "a" : Link;
+                    const linkProps = item.external
+                      ? { href: item.url, target: "_blank", rel: "noopener noreferrer" }
+                      : { to: item.url };
 
-            {propertyOptions.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.55, delay: index * 0.12, ease: "easeOut" }}
-                className="overflow-hidden rounded-[1.7rem] bg-white transition duration-500 hover:-translate-y-2 hover:shadow-xl"
-              >
-                <img
-                  src={item.image}
-                  alt={`${item.title} property option`}
-                  className="h-48 w-full object-cover"
-                />
+                    return (
+                      <CardLink
+                        key={`${isClone ? "copy-" : ""}${item.title}`}
+                        {...linkProps}
+                        aria-label={`${item.title} ? ${item.external ? "contact the official project team" : "ask us for property details"}`}
+                        tabIndex={isClone ? -1 : undefined}
+                        className="group block h-full w-[280px] shrink-0 overflow-hidden rounded-[1.7rem] bg-white transition duration-500 hover:-translate-y-2 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C87550] sm:w-[320px]"
+                      >
+                        <img
+                          src={item.image}
+                          alt={`${item.title} property option`}
+                          className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
 
-                <div className="p-7">
-                  <span className="text-5xl font-semibold text-[#C87550]/20">
-                    0{index + 1}
-                  </span>
+                        <div className="p-7">
+                          <span className="text-5xl font-semibold text-[#C87550]/20">
+                            0{index + 1}
+                          </span>
 
-                  <h3 className="mt-6 text-2xl font-medium">
-                    {item.title}
-                  </h3>
+                          <h3 className="mt-6 text-2xl font-medium">
+                            {item.title}
+                          </h3>
 
-                  <p className="mt-3 text-sm leading-6 text-black/45">
-                    {item.text}
-                  </p>
+                          <p className="mt-3 text-sm leading-6 text-black/45">
+                            {item.text}
+                          </p>
 
-                  <Link
-                    to="/contact"
-                    className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#B95F3D]"
-                  >
-                    Get Options
-                  </Link>
+                          <span className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#B95F3D]">
+                            {item.external ? "Contact Official Website" : "Get Options"}
+                            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                          </span>
+                        </div>
+                      </CardLink>
+                    );
+                  })}
                 </div>
-              </motion.div>
-            ))}
-
+              ))}
+            </div>
           </div>
 
         </div>
@@ -472,85 +542,89 @@ export default function Home() {
       {/* =====================================================
           LOCAL LIFE
       ====================================================== */}
-      <section className="relative overflow-hidden bg-[#D5C8B7] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 240 180"
-          className="pointer-events-none absolute -right-5 -top-8 z-0 h-48 w-64 text-[#B96E4B]/20 sm:h-60 sm:w-80"
-          fill="none"
-        >
-          <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
-          <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
-          <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
-        </svg>
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 240 180"
-          className="pointer-events-none absolute -bottom-8 -left-5 z-0 h-48 w-64 -scale-x-100 -scale-y-100 text-[#B96E4B]/20 sm:h-60 sm:w-80"
-          fill="none"
-        >
-          <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
-          <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
-          <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
-        </svg>
+      <section className="relative overflow-hidden bg-[#E9E1D5] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#C87550]/10 blur-3xl" />
 
         <div className="relative z-10 mx-auto max-w-7xl">
-
-          <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
-
+          <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_0.65fr] lg:items-end">
             <div>
-
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#766F66]">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#8C634D]">
                 Everyday Jattari
               </span>
-
-              <h2 className="mt-5 text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-                The things that
-                <br />
-                make a place liveable.
+              <h2 className="mt-5 max-w-3xl text-4xl font-medium leading-[1.02] tracking-[-0.05em] sm:text-5xl lg:text-6xl">
+                Local life, <span className="text-[#B95F3D]">made easy.</span>
               </h2>
-
             </div>
-
-            <p className="max-w-md text-sm leading-6 text-black/45">
-              Beyond major infrastructure, Jattari also has the everyday
-              services and facilities that make local life practical.
+            <p className="max-w-md leading-7 text-[#645C52] lg:ml-auto">
+              Get a feel for the places and everyday services that make up life
+              around Jattari, from local essentials to green open spaces.
             </p>
-
           </div>
 
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
-            {localLife.map((item) => {
-              const Icon = item.icon;
+          <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+            {(() => {
+              const featured = localLife[0];
+              const FeaturedIcon = featured.icon;
 
               return (
-                <div
-                  key={item.title}
-                  className="group rounded-[1.7rem] bg-white p-7 transition duration-500 hover:-translate-y-2 hover:shadow-xl"
-                >
-
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#E9E1D5] text-[#B95F3D]">
-                    <Icon size={21} />
+                <article className="group relative isolate flex min-h-[440px] flex-col justify-end overflow-hidden rounded-[2rem] bg-[#292923] sm:min-h-[560px]">
+                  <img
+                    src={featured.image}
+                    alt={`${featured.title} in Jattari`}
+                    className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#1e211d]/90 via-[#1e211d]/25 to-transparent" />
+                  <div className="relative z-20 p-7 sm:p-10">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md">
+                      <FeaturedIcon size={15} />
+                      A closer look at Jattari
+                    </span>
+                    <h3 className="mt-5 text-3xl font-semibold text-white sm:text-4xl">
+                      {featured.title}
+                    </h3>
+                    <p className="mt-3 max-w-lg text-sm leading-6 text-white/80 sm:text-base">
+                      {featured.text}
+                    </p>
                   </div>
-
-                  <h3 className="mt-7 text-xl font-semibold">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-6 text-black/45">
-                    {item.text}
-                  </p>
-
-                  <div className="mt-7 h-1 w-8 rounded-full bg-[#C87550] transition-all duration-500 group-hover:w-16" />
-
-                </div>
+                </article>
               );
-            })}
+            })()}
 
+            <div className="grid gap-4">
+              {localLife.slice(1).map((item, index) => {
+                const Icon = item.icon;
+
+                return (
+                  <article
+                    key={item.title}
+                    className="group flex min-h-[155px] overflow-hidden rounded-[1.6rem] border border-[#d8cdbc] bg-[#F8F5ED] transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:min-h-[175px]"
+                  >
+                    <div className="relative w-[36%] shrink-0 overflow-hidden sm:w-[40%]">
+                      <img
+                        src={item.image}
+                        alt={`${item.title} in Jattari`}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <span className="absolute left-3 top-3 rounded-full bg-[#F8F5ED]/90 px-2.5 py-1 text-[10px] font-bold text-[#8C634D] backdrop-blur">
+                        0{index + 2}
+                      </span>
+                    </div>
+                    <div className="flex flex-1 flex-col justify-center p-4 sm:p-6">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#E9E1D5] text-[#B95F3D]">
+                        <Icon size={17} />
+                      </span>
+                      <h3 className="mt-3 text-base font-semibold text-[#292923] sm:text-lg">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1.5 text-xs leading-5 text-[#766F66] sm:text-sm sm:leading-6">
+                        {item.text}
+                      </p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
           </div>
-
         </div>
       </section>
 
@@ -636,398 +710,115 @@ export default function Home() {
                 </div>
               </div>
 
-              <details className="group mt-6 border-y border-black/10 py-4">
-                <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold">
-                  View weekly hours
-                  <span className="text-xl leading-none text-[#B95F3D] transition group-open:rotate-45">+</span>
-                </summary>
-                <div className="mt-4 grid grid-cols-2 gap-y-2 text-sm text-black/55">
-                  <span>Monday ? Sunday</span>
-                  <span className="text-right">9:00 AM ? 9:00 PM</span>
-                </div>
-              </details>
-
-              <div className="mt-6 flex gap-3">
-                <CreditCard size={18} className="mt-0.5 shrink-0 text-[#766F66]" />
-                <div>
-                  <p className="text-sm font-semibold">Payment methods listed</p>
-                  <p className="mt-1 text-sm text-black/50">Cash, credit card and debit card</p>
-                </div>
-              </div>
-
-              <p className="mt-6 text-xs leading-5 text-black/35">
-                Store details are based on its Patanjali Ayurved listing. Please
-                call ahead to confirm current hours and availability.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* =====================================================
-          NEARBY CITIES / LOCATION
+          GROWTH ANCHOR & STORY
       ====================================================== */}
-      <section className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
-        <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[#292e29] px-6 py-10 text-white sm:px-10 sm:py-14 lg:px-14 lg:py-16">
-          <div className="pointer-events-none absolute -right-24 -top-28 -z-10 h-80 w-80 rounded-full bg-[#C87550]/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-40 left-1/3 -z-10 h-80 w-80 rounded-full bg-[#D5C8B7]/10 blur-3xl" />
-
-          <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#D99A78]">
-                Connected Region
-              </span>
-
-              <h2 className="mt-5 max-w-xl text-4xl font-medium leading-tight tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-                Jattari is connected to a wider region.
-              </h2>
-
-              <p className="mt-6 max-w-lg leading-7 text-white/60">
-                Explore the surrounding cities and destinations that shape the
-                broader geographic context of Jattari.
-              </p>
-
-              <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C87550] text-white">
-                  <MapPin size={18} />
-                </span>
-                <span>
-                  <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
-                    Regional hub
-                  </span>
-                  <span className="mt-0.5 block text-sm font-semibold">
-                    Jattari, Aligarh
-                  </span>
-                </span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-              {nearbyCities.map((city, index) => (
-                <motion.div
-                  key={city}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group flex min-h-24 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-4 transition duration-300 hover:-translate-y-1 hover:border-[#D99A78]/60 hover:bg-white/10 sm:min-h-28 sm:flex-col sm:items-start sm:justify-between sm:p-5"
-                >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#D99A78]/15 text-[#D99A78] transition-colors group-hover:bg-[#D99A78] group-hover:text-[#292e29]">
-                    <MapPin size={17} />
-                  </span>
-                  <span className="text-sm font-semibold text-white/90 sm:text-base">
-                    {city}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          FAMOUS TERMINAL CITY PROPERTIES
-      ====================================================== */}
-      <section className="bg-[#EEE8DC] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-12 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-                Homes &amp; Communities
-              </span>
-              <h2 className="mt-5 max-w-3xl text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-                Famous <span className="text-[#B95F3D]">Properties</span>
-              </h2>
-            </div>
-            <p className="max-w-md text-base leading-7 text-black/55">
-              Explore residential destinations shaping the Jattari growth corridor.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                name: "Anugrah Homes",
-                image: anugrahHomesImage,
-                alt: "Anugrah Homes property",
-              },
-              {
-                name: "Skyline Aero Homes",
-                image: skylineAeroHomesImage,
-                alt: "Skyline Aero Homes property",
-              },
-              {
-                name: "Golden City",
-                image: goldenCityImage,
-                alt: "Golden City property",
-              },
-            ].map((property) => (
-              <Link
-                key={property.name}
-                to="/projects"
-                className="group relative isolate flex min-h-[390px] items-end overflow-hidden rounded-[2rem] bg-[#292923] shadow-[0_18px_45px_rgba(54,45,34,0.12)]"
-              >
-                <img
-                  src={property.image}
-                  alt={property.alt}
-                  className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="relative z-20 flex w-full items-end justify-between gap-4 p-6 text-white sm:p-8">
-                  <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-                    {property.name}
-                  </h3>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          JEWAR AIRPORT � HERO FEATURE
-      ====================================================== */}
-      <section
-        id="airport"
-        className="relative overflow-hidden bg-[#E9E1D5] px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
-      >
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 240 180"
-          className="pointer-events-none absolute -right-5 -top-8 z-0 h-44 w-60 text-[#C87550]/15 sm:h-56 sm:w-72"
-          fill="none"
-        >
-          <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
-          <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
-          <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
-        </svg>
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 240 180"
-          className="pointer-events-none absolute -bottom-8 -left-5 z-0 h-44 w-60 -scale-x-100 -scale-y-100 text-[#C87550]/15 sm:h-56 sm:w-72"
-          fill="none"
-        >
-          <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
-          <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
-          <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
-        </svg>
+      <section id="airport" className="relative overflow-hidden bg-[#E9E1D5] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+        <div className="pointer-events-none absolute -right-24 -top-20 h-80 w-80 rounded-full bg-[#C87550]/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-20 h-80 w-80 rounded-full bg-white/40 blur-3xl" />
 
         <div className="relative z-10 mx-auto max-w-7xl">
-
-          <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
-
-            {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, x: -35 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative min-h-[520px] overflow-hidden rounded-[3rem] bg-[#D5C8B7]"
-            >
-
-              <img
-                src={airportImage}
-                alt="Airport terminal, representing the region's biggest growth highlight"
-                className="absolute inset-0 h-full w-full object-cover object-center"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-[#292923]/60 to-transparent" />
-
-              <div className="absolute left-7 top-7 rounded-full bg-white/85 px-5 py-2 text-xs font-bold uppercase tracking-widest text-[#766F66] backdrop-blur-md">
-                The biggest highlight
-              </div>
-
-              <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
-
-                <div>
-                  <div className="mb-3 inline-flex rounded-full bg-white p-3 text-[#766F66]">
-                    <Plane size={20} />
-                  </div>
-
-                  <h3 className="text-3xl font-semibold text-white">
-                    Jewar Airport
-                  </h3>
-                </div>
-
-
-              </div>
-
-            </motion.div>
-
-            {/* Content */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#766F66]">
-                Growth Anchor
-              </p>
-
-              <h2 className="mt-5 text-5xl font-medium leading-[0.95] tracking-[-0.06em] sm:text-6xl">
-                The airport
-                <br />
-                changes the
-                <span className="text-[#C87550]">
-                  {" "}conversation.
-                </span>
-              </h2>
-
-              <p className="mt-7 text-base leading-7 text-black/55 sm:text-lg">
-                Noida International Airport at Jewar is a major piece of
-                infrastructure in the wider region. Its connectivity story is
-                central to how nearby locations are being viewed and developed.
-              </p>
-
-              <div className="mt-9 grid grid-cols-2 gap-3">
-
-                <div className="rounded-2xl bg-white/70 p-5">
-                 
-                  <p className="mt-4 text-sm font-semibold">
-                    Regional Connectivity
-                  </p>
-                </div>
-
-                <div className="rounded-2xl bg-white/70 p-5">
-                 
-                  <p className="mt-4 text-sm font-semibold">
-                    Development Story
-                  </p>
-                </div>
-
-              </div>
-
-              <Link
-                to="/jewar-airport"
-                className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#C87550]"
-              >
-                Explore Jewar Airport
-                
-              </Link>
-
-            </motion.div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* =====================================================
-          FILM CITY
-      ====================================================== */}
-      <section className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-
-        <div className="mx-auto max-w-7xl">
-
-          <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-
+          <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_0.7fr] lg:items-end">
             <div>
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B96E4B]">
-                Growth Story 
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#A75D3E]">
+                Growth Anchor &amp; Story
               </span>
-
-              <h2 className="mt-5 text-5xl font-medium tracking-[-0.06em] sm:text-6xl lg:text-7xl">
-                Film City
+              <h2 className="mt-5 max-w-3xl text-4xl font-medium leading-[0.98] tracking-[-0.06em] sm:text-5xl lg:text-7xl">
+                One region,
+                <span className="text-[#B95F3D]"> multiple growth drivers.</span>
               </h2>
             </div>
-
-            <p className="max-w-md text-sm leading-6 text-black/45">
-              Entertainment, infrastructure and regional development come
-              together in the wider Film City story.
+            <p className="max-w-xl leading-7 text-black/55 lg:ml-auto">
+              Jewar Airport and the upcoming Film City represent two different
+              parts of the wider development story unfolding around Jattari.
             </p>
-
           </div>
 
-          <div className="relative overflow-hidden rounded-[3rem] bg-[#D5C8B7]">
+          <div className="grid gap-6 lg:grid-cols-2">
+            {[
+              {
+                title: "Jewar Airport",
+                eyebrow: "Regional Growth Anchor",
+                image: airportImage,
+                imageAlt: "Airport terminal near the Jewar growth corridor",
+                icon: Plane,
+                description: "Noida International Airport at Jewar is a major infrastructure project for the region. Its planned connectivity is central to how nearby locations are viewed and developed.",
+                points: ["Regional connectivity", "Airport-led development"],
+                link: "/jewar-airport",
+                action: "Explore Jewar Airport",
+              },
+              {
+                title: "Film City",
+                eyebrow: "Upcoming Regional Project",
+                image: filmCityImage,
+                imageAlt: "Film City development in the Yamuna region",
+                icon: Clapperboard,
+                description: "The upcoming Film City is planned as an entertainment and media destination for the Yamuna region. As plans develop, it could support creative businesses, skilled work and related services.",
+                points: ["Film & television", "Digital media"],
+                link: "/jattari-growth",
+                action: "Explore Growth Story",
+              },
+            ].map((story, index) => {
+              const Icon = story.icon;
 
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 240 180"
-              className="pointer-events-none absolute -right-5 -top-8 z-0 h-52 w-64 text-[#B96E4B]/15 sm:h-60 sm:w-80"
-              fill="none"
-            >
-              <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
-              <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
-              <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
-            </svg>
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 240 180"
-              className="pointer-events-none absolute -bottom-8 -left-5 z-0 h-52 w-64 -scale-x-100 -scale-y-100 text-[#B96E4B]/15 sm:h-60 sm:w-80"
-              fill="none"
-            >
-              <path d="M126 0c31 24 57 56 76 94-35-17-62-46-76-94Z" fill="currentColor" />
-              <path d="M169 0c27 17 49 43 66 74-30-13-54-38-66-74Z" fill="currentColor" />
-              <path d="M91 12c34 30 59 67 75 111-39-20-64-57-75-111Z" fill="currentColor" />
-            </svg>
-
-            <div className="relative z-10 grid min-h-[550px] lg:grid-cols-[1.2fr_0.8fr]">
-
-              <div className="relative min-h-[430px] overflow-hidden bg-cover bg-center">
-                <img
-                  src={filmCityImage}
-                  alt="Film City development"
-                  className="absolute inset-0 h-full w-full object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#D5C8B7]/20" />
-
-                <div className="absolute bottom-8 left-8">
-                  <div className="rounded-full bg-white/90 p-4 text-[#B96E4B]">
-                    <Clapperboard size={22} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col justify-between p-8 sm:p-12 lg:p-14">
-
-                <div>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-[#B96E4B]/20 bg-white/60 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#A75D3E]">
-                    <span className="h-2 w-2 rounded-full bg-[#C87550]" />
-                    Upcoming Regional Project
-                  </span>
-
-                  <h3 className="mt-6 text-3xl font-medium leading-tight sm:text-4xl">
-                    A future home for
-                    <span className="text-[#B96E4B]">
-                      {" "}film and media.
+              return (
+                <motion.article
+                  key={story.title}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.55, delay: index * 0.12 }}
+                  className="overflow-hidden rounded-[2rem] border border-black/5 bg-[#FFFEFB] shadow-[0_18px_50px_rgba(69,55,35,0.08)]"
+                >
+                  <div className="relative h-64 overflow-hidden sm:h-80">
+                    <img
+                      src={story.image}
+                      alt={story.imageAlt}
+                      className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#242621]/70 via-transparent to-transparent" />
+                    <span className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#635B4D] backdrop-blur">
+                      <Icon size={15} className="text-[#B95F3D]" />
+                      {story.eyebrow}
                     </span>
-                  </h3>
-
-                  <p className="mt-5 text-base leading-7 text-black/55">
-                    The upcoming Film City is planned as an entertainment and
-                    media destination for the Yamuna region, bringing the
-                    creative industries closer to Jattari and Jewar.
-                  </p>
-
-                  <p className="mt-4 text-base leading-7 text-black/55">
-                    As the project develops, it could encourage new creative
-                    businesses, skilled work and supporting services—adding
-                    another dimension to the region’s growth story.
-                  </p>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {["Film", "Television", "Digital Media"].map((sector) => (
-                      <span
-                        key={sector}
-                        className="rounded-full border border-[#B96E4B]/20 bg-white/50 px-3 py-1.5 text-xs font-semibold text-[#766F66]"
-                      >
-                        {sector}
-                      </span>
-                    ))}
                   </div>
 
-                </div>
-
-              </div>
-
-            </div>
-
+                  <div className="p-6 sm:p-8">
+                    <h3 className="text-3xl font-semibold tracking-tight text-[#292923] sm:text-4xl">
+                      {story.title}
+                    </h3>
+                    <p className="mt-4 text-base leading-7 text-black/55">
+                      {story.description}
+                    </p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {story.points.map((point) => (
+                        <span
+                          key={point}
+                          className="rounded-full bg-[#EEE8DC] px-3 py-1.5 text-xs font-semibold text-[#766F66]"
+                        >
+                          {point}
+                        </span>
+                      ))}
+                    </div>
+                    <Link
+                      to={story.link}
+                      className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#A75D3E] transition hover:gap-3"
+                    >
+                      {story.action}
+                      <ArrowRight size={17} />
+                    </Link>
+                  </div>
+                </motion.article>
+              );
+            })}
           </div>
-
         </div>
       </section>
-
       {/* =====================================================
           GROWTH RADAR
       ====================================================== */}
@@ -1405,6 +1196,67 @@ export default function Home() {
 
           </div>
 
+        </div>
+      </section>
+
+      {/* =====================================================
+          NEARBY CITIES / LOCATION
+      ====================================================== */}
+      <section className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[#292e29] px-6 py-10 text-white sm:px-10 sm:py-14 lg:px-14 lg:py-16">
+          <div className="pointer-events-none absolute -right-24 -top-28 -z-10 h-80 w-80 rounded-full bg-[#C87550]/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-40 left-1/3 -z-10 h-80 w-80 rounded-full bg-[#D5C8B7]/10 blur-3xl" />
+
+          <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#D99A78]">
+                Connected Region
+              </span>
+
+              <h2 className="mt-5 max-w-xl text-4xl font-medium leading-tight tracking-[-0.05em] sm:text-5xl lg:text-6xl">
+                Jattari is connected to a wider region.
+              </h2>
+
+              <p className="mt-6 max-w-lg leading-7 text-white/60">
+                Explore the surrounding cities and destinations that shape the
+                broader geographic context of Jattari.
+              </p>
+
+              <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C87550] text-white">
+                  <MapPin size={18} />
+                </span>
+                <span>
+                  <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
+                    Regional hub
+                  </span>
+                  <span className="mt-0.5 block text-sm font-semibold">
+                    Jattari, Aligarh
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+              {nearbyCities.map((city, index) => (
+                <motion.div
+                  key={city}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="group flex min-h-24 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-4 transition duration-300 hover:-translate-y-1 hover:border-[#D99A78]/60 hover:bg-white/10 sm:min-h-28 sm:flex-col sm:items-start sm:justify-between sm:p-5"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#D99A78]/15 text-[#D99A78] transition-colors group-hover:bg-[#D99A78] group-hover:text-[#292e29]">
+                    <MapPin size={17} />
+                  </span>
+                  <span className="text-sm font-semibold text-white/90 sm:text-base">
+                    {city}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

@@ -63,3 +63,119 @@ img {
     transition: none;
   }
 }
+
+.property-marquee {
+  overflow: hidden;
+}
+
+.nav-explore-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid transparent;
+  background-image:
+    linear-gradient(110deg, #c87550, #b95f3d) padding-box,
+    linear-gradient(100deg, #c87550 0%, #f5d990 22%, #fff8df 34%, #c87550 52%, #c87550 100%) border-box;
+  background-size: 100% 100%, 280% 100%;
+  animation: nav-cta-border-shimmer 3.2s linear infinite;
+}
+
+.nav-explore-cta::after {
+  position: absolute;
+  z-index: 0;
+  top: -80%;
+  bottom: -80%;
+  left: -45%;
+  width: 32%;
+  content: "";
+  transform: skewX(-24deg);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 55%), transparent);
+  pointer-events: none;
+  animation: nav-cta-sweep 3s ease-in-out infinite;
+}
+
+@keyframes nav-cta-border-shimmer {
+  from {
+    background-position: 0 0, 100% 0;
+  }
+  to {
+    background-position: 0 0, 0 0;
+  }
+}
+
+@keyframes nav-cta-sweep {
+  0%, 12% {
+    left: -45%;
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  65%, 100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+.property-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: property-marquee-right 36s linear infinite;
+}
+
+.property-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@keyframes property-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.property-marquee:hover .property-marquee-track,
+.property-marquee:focus-within .property-marquee-track {
+  animation-play-state: paused;
+}
+
+.hero-typewriter::after {
+  content: "";
+  display: inline-block;
+  height: 0.82em;
+  margin-left: 0.08em;
+  border-right: 0.07em solid #B95F3D;
+  vertical-align: -0.03em;
+  animation: hero-caret-blink 0.8s steps(2, start) infinite;
+}
+
+@keyframes hero-caret-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .property-marquee-track {
+    animation: none;
+  }
+
+  .nav-explore-cta {
+    animation: none;
+    background-position: 0 0, 50% 0;
+  }
+
+  .nav-explore-cta::after {
+    animation: none;
+    display: none;
+  }
+
+  .hero-typewriter::after {
+    animation: none;
+  }
+}

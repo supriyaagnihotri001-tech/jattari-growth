@@ -619,10 +619,18 @@ function Aboutus() {
       ========================================================== */}
       <section
         id="growth-region"
-        className="scroll-mt-20 bg-[#E7E5D9] px-5 py-20 sm:px-8 lg:px-12 lg:py-28"
+        className="relative isolate overflow-hidden scroll-mt-20 bg-[#E7E5D9] px-5 py-20 sm:px-8 lg:px-12 lg:py-28"
       >
 
-        <div className="mx-auto max-w-[1400px]">
+        <img
+          src={corridorImage}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover opacity-[0.28]"
+        />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-[#E7E5D9]/35" />
+
+        <div className="relative z-10 mx-auto max-w-[1400px]">
 
           <div className="max-w-3xl">
 

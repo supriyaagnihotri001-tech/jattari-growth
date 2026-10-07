@@ -88,9 +88,9 @@ function Navbar() {
             {/* ================= DESKTOP CTA ================= */}
             <div className="hidden lg:block">
               <Link
-                to="/contact"
+                to="/#properties"
                 className="
-                  group flex items-center gap-2
+                  nav-explore-cta group flex items-center gap-2
                   rounded-xl
                   bg-[#C87550]
                   px-5 py-2.5
@@ -102,7 +102,7 @@ function Navbar() {
                   hover:shadow-xl hover:shadow-[#E9E1D5]
                 "
               >
-                Explore Properties
+                <span className="relative z-10">Explore Properties</span>
               </Link>
             </div>
 
@@ -172,10 +172,10 @@ function Navbar() {
 
             {/* Mobile CTA */}
             <Link
-              to="/contact"
+              to="/#properties"
               onClick={closeMenu}
               className="
-                mt-2 flex items-center justify-center gap-2
+                nav-explore-cta mt-2 flex items-center justify-center gap-2
                 rounded-xl
                 bg-[#C87550]
                 px-4 py-3
@@ -183,7 +183,7 @@ function Navbar() {
                 shadow-md shadow-[#E9E1D5]
               "
             >
-              Explore Properties
+              <span className="relative z-10">Explore Properties</span>
             </Link>
           </div>
         </div>
