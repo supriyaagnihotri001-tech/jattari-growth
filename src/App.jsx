@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-import Home from "./pages/home.jsx";
+import Home from "./pages/Home.jsx";
 import JewarAirport from "./pages/JewarAirport";
 import Aboutus from "./pages/Aboutus.jsx";
 import JattariGrowth from "./pages/JattariGrowth";
@@ -63,10 +63,10 @@ function ScrollReveal() {
             element.dataset.reveal = "card";
           }
         });
-      });
 
-      main.querySelectorAll("[data-reveal]:not(.is-revealed)").forEach((element) => {
-        revealObserver.observe(element);
+        main
+          .querySelectorAll("[data-reveal]:not(.is-revealed)")
+          .forEach((element) => revealObserver.observe(element));
       });
     };
 
