@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import "./Navbar.css";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -14,41 +13,16 @@ const navItems = [
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isFlipping, setIsFlipping] = useState(false);
-
-  const location = useLocation();
-  const previousPath = useRef(location.pathname);
 
   const closeMenu = () => {
     setIsOpen(false);
   };
 
-  // ==========================================
-  // 3D NAVBAR PAGE CHANGE ANIMATION
-  // ==========================================
-  useEffect(() => {
-    if (previousPath.current === location.pathname) return;
-
-    previousPath.current = location.pathname;
-    setIsFlipping(true);
-
-    const timer = setTimeout(() => {
-      setIsFlipping(false);
-    }, 750);
-
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
       <nav className="mx-auto max-w-7xl">
 
-        {/* ================= NAVBAR 3D WRAPPER ================= */}
-        <div
-          className={`navbar-3d-wrapper ${
-            isFlipping ? "navbar-page-flip" : ""
-          }`}
-        >
+        <div>
           <div
             className="
               flex items-center justify-between
@@ -59,7 +33,6 @@ function Navbar() {
               py-5
               shadow-[0_8px_30px_rgba(150,85,55,0.10)]
               backdrop-blur-xl
-              navbar-inner
             "
           >
 
