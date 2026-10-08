@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import airportImage from "../assets/Images/airport.png";
+import connectivityImage from "../assets/Images/connectivity.png";
 import anugrahHomesImage from "../assets/Images/Anugrahimg.png";
 import skylineAeroHomesImage from "../assets/Images/skylinehomesimg1.png";
 import goldenCityImage from "../assets/Images/goldencity.png";
@@ -40,7 +41,7 @@ const HERO_IMAGES = [
   "/Images/Heroimg1.png",
   "/Images/Heroimg.png",
   "/Images/Anugrahimg.webp",
-  "/Images/skylinehomesimg1.jpg",
+  connectivityImage,
 ];
 
 function HeroImageRotator() {
@@ -68,7 +69,7 @@ function HeroImageRotator() {
         initial={{ opacity: 0, rotateY: 75, x: -36 }}
         animate={{ opacity: 1, rotateY: 0, x: 0 }}
         transition={{ duration: 0.9, ease: [0.22, 0.75, 0.25, 1] }}
-        style={{ transformOrigin: "right center", backfaceVisibility: "hidden" }}
+        style={{ transformOrigin: "right center", objectPosition: "right top", backfaceVisibility: "hidden" }}
         className="h-full w-full object-contain object-right opacity-20 sm:opacity-35 lg:opacity-100"
       />
     </div>
@@ -266,13 +267,6 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="flex items-center gap-3"
           >
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#E9E1D5] text-[#C76F4B]">
-              <MapPin size={14} />
-            </span>
-
-            <span className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#8C8173] sm:text-xs">
-              Jattari / Aligarh / Uttar Pradesh
-            </span>
           </motion.div>
 
           <div className="mt-8 grid items-center gap-12 lg:min-h-[650px] lg:grid-cols-1">
