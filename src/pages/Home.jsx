@@ -12,6 +12,9 @@ import dailyEssentialsImage from "../assets/Images/dailyessentials.png";
 import educationImage from "../assets/Images/education.png";
 import greenLifeImage from "../assets/Images/greenlife.png";
 import strategicLocationImage from "../assets/Images/strategiclocation.png";
+import rajeevComputerImage from "../assets/Images/rajeevcomputer.png";
+import diamondAcademyImage from "../assets/Images/diamond.png";
+import gurukulAcademyImage from "../assets/Images/gurukul.png";
 
 
 import {
@@ -32,6 +35,45 @@ import {
 } from "lucide-react";
 
 const HERO_PHRASES = ["growth story", "bright future", "new horizons"];
+
+const HERO_IMAGES = [
+  "/Images/Heroimg1.png",
+  "/Images/Heroimg.png",
+  "/Images/Anugrahimg.webp",
+  "/Images/skylinehomesimg1.jpg",
+];
+
+function HeroImageRotator() {
+  const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    setImageIndex((current) => (current + 1) % HERO_IMAGES.length);
+
+    const intervalId = window.setInterval(() => {
+      setImageIndex((current) => (current + 1) % HERO_IMAGES.length);
+    }, 3000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  return (
+    <div
+      className="pointer-events-none absolute inset-y-0 right-0 z-0 h-full w-full overflow-hidden lg:w-[64%]"
+      style={{ perspective: 1200 }}
+    >
+      <motion.img
+        key={HERO_IMAGES[imageIndex]}
+        src={HERO_IMAGES[imageIndex]}
+        alt="Jattari growth corridor"
+        initial={{ opacity: 0, rotateY: 75, x: -36 }}
+        animate={{ opacity: 1, rotateY: 0, x: 0 }}
+        transition={{ duration: 0.9, ease: [0.22, 0.75, 0.25, 1] }}
+        style={{ transformOrigin: "right center", backfaceVisibility: "hidden" }}
+        className="h-full w-full object-contain object-right opacity-20 sm:opacity-35 lg:opacity-100"
+      />
+    </div>
+  );
+}
 
 function TypewriterText() {
   const [text, setText] = useState(HERO_PHRASES[0]);
@@ -127,23 +169,10 @@ const growthPoints = [
 ];
 
 const education = [
-  {
-    number: "01",
-    name: "Rajeev Gandhi Computer Saksharta Mission",
-    location: "Opp. Central Bank of India, Jattari",
-  },
-  {
-    number: "02",
-    name: "Diamond Academy",
-    location: "Jattari",
-  },
-  {
-    number: "03",
-    name: "Gurukul Academy",
-    location: "Jattari",
-  },
+  {  name: "Rajeev Gandhi Computer Saksharta Mission", location: "Opp. Central Bank of India, Jattari", image: rajeevComputerImage, href: "/contact#enquiry" },
+  {  name: "Diamond Academy", location: "Jattari", image: diamondAcademyImage, href: "/contact#enquiry" },
+  {  name: "Gurukul Academy", location: "Jattari", image: gurukulAcademyImage, href: "/contact#enquiry" },
 ];
-
 const nearbyCities = [
   "Palwal",
   "Aligarh",
@@ -212,7 +241,7 @@ export default function Home() {
   return (
     <>
      
-      <main className="overflow-hidden bg-[#F5F2EA] text-[#272922]">
+      <main data-home-page className="overflow-hidden bg-[#F5F2EA] text-[#272922]">
 
       {/* =====================================================
           HERO
@@ -226,11 +255,7 @@ export default function Home() {
         <div className="pointer-events-none absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-[#EFE7DC] blur-3xl opacity-70" />
         <div className="pointer-events-none absolute bottom-0 left-1/3 h-[220px] w-[520px] rounded-full bg-[#F0EAE0] blur-3xl" />
 
-        <img
-          src="/Images/Heroimg1.png"
-          alt="Jattari growth corridor"
-          className="pointer-events-none absolute inset-y-0 right-0 z-0 h-full w-full object-contain object-right opacity-20 sm:opacity-35 lg:w-[64%] lg:opacity-100"
-        />
+        <HeroImageRotator />
         <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#F5F2EA] via-[#F5F2EA]/90 to-[#F5F2EA]/20 lg:from-[#F5F2EA] lg:via-[#F5F2EA]/85 lg:to-transparent" />
         <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#F5F2EA]/60 via-transparent to-[#F5F2EA]/20" />
         <div className="relative z-10 mx-auto max-w-[1440px]">
@@ -296,7 +321,7 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="#growth"
+                  href="#airport"
                   className="group inline-flex items-center justify-center gap-3 rounded-full border border-[#D5C8B7] bg-[#FFFEFB] px-7 py-4 text-sm font-bold text-[#3A3832] transition duration-300 hover:-translate-y-1 hover:border-[#C87550] hover:shadow-lg"
                 >
                   View Growth Story
@@ -415,7 +440,7 @@ export default function Home() {
                   aria-hidden={isClone || undefined}
                   inert={isClone || undefined}
                 >
-                  {propertyOptions.map((item, index) => {
+                  {propertyOptions.map((item) => {
                     const CardLink = item.external ? "a" : Link;
                     const linkProps = item.external
                       ? { href: item.url, target: "_blank", rel: "noopener noreferrer" }
@@ -436,11 +461,8 @@ export default function Home() {
                         />
 
                         <div className="p-7">
-                          <span className="text-5xl font-semibold text-[#C87550]/20">
-                            0{index + 1}
-                          </span>
 
-                          <h3 className="mt-6 text-2xl font-medium">
+                          <h3 className="text-2xl font-medium">
                             {item.title}
                           </h3>
 
@@ -448,10 +470,6 @@ export default function Home() {
                             {item.text}
                           </p>
 
-                          <span className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#B95F3D]">
-                            {item.external ? "Contact Official Website" : "Get Options"}
-                            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                          </span>
                         </div>
                       </CardLink>
                     );
@@ -486,52 +504,50 @@ export default function Home() {
               </h2>
 
               <p className="mt-6 max-w-md leading-7 text-black/50">
-                Jattari's local education ecosystem adds an important
-                family-oriented side to the location.
+                Jattari offers families access to nearby schools, academies and computer learning opportunities. Institutions such as Diamond Academy, Gurukul Academy and Rajeev Gandhi Computer Saksharta Mission bring education and skill-building options closer to home. Together, these local choices add everyday convenience for students and families in the area.
               </p>
 
             </div>
 
-            <div className="space-y-3">
-
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-8 sm:py-8">
               {education.map((item, index) => (
-                <motion.div
+                <motion.article
                   key={item.name}
-                  initial={{ opacity: 0, x: 25 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 28, rotate: (index - 2) * 6 }}
+                  whileInView={{ opacity: 1, y: 0, rotate: (index - 2) * 6 }}
+                  animate={{ x: [0, index % 2 === 0 ? 4 : -4, 0, index % 2 === 0 ? -4 : 4, 0] }}
+                  whileHover={{ y: -12, rotate: 0, scale: 1.03 }}
                   viewport={{ once: true }}
                   transition={{
-                    duration: 0.5,
-                    delay: index * 0.1,
+                    x: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.25 },
+                    default: { duration: 0.55, delay: index * 0.12 },
                   }}
-                  className="group flex items-center justify-between rounded-[1.5rem] border border-black/10 bg-white p-5 transition duration-300 hover:-translate-x-1 hover:border-[#C87550]"
+                  style={{ zIndex: index + 1 }}
+                  className={
+                    "group relative w-full max-w-[260px] shrink-0 overflow-hidden rounded-[1.5rem] border-[5px] border-[#C87550] bg-white shadow-[0_18px_45px_rgba(63,48,35,0.16)] transition duration-300 hover:z-20 sm:w-[42%] sm:max-w-[210px] md:w-[30%] "
+                  }
                 >
-
-                  <div className="flex items-center gap-5">
-
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#E9E1D5] text-sm font-bold text-[#766F66]">
-                      {item.number}
-                    </span>
-
-                    <div>
-
-                      <h3 className="font-semibold">
-                        {item.name}
-                      </h3>
-
-                      <p className="mt-1 text-sm text-black/40">
-                        {item.location}
-                      </p>
-
-                    </div>
+                  <Link to={item.href} aria-label={"Ask about " + item.name} className="block h-full">
+                  <div className="relative h-48 overflow-hidden sm:h-52">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
 
                   </div>
-
-                 
-
-                </motion.div>
+                  <div className="min-h-[112px] p-4">
+                    <h3 className="text-sm font-bold leading-snug text-[#292923]">
+                      {item.name}
+                    </h3>
+                    <p className="mt-2 text-xs leading-5 text-[#766F66]">
+                      {item.location}
+                    </p>
+                  </div>
+                  
+                  </Link>
+                </motion.article>
               ))}
-
             </div>
 
           </div>
@@ -769,10 +785,10 @@ export default function Home() {
               return (
                 <motion.article
                   key={story.title}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: index === 0 ? -80 : 80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.15 }}
-                  transition={{ duration: 0.55, delay: index * 0.12 }}
+                  transition={{ duration: 0.75, delay: index * 0.15, ease: "easeOut" }}
                   className="overflow-hidden rounded-[2rem] border border-black/5 bg-[#FFFEFB] shadow-[0_18px_50px_rgba(69,55,35,0.08)]"
                 >
                   <div className="relative h-64 overflow-hidden sm:h-80">
@@ -966,7 +982,7 @@ export default function Home() {
               </div>
 
               <a
-                href="https://www.anugrahhomes2.com/"
+                href="https://www.anugrahhomes.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-9 inline-flex w-fit items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#C87550]"
@@ -1076,130 +1092,6 @@ export default function Home() {
       </section>
 
       {/* =====================================================
-          INTRO
-      ====================================================== */}
-      <section className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-
-        <div className="mx-auto max-w-7xl">
-
-          <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
-
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="relative isolate min-h-[380px] overflow-hidden rounded-[2rem] bg-[#272922] p-8 shadow-[0_24px_60px_rgba(40,38,32,0.18)] sm:p-10 lg:min-h-[460px]"
-            >
-              <img
-                src={airportImage}
-                alt="Airport terminal at dusk"
-                className="absolute inset-0 z-0 h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#171a1b]/90 via-[#171a1b]/55 to-[#171a1b]/10" />
-
-              <div className="relative z-20 flex min-h-[316px] flex-col justify-end sm:min-h-[380px] lg:min-h-[380px]">
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#F0B98D]">
-                  The Bigger Picture
-                </span>
-
-                <h2 className="mt-5 text-4xl font-medium leading-tight tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
-                  More than a location.
-                  <br />
-                  <span className="text-[#F0B98D]">
-                    A connected story.
-                  </span>
-                </h2>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="lg:pt-10 lg:pl-4"
-            >
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-                One connected growth corridor
-              </span>
-
-              <h3 className="mt-5 max-w-3xl text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl">
-                Regional momentum,
-                <span className="text-[#B95F3D]"> rooted in local life.</span>
-              </h3>
-
-              <p className="mt-6 max-w-3xl text-base leading-8 text-black/55 sm:text-lg">
-                Jattari is part of a wider growth corridor shaped by new
-                connectivity, planned developments and nearby urban centres.
-                Looking at the region as a whole helps show how these places
-                relate to one another.
-              </p>
-
-              <p className="mt-4 max-w-3xl text-base leading-8 text-black/55 sm:text-lg">
-                Jewar Airport is an important upcoming connectivity anchor, while
-                the planned Film City adds an entertainment and media dimension
-                to the area. Around Jattari, schools, local markets and residential
-                communities remain part of everyday life.
-              </p>
-
-              <p className="mt-4 max-w-3xl text-base leading-8 text-black/55 sm:text-lg">
-                This section brings those regional and local stories together to
-                make it easier to understand the opportunities developing around
-                Jattari.
-              </p>
-            </motion.div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* =====================================================
-          FINAL CTA
-      ====================================================== */}
-      <section className="relative overflow-hidden bg-[#C87550] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
-
-        <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full border border-white/20" />
-        <div className="absolute -right-10 -top-20 h-[300px] w-[300px] rounded-full border border-white/15" />
-
-        <div className="relative z-10 mx-auto max-w-7xl">
-
-          <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
-
-            <div className="max-w-3xl">
-
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-black/45">
-                Start Your Search
-              </span>
-
-              <h2 className="mt-5 text-4xl font-medium leading-[0.95] tracking-[-0.06em] sm:text-5xl lg:text-7xl">
-                Jattari is changing.
-                <br />
-                Explore it early.
-              </h2>
-
-              <p className="mt-6 max-w-xl leading-7 text-black/55">
-                Explore the airport, Film City, local facilities and property
-                opportunities that make the region worth discovering.
-              </p>
-
-            </div>
-
-            <Link
-              to="/contact"
-              className="inline-flex w-fit items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-white hover:text-[#272922]"
-            >
-              <PhoneCall size={17} />
-              Get Property Options
-            </Link>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* =====================================================
           NEARBY CITIES / LOCATION
       ====================================================== */}
       <section className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
@@ -1259,6 +1151,51 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* =====================================================
+          FINAL CTA
+      ====================================================== */}
+      <section className="relative overflow-hidden bg-[#C87550] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+
+        <div className="absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full border border-white/20" />
+        <div className="absolute -right-10 -top-20 h-[300px] w-[300px] rounded-full border border-white/15" />
+
+        <div className="relative z-10 mx-auto max-w-7xl">
+
+          <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
+
+            <div className="max-w-3xl">
+
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-black/45">
+                Start Your Search
+              </span>
+
+              <h2 className="mt-5 text-4xl font-medium leading-[0.95] tracking-[-0.06em] sm:text-5xl lg:text-7xl">
+                Jattari is changing.
+                <br />
+                Explore it early.
+              </h2>
+
+              <p className="mt-6 max-w-xl leading-7 text-black/55">
+                Explore the airport, Film City, local facilities and property
+                opportunities that make the region worth discovering.
+              </p>
+
+            </div>
+
+            <Link
+              to="/contact"
+              className="inline-flex w-fit items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-white hover:text-[#272922]"
+            >
+              <PhoneCall size={17} />
+              Get Property Options
+            </Link>
+
+          </div>
+
+        </div>
+      </section>
+
 
       </main>
     </>

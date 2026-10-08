@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -14,15 +14,24 @@ import Contact from "./pages/Contact";
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     if (hash) {
       const frame = window.requestAnimationFrame(() => {
-        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth" });
+        document.getElementById(hash.slice(1))?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       });
       return () => window.cancelAnimationFrame(frame);
     }
 
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, [pathname, hash]);
 
   return null;
@@ -30,9 +39,8 @@ function ScrollToTop() {
 
 function ScrollReveal() {
   useEffect(() => {
-    if (!("IntersectionObserver" in window)) return;
-
-    const revealObserver = new IntersectionObserver(
+    const revealObserver = "IntersectionObserver" in window
+      ? new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
@@ -40,40 +48,55 @@ function ScrollReveal() {
           observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -35px 0px" },
-    );
+      { threshold: 0, rootMargin: "0px 0px -48px 0px" },
+    )
+      : null;
 
     const addRevealTargets = () => {
       const pageMains = document.querySelectorAll("main");
       if (!pageMains.length) return;
 
       pageMains.forEach((main) => {
-        main.querySelectorAll("h1, h2, h3").forEach((element) => {
-          element.dataset.reveal = "heading";
-        });
+        const isHomePage = main.hasAttribute("data-home-page");
 
-        main.querySelectorAll("img").forEach((element) => {
-          element.dataset.reveal = "image";
-        });
+        if (isHomePage) {
+          main.querySelectorAll("section").forEach((section) => {
+            section.dataset.revealSection = "true";
+          });
+        } else {
+          main.querySelectorAll("h1, h2, h3").forEach((element) => {
+            element.dataset.reveal = "heading";
+          });
 
-        main.querySelectorAll("p").forEach((element) => {
-          element.dataset.reveal = "text";
-        });
+          main.querySelectorAll("img").forEach((element) => {
+            element.dataset.reveal = "image";
+          });
 
-        main.querySelectorAll("[class]").forEach((element) => {
-          if (element.matches("h1, h2, h3, p, img")) return;
+          main.querySelectorAll("p").forEach((element) => {
+            element.dataset.reveal = "text";
+          });
 
-          const classes = String(element.className);
-          const hasCardShape = /rounded-(?:xl|2xl|3xl|\[)/.test(classes);
-          const hasCardSurface = /(?:shadow-|border\s|bg-)/.test(classes);
-          if (hasCardShape && hasCardSurface && element.children.length > 0) {
-            element.dataset.reveal = "card";
-          }
-        });
+          main.querySelectorAll("[class]").forEach((element) => {
+            if (element.matches("h1, h2, h3, p, img")) return;
+
+            const classes = String(element.className);
+            const hasCardShape = /rounded-(?:xl|2xl|3xl|\[)/.test(classes);
+            const hasCardSurface = /(?:shadow-|border\s|bg-)/.test(classes);
+            if (hasCardShape && hasCardSurface && element.children.length > 0) {
+              element.dataset.reveal = "card";
+            }
+          });
+        }
 
         main
-          .querySelectorAll("[data-reveal]:not(.is-revealed)")
-          .forEach((element) => revealObserver.observe(element));
+          .querySelectorAll("[data-reveal]:not(.is-revealed), [data-reveal-section]:not(.is-revealed)")
+          .forEach((element) => {
+            if (revealObserver) {
+              revealObserver.observe(element);
+            } else {
+              element.classList.add("is-revealed");
+            }
+          });
       });
     };
 
@@ -83,7 +106,7 @@ function ScrollReveal() {
 
     return () => {
       mutationObserver.disconnect();
-      revealObserver.disconnect();
+      revealObserver?.disconnect();
     };
   }, []);
 

@@ -75,7 +75,7 @@ function Footer() {
               <img
                 src={logo}
                 alt="Jattari Growth Destination logo"
-                className="h-14 w-16 shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-[3.75rem] w-[4.25rem] shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
               />
 
               <div className="leading-none">

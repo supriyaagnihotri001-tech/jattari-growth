@@ -1,5 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import connectivityImage from "../assets/Images/connectivity.png";
+import airportHeroImage from "../assets/Images/airport.png";
+import noidaReachImage from "../assets/Images/noida.png";
+import greaterNoidaReachImage from "../assets/Images/greaternoida.png";
+import agraReachImage from "../assets/Images/agra.png";
+import aligarhReachImage from "../assets/Images/aligarah.png";
+import travelImpactImage from "../assets/Images/airport.png";
+import businessImpactImage from "../assets/Images/bussiness.png";
+import logisticsImpactImage from "../assets/Images/logistic.png";
+import growthImpactImage from "../assets/Images/growth.png";
+import anugrahImpactImage from "../assets/Images/anugrahhomes2.png";
 
 import {
   ArrowRight,
@@ -20,7 +32,6 @@ import {
   BriefcaseBusiness,
   Landmark,
   Clock3,
-  ChevronDown,
   Send,
   CheckCircle2,
   Navigation,
@@ -106,9 +117,9 @@ const connectivity = [
   },
   {
     icon: Navigation,
-    title: "Jattariâ€“Aligarh Corridor",
+    title: "Jattari–Aligarh Corridor",
     text:
-      "Official airport connectivity planning includes an NIAâ€“Aligarh route through Tappal, Jattari and Kher, strengthening the airport's regional catchment.",
+      "Official airport connectivity planning includes an NIA–Aligarh route through Tappal, Jattari and Kher, strengthening the airport's regional catchment.",
   },
 ];
 
@@ -155,24 +166,28 @@ const economicImpact = [
   {
     icon: Factory,
     title: "Industrial Growth",
+    image: growthImpactImage,
     text:
       "Improved air and road connectivity can support manufacturing, logistics and business activity across the wider Yamuna corridor.",
   },
   {
     icon: Hotel,
     title: "Hospitality & Tourism",
+    image: agraReachImage,
     text:
       "Better accessibility creates opportunities for hotels, hospitality, tourism and destination-oriented businesses.",
   },
   {
     icon: BriefcaseBusiness,
     title: "Employment",
+    image: businessImpactImage,
     text:
       "Airport operations and surrounding infrastructure can create direct and indirect employment across multiple sectors.",
   },
   {
     icon: Landmark,
     title: "Real Estate",
+    image: anugrahImpactImage,
     text:
       "Large infrastructure projects often increase demand for residential, commercial and plotted development in surrounding growth corridors.",
   },
@@ -181,65 +196,44 @@ const economicImpact = [
 const nearbyPlaces = [
   {
     name: "Noida",
+    image: noidaReachImage,
     time: "Road connectivity",
     description:
       "A major NCR business and technology destination connected toward the airport through the Yamuna Expressway corridor.",
   },
   {
     name: "Greater Noida",
+    image: greaterNoidaReachImage,
     time: "Regional hub",
     description:
       "An important urban and industrial centre positioned close to the airport and Yamuna development zone.",
   },
   {
     name: "Agra",
+    image: agraReachImage,
     time: "Tourism corridor",
     description:
       "The Yamuna Expressway provides an established road connection toward Agra and the surrounding tourism belt.",
   },
   {
     name: "Aligarh",
+    image: aligarhReachImage,
     time: "Jattari route",
     description:
-      "Airport connectivity planning includes an NIAâ€“Aligarh route passing through Tappal, Jattari and Kher.",
-  },
-];
-
-const faqs = [
-  {
-    question: "What is the official name of Jewar Airport?",
-    answer:
-      "The official name is Noida International Airport. It is located in Jewar, Gautam Buddha Nagar, Uttar Pradesh, and is commonly referred to as Jewar Airport.",
-  },
-  {
-    question: "What is the airport code?",
-    answer:
-      "The IATA airport code is DXN. The ICAO code is VIND.",
-  },
-  {
-    question: "Is Jewar Airport operational?",
-    answer:
-      "Yes. Noida International Airport commenced commercial flight operations on 15 June 2026, with IndiGo operating the first commercial service. International operations are being developed as the airport expands its network.",
-  },
-  {
-    question: "How does Jewar Airport connect with Jattari?",
-    answer:
-      "The airport's regional connectivity planning includes an NIAâ€“Aligarh route that passes through Tappal, Jattari and Kher, making Jattari part of the wider airport access corridor.",
-  },
-  {
-    question: "What is the Phase 1 passenger capacity?",
-    answer:
-      "The first phase has been designed for a capacity of approximately 12 million passengers per year.",
-  },
-  {
-    question: "How many phases are planned for the airport?",
-    answer:
-      "The airport masterplan is structured around four development phases, with the long-term plan targeting up to 70 million passengers annually.",
+      "Airport connectivity planning includes an NIA–Aligarh route passing through Tappal, Jattari and Kher.",
   },
 ];
 
 function JewarAirport() {
-  const [openFaq, setOpenFaq] = useState(0);
+
+  const [activeImpact, setActiveImpact] = useState(0);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveImpact((current) => (current + 1) % economicImpact.length);
+    }, 2000);
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   return (
     <>
@@ -249,53 +243,25 @@ function JewarAirport() {
       {/* =========================================================
           HERO
       ========================================================== */}
-      <section className="relative isolate min-h-[720px] overflow-hidden bg-[#F5F2EA] px-5 pb-16 pt-28 sm:px-8 lg:px-12 lg:pb-20 lg:pt-32">
-        <div className="pointer-events-none absolute -left-40 top-20 h-[440px] w-[440px] rounded-full bg-[#EAE3D6]/80 blur-3xl" />
-        <div className="pointer-events-none absolute -right-32 top-6 h-[520px] w-[520px] rounded-full bg-[#EFE7DC]/70 blur-3xl" />
-        <div className="pointer-events-none absolute right-[12%] top-[14%] h-[440px] w-[440px] rounded-full border border-[#C87550]/10" />
-        <div className="pointer-events-none absolute right-[16%] top-[19%] h-[350px] w-[350px] rounded-full border border-[#C87550]/10" />
-
-        <img
-          src="/Images/Heroimg1.png"
-          alt="Jewar Airport and the growing Jattari region"
-          className="pointer-events-none absolute inset-y-0 right-0 z-0 h-full w-full object-contain object-right opacity-20 sm:opacity-40 lg:w-[64%] lg:opacity-100"
-        />
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#F5F2EA] via-[#F5F2EA]/90 to-[#F5F2EA]/10 lg:via-[#F5F2EA]/85 lg:to-transparent" />
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#F5F2EA]/45 via-transparent to-[#F5F2EA]/20" />
-
-        <div className="relative z-10 mx-auto flex min-h-[540px] max-w-7xl items-center">
-          <div className="max-w-[690px]">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#C87550]/25 bg-[#FFFEFB]/75 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#B95F3D] backdrop-blur-sm">
-              <span className="h-2 w-2 rounded-full bg-[#C87550]" />
-              Now Operational · DXN
+                  <section className="bg-white px-5 pb-20 pt-28 sm:px-8 lg:px-12 lg:pb-28 lg:pt-36">
+        <div className="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-[0.95fr_1.25fr] lg:gap-16">
+          <div className="grid grid-cols-[1.05fr_0.95fr] items-center gap-4 sm:gap-6">
+            <motion.img src={airportHeroImage} alt="Airport terminal at dusk" initial={{ opacity: 0, rotateX: -75, y: -48 }} animate={{ opacity: 1, rotateX: 0, y: 0 }} transition={{ duration: 1.1, ease: "easeOut" }} style={{ transformOrigin: "top center", transformPerspective: 1000 }} className="mt-12 h-[300px] w-full rounded-[1.5rem] object-cover sm:mt-16 sm:h-[430px] sm:rounded-[2rem]" />
+            <div className="flex flex-col gap-4 sm:gap-6">
+              <motion.img src="/Images/Heroimg1.png" alt="Jewar airport growth corridor" initial={{ opacity: 0, rotateX: 75, y: 48 }} animate={{ opacity: 1, rotateX: 0, y: 0 }} transition={{ duration: 1.1, delay: 0.2, ease: "easeOut" }} style={{ transformOrigin: "bottom center", transformPerspective: 1000 }} className="h-[205px] w-full rounded-[1.5rem] object-cover sm:h-[300px] sm:rounded-[2rem]" />
+              <div className="rounded-[1.5rem] border border-[#DDD6C8] bg-[#F5F2EA] p-4 shadow-[0_16px_45px_rgba(39,41,34,0.06)] sm:rounded-[2rem] sm:p-6">
+                <p className="text-center text-3xl font-black tracking-tight text-[#C87550] sm:text-5xl">DXN</p>
+                <div className="mx-auto mt-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#C87550] sm:h-12 sm:w-12"><Plane size={22} /></div>
+                <p className="mt-3 text-center text-xs font-bold text-[#272922] sm:text-sm">Noida International Airport</p>
+                <p className="mt-1 text-center text-[10px] leading-4 text-[#77786D] sm:text-xs">A regional connectivity anchor</p>
+              </div>
             </div>
-
-            <h1 className="text-[clamp(3.4rem,6.6vw,6.6rem)] font-extrabold leading-[0.92] tracking-[-0.065em] text-[#292923]">
-              Jewar Airport
-              <br />
-              <span className="bg-gradient-to-r from-[#B95F3D] via-[#C87550] to-[#D28B65] bg-clip-text text-transparent">
-                Connecting the
-              </span>
-              <br />
-              growth corridor.
-            </h1>
-            <svg aria-hidden="true" viewBox="0 0 340 18" className="mt-3 h-4 w-64 text-[#D9B878] sm:w-[340px]">
-              <path d="M2 10c28-14 40 14 68 0s40 14 68 0 40 14 68 0 40 14 68 0 40 14 64 0" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="5" />
-            </svg>
-
-            <p className="mt-6 max-w-[570px] text-base leading-7 text-[#766F66] sm:text-lg sm:leading-8">
-              Noida International Airport is reshaping connectivity across
-              Jewar, the Yamuna corridor and Western Uttar Pradesh, opening a
-              new gateway for the wider region.
-            </p>
-
-            <a
-              href="#airport-overview"
-              className="mt-8 inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#B95F3D] to-[#D28B65] px-8 py-4 text-sm font-bold text-white shadow-[0_14px_35px_rgba(150,85,55,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(150,85,55,0.28)]"
-            >
-              Explore Airport
-            
-            </a>
+          </div>
+          <div>
+            <div className="mb-4 flex items-center gap-3 text-sm font-bold uppercase tracking-wide text-[#B95F3D]">Regional Gateway <span className="h-px w-12 bg-[#C87550]" /></div>
+            <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-[-0.05em] text-[#202027] sm:text-5xl lg:text-6xl">Jewar Airport <span className="red-text-blink text-[#B95F3D]">connecting the region.</span></h1>
+            <p className="mt-6 text-base leading-7 text-[#777C89] sm:text-lg sm:leading-8">Noida International Airport is reshaping connectivity across Jewar, the Yamuna corridor and Western Uttar Pradesh, opening a new gateway for the wider region.</p>
+            <a href="#airport-overview" className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#C87550]">Explore Airport </a>
           </div>
         </div>
       </section>
@@ -352,82 +318,53 @@ function JewarAirport() {
 
 
       {/* =========================================================
-          OVERVIEW
+          ECONOMIC IMPACT
       ========================================================== */}
 
-      <section
-        id="airport-overview"
-        className="border-y border-black/5 bg-[#EEE8DC] px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
-      >
+      <section className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
 
-        <div className="mx-auto max-w-7xl">
-
-          <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr]">
-
-            <div>
-
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-                The Big Picture
-              </span>
-
-              <h2 className="mt-5 text-5xl font-medium leading-[0.95] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
-                More than
-                <br />
-                an airport.
-              </h2>
-
-            </div>
-
-            <div>
-
-              <p className="text-xl leading-8 text-black/65 sm:text-2xl sm:leading-9">
-                Noida International Airport is being developed as a major
-                aviation and multimodal gateway for the Delhi NCR and Western
-                Uttar Pradesh.
-              </p>
-
-              <p className="mt-7 max-w-3xl leading-7 text-black/50">
-                Located in Jewar along the Yamuna Expressway, the airport is
-                designed to connect passengers, businesses, cargo and
-                surrounding growth corridors. Its development is planned in
-                multiple phases, allowing the infrastructure to expand as
-                demand grows.
-              </p>
-
-              <div className="mt-10 grid gap-3 sm:grid-cols-2">
-
-                {[
-                  ["Official Name", "Noida International Airport"],
-                  ["IATA / ICAO", "DXN / VIND"],
-                  ["Location", "Jewar, Gautam Buddha Nagar"],
-                  ["Phase 1", "One runway + one terminal"],
-                ].map(([label, value]) => (
-
-                  <div
-                    key={label}
-                    className="rounded-2xl bg-white/65 p-5"
-                  >
-
-                    <p className="text-xs font-bold uppercase tracking-widest text-black/30">
-                      {label}
-                    </p>
-
-                    <p className="mt-2 font-semibold">
-                      {value}
-                    </p>
-
-                  </div>
-
-                ))}
-
-              </div>
-
-            </div>
-
+        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">Beyond Aviation</span>
+            <h2 className="mt-5 text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
+              Where connectivity becomes <span className="text-[#C87550]">opportunity.</span>
+            </h2>
+            <p className="mt-6 max-w-xl leading-7 text-black/50">
+              The airport’s significance extends beyond flights. Improved accessibility can support logistics, hospitality, employment, business and real-estate development.
+            </p>
+            <p className="mt-8 text-xs font-bold uppercase tracking-[0.18em] text-[#8C8173]">Airport-led opportunities</p>
           </div>
-
+          <div className="mx-auto w-full max-w-[620px] rounded-[2.5rem] border-[10px] border-[#272922] bg-[#272922] p-3 shadow-[0_28px_70px_rgba(39,41,34,0.2)] sm:p-4">
+            <div className="mb-3 flex items-center justify-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
+              <span className="h-1 w-10 rounded-full bg-white/20" />
+            </div>
+            <div className="overflow-hidden rounded-[1.5rem] bg-[#F5F2EA]">
+              <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: "translateX(-" + activeImpact * 100 + "%)" }}>
+                {economicImpact.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <article key={item.title} className="min-w-full bg-[#F5F2EA]">
+                      <img src={item.image} alt={item.title} className="h-48 w-full object-cover sm:h-64" />
+                      <div className="p-5 sm:p-7">
+                        <div className="flex items-center gap-3">
+                          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#C87550] shadow-sm"><Icon size={21} /></span>
+                          <h3 className="text-xl font-semibold text-[#272922] sm:text-2xl">{item.title}</h3>
+                        </div>
+                        <p className="mt-4 text-sm leading-6 text-black/55 sm:text-base sm:leading-7">{item.text}</p>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="flex justify-center gap-2 py-3">
+              {economicImpact.map((item, index) => (
+                <button key={item.title} type="button" onClick={() => setActiveImpact(index)} aria-label={"Show " + item.title} className={"h-2 rounded-full transition-all duration-300 " + (activeImpact === index ? "w-6 bg-[#D28B65]" : "w-2 bg-white/30")} />
+              ))}
+            </div>
+          </div>
         </div>
-
       </section>
 
 
@@ -470,34 +407,41 @@ function JewarAirport() {
               {
                 
                 title: "Travel",
+                image: travelImpactImage,
                 text: "A new gateway for passengers across NCR and Western Uttar Pradesh.",
               },
               {
                
                 title: "Business",
+                image: businessImpactImage,
                 text: "Improved access can strengthen regional business and commercial activity.",
               },
               {
                 
                 title: "Logistics",
+                image: logisticsImpactImage,
                 text: "Cargo infrastructure creates opportunities for faster regional movement of goods.",
               },
               {
                 
                 title: "Growth",
+                image: growthImpactImage,
                 text: "New infrastructure can accelerate development around connected corridors.",
               },
-            ].map((item) => (
+            ].map((item, index) => (
 
-              <div
-                key={item.number}
-                className="group bg-[#272922] p-7 text-white transition duration-500 hover:bg-[#34362F]"
+              <motion.div
+                key={item.title}
+                animate={{ backgroundPosition: ["50% 50%", "50% 44%", "50% 50%"] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: index * 0.25 }}
+                className="group bg-[#272922] bg-cover bg-center p-7 text-white transition duration-500 hover:bg-[#34362F]"
+                style={{ backgroundImage: "linear-gradient(to top, rgba(39, 41, 34, 0.97), rgba(39, 41, 34, 0.58)), url(" + item.image + ")" }}
               >
 
                 <div className="flex items-start justify-between">
 
                   <span className="text-sm text-white/25">
-                    {item.number}
+                    0{index + 1}
                   </span>
 
                  
@@ -514,7 +458,7 @@ function JewarAirport() {
 
                 <div className="mt-7 h-px w-8 bg-[#D28B65] transition-all duration-500 group-hover:w-full" />
 
-              </div>
+              </motion.div>
 
             ))}
 
@@ -613,9 +557,16 @@ function JewarAirport() {
           CONNECTIVITY
       ========================================================== */}
 
-      <section className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section
+        className="relative isolate overflow-hidden px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
+        style={{
+          backgroundImage: `linear-gradient(rgba(245, 242, 234, 0.44), rgba(245, 242, 234, 0.58)), url(${connectivityImage})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
 
-        <div className="mx-auto max-w-7xl">
+        <div className="relative z-10 mx-auto max-w-7xl">
 
           <div className="grid items-start gap-14 lg:grid-cols-[0.8fr_1.2fr]">
 
@@ -642,7 +593,7 @@ function JewarAirport() {
 
               <div className="mt-9 inline-flex items-center gap-3 rounded-full bg-[#EEE8DC] px-5 py-3 text-sm font-semibold">
                 <MapPin size={17} className="text-[#C87550]" />
-                Jewar Â· Uttar Pradesh
+                Jewar  Uttar Pradesh
               </div>
 
             </div>
@@ -702,7 +653,7 @@ function JewarAirport() {
           AIRPORT + JATTARI
       ========================================================== */}
 
-      <section className="px-5 pb-24 sm:px-8 lg:px-12 lg:pb-32">
+      <section className="px-5 pt-12 pb-24 sm:px-8 sm:pt-16 lg:px-12 lg:pt-20 lg:pb-32">
 
         <div className="mx-auto max-w-7xl">
 
@@ -716,7 +667,7 @@ function JewarAirport() {
 
                 <div className="inline-flex items-center gap-2 rounded-full bg-white/60 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#55716B]">
                   <Route size={14} />
-                  Airport Â· Jattari Corridor
+                  Airport  Jattari Corridor
                 </div>
 
                 <h2 className="mt-7 max-w-3xl text-4xl font-medium leading-[0.98] tracking-[-0.05em] sm:text-5xl lg:text-6xl">
@@ -724,7 +675,7 @@ function JewarAirport() {
                   <br />
                   the wider
                   <span className="text-[#B95F3D]">
-                    {" "}DXN story.
+                    {" "} story.
                   </span>
                 </h2>
 
@@ -885,68 +836,78 @@ function JewarAirport() {
 
 
       {/* =========================================================
-          ECONOMIC IMPACT
+          OVERVIEW
       ========================================================== */}
 
-      <section className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section
+        id="airport-overview"
+        className="relative isolate border-y border-black/5 bg-[#EEE8DC] bg-cover bg-center px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
+        style={{ backgroundImage: "linear-gradient(105deg, rgba(238,232,220,0.58), rgba(238,232,220,0.48)), url(" + airportHeroImage + ")" }}
+      >
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="grid items-end gap-8 lg:grid-cols-[1fr_0.65fr]">
+          <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr]">
 
             <div>
 
               <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-                Beyond Aviation
+                The Big Picture
               </span>
 
-              <h2 className="mt-5 text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-                Where connectivity
+              <h2 className="mt-5 text-5xl font-medium leading-[0.95] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
+                More than
                 <br />
-                becomes
-                <span className="text-[#C87550]">
-                  {" "}opportunity.
-                </span>
+                an airport.
               </h2>
 
             </div>
 
-            <p className="leading-7 text-black/50">
-              The airport's significance extends beyond flights. Improved
-              accessibility can support a broader ecosystem of logistics,
-              hospitality, employment, business and real-estate development.
-            </p>
+            <div>
 
-          </div>
+              <p className="text-xl leading-8 text-black/65 sm:text-2xl sm:leading-9">
+                Noida International Airport is being developed as a major
+                aviation and multimodal gateway for the Delhi NCR and Western
+                Uttar Pradesh.
+              </p>
 
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <p className="mt-7 max-w-3xl leading-7 text-black/50">
+                Located in Jewar along the Yamuna Expressway, the airport is
+                designed to connect passengers, businesses, cargo and
+                surrounding growth corridors. Its development is planned in
+                multiple phases, allowing the infrastructure to expand as
+                demand grows.
+              </p>
 
-            {economicImpact.map((item) => {
+              <div className="mt-10 grid gap-3 sm:grid-cols-2">
 
-              const Icon = item.icon;
+                {[
+                  ["Official Name", "Noida International Airport"],
+                  ["IATA / ICAO", "DXN / VIND"],
+                  ["Location", "Jewar, Gautam Buddha Nagar"],
+                  ["Phase 1", "One runway + one terminal"],
+                ].map(([label, value]) => (
 
-              return (
-                <div
-                  key={item.title}
-                  className="rounded-[2rem] border border-black/5 bg-[#F5F2EA] p-7"
-                >
+                  <div
+                    key={label}
+                    className="rounded-2xl bg-white/65 p-5"
+                  >
 
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#C87550] shadow-sm">
-                    <Icon size={21} />
+                    <p className="text-xs font-bold uppercase tracking-widest text-black/30">
+                      {label}
+                    </p>
+
+                    <p className="mt-2 font-semibold">
+                      {value}
+                    </p>
+
                   </div>
 
-                  <h3 className="mt-9 text-xl font-semibold">
-                    {item.title}
-                  </h3>
+                ))}
 
-                  <p className="mt-3 text-sm leading-6 text-black/50">
-                    {item.text}
-                  </p>
+              </div>
 
-                </div>
-              );
-
-            })}
+            </div>
 
           </div>
 
@@ -995,6 +956,8 @@ function JewarAirport() {
                 className="group rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 transition duration-500 hover:bg-white/[0.07]"
               >
 
+                <img src={place.image} alt={place.name + " regional reach"} className="mb-6 h-40 w-full rounded-2xl object-cover" />
+
                 <div className="flex items-center justify-between">
 
                   <MapPin
@@ -1032,100 +995,10 @@ function JewarAirport() {
 
 
       {/* =========================================================
-          FAQ
-      ========================================================== */}
-
-      <section className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-
-        <div className="mx-auto max-w-5xl">
-
-          <div className="text-center">
-
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-              Frequently Asked
-            </span>
-
-            <h2 className="mt-5 text-4xl font-medium tracking-[-0.05em] sm:text-5xl">
-              Questions about
-              <span className="text-[#C87550]">
-                {" "}Jewar Airport.
-              </span>
-            </h2>
-
-          </div>
-
-          <div className="mt-12 space-y-3">
-
-            {faqs.map((faq, index) => {
-
-              const isOpen = openFaq === index;
-
-              return (
-                <div
-                  key={faq.question}
-                  className={`overflow-hidden rounded-2xl border transition ${
-                    isOpen
-                      ? "border-[#C87550]/30 bg-[#EEE8DC]"
-                      : "border-black/5 bg-white"
-                  }`}
-                >
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setOpenFaq(isOpen ? -1 : index)
-                    }
-                    className="flex w-full items-center justify-between gap-5 px-6 py-5 text-left"
-                  >
-
-                    <span className="font-semibold">
-                      {faq.question}
-                    </span>
-
-                    <ChevronDown
-                      size={19}
-                      className={`shrink-0 transition duration-300 ${
-                        isOpen ? "rotate-180 text-[#C87550]" : ""
-                      }`}
-                    />
-
-                  </button>
-
-                  <div
-                    className={`grid transition-all duration-300 ${
-                      isOpen
-                        ? "grid-rows-[1fr]"
-                        : "grid-rows-[0fr]"
-                    }`}
-                  >
-
-                    <div className="overflow-hidden">
-
-                      <p className="px-6 pb-6 text-sm leading-7 text-black/50">
-                        {faq.answer}
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                </div>
-              );
-
-            })}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =========================================================
           LEAD / ENQUIRY
       ========================================================== */}
 
-      <section className="px-5 pb-24 sm:px-8 lg:px-12 lg:pb-32">
+      <section className="px-5 pt-12 pb-24 sm:px-8 sm:pt-16 lg:px-12 lg:pb-32">
 
         <div className="mx-auto max-w-7xl">
 
@@ -1200,7 +1073,7 @@ function JewarAirport() {
 
                 <form
                   onSubmit={(e) => e.preventDefault()}
-                  className="space-y-5"
+                  className="jewar-enquiry-form space-y-5"
                 >
 
                   <div className="grid gap-5 sm:grid-cols-2">

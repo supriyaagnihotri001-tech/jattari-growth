@@ -1,40 +1,45 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/Images/logo-transparent.png";
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "Jewar Airport", path: "/jewar-airport" },
-  { name: "About Us", path: "/aboutus" },
-  { name: "Jattari Growth", path: "/jattari-growth" },
-  { name: "Projects", path: "/projects" },
-  { name: "Contact", path: "/contact" },
+  { name: "𝑯𝒐𝒎𝒆", path: "/" },
+  { name: " 𝑱𝒆𝒘𝒂𝒓 𝑨𝒊𝒓𝒑𝒐𝒓𝒕 ", path: "/jewar-airport" },
+  { name: "𝑨𝒃𝒐𝒖𝒕𝒖𝒔 ", path: "/aboutus" },
+  { name: " 𝑱𝒂𝒕𝒕𝒂𝒓𝒊 𝑮𝒓𝒐𝒘𝒕𝒉  ", path: "/jattari-growth" },
+  { name: "𝒑𝒓𝒐𝒋𝒆𝒄𝒕𝒔", path: "/projects" },
+  { name: "𝒄𝒐𝒏𝒕𝒂𝒄𝒕", path: "/contact" },
 ];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
+
+  useEffect(() => {
+    let previousScrollY = window.scrollY;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < 24) setIsCompact(false);
+      else if (Math.abs(currentScrollY - previousScrollY) > 8) setIsCompact(currentScrollY > previousScrollY);
+      previousScrollY = currentScrollY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const closeMenu = () => {
     setIsOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
+    <motion.header key={location.pathname} initial={{ opacity: 0, y: -64 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }} className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 transition-[padding] duration-300 sm:px-6 lg:px-8" style={{ paddingTop: isCompact ? "0.5rem" : "1rem" }}>
       <nav className="mx-auto max-w-7xl">
 
         <div>
           <div
-            className="
-              flex items-center justify-between
-              rounded-2xl
-              border border-[#D5C8B7]
-              bg-[#FFFEFB]/90
-              px-4 sm:px-6
-              py-5
-              shadow-[0_8px_30px_rgba(150,85,55,0.10)]
-              backdrop-blur-xl
-            "
+            className="flex items-center justify-between rounded-2xl border border-[#D5C8B7] bg-[#FFFEFB]/90 px-4 py-5 shadow-[0_8px_30px_rgba(150,85,55,0.10)] backdrop-blur-xl transition-all duration-300 ease-out sm:px-6" style={{ paddingTop: isCompact ? "0.75rem" : "1.25rem", paddingBottom: isCompact ? "0.75rem" : "1.25rem" }}
           >
 
             {/* ================= LOGO ================= */}
@@ -46,7 +51,7 @@ function Navbar() {
               <img
                 src={logo}
                 alt="Jattari Growth Destination logo"
-                className="h-12 w-14 shrink-0 object-contain transition-transform duration-300 group-hover:scale-105"
+                className="shrink-0 object-contain transition-all duration-300 group-hover:scale-105" style={{ width: isCompact ? "3.25rem" : "3.75rem", height: isCompact ? "2.75rem" : "3.25rem" }}
               />
 
               {/* Logo Text */}
@@ -70,7 +75,7 @@ function Navbar() {
                   className={({ isActive }) =>
                     `
                     relative rounded-lg px-3 py-2
-                    text-sm font-medium
+                    text-[15px] font-bold
                     transition-all duration-300
                     ${
                       isActive
@@ -156,7 +161,7 @@ function Navbar() {
                 className={({ isActive }) =>
                   `
                   block rounded-xl px-4 py-3
-                  text-sm font-medium
+                  text-[15px] font-bold
                   transition-all duration-200
                   ${
                     isActive
@@ -189,7 +194,7 @@ function Navbar() {
         </div>
 
       </nav>
-    </header>
+    </motion.header>
   );
 }
 

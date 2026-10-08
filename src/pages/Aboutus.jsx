@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import corridorImage from "../assets/Images/corridor.png";
 import propertyShowcaseImage from "../assets/Images/Anugrahimg2.webp";
 import {
@@ -192,16 +193,24 @@ function Aboutus() {
       <section className="bg-white px-5 pb-20 pt-28 sm:px-8 lg:px-12 lg:pb-28 lg:pt-36">
         <div className="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-[0.95fr_1.25fr] lg:gap-16">
           <div className="grid grid-cols-[1.05fr_0.95fr] items-center gap-4 sm:gap-6">
-            <img
+            <motion.img
               src={corridorImage}
               alt="Open land and regional road in the Jewar growth corridor"
+              initial={{ opacity: 0, x: 72 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="mt-14 h-[300px] w-full rounded-[1.5rem] object-cover sm:mt-16 sm:h-[430px] sm:rounded-[2rem]"
             />
 
             <div className="flex flex-col gap-4 sm:gap-6">
-              <img
+              <motion.img
                 src={propertyShowcaseImage}
                 alt="Anugrah Homes residential entrance"
+                initial={{ opacity: 0, y: -64 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
                 className="h-[205px] w-full rounded-[1.5rem] object-cover sm:h-[300px] sm:rounded-[2rem]"
               />
 
@@ -311,87 +320,264 @@ function Aboutus() {
 
       {/* =========================================================
           WHO WE ARE
+          Gate opening reveal animation
       ========================================================== */}
       <section
         id="who-we-are"
         className="scroll-mt-20 px-5 py-20 sm:px-8 lg:px-12 lg:py-28"
       >
-
-        <div className="mx-auto grid max-w-[1400px] gap-14 lg:grid-cols-[0.75fr_1.25fr]">
-
-          <div>
-
+        <div className="mx-auto max-w-[1400px]">
+          {/* Heading */}
+          <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-black uppercase tracking-[0.25em] text-[#C87550]">
               Who We Are
             </p>
 
-            <h2 className="mt-4 text-4xl font-black leading-tight tracking-tight sm:text-5xl">
+            <h2 className="mt-4 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
               Real estate guidance
               <span className="block text-[#8C6E3F]">
                 built around clarity.
               </span>
             </h2>
 
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#77786D] sm:text-lg">
+              Step inside our approach — where local knowledge, property
+              understanding and practical guidance come together.
+            </p>
           </div>
 
-          <div>
+          {/* =====================================================
+              GATE REVEAL
+          ====================================================== */}
+          <div className="relative mx-auto mt-14 h-[620px] max-w-[1180px] overflow-hidden rounded-[2rem] bg-[#1F211D] shadow-[0_30px_80px_rgba(39,41,34,0.18)] sm:h-[680px] lg:h-[720px]">
+            {/* Content behind the closed gate */}
+            <div className="absolute inset-0 bg-[#E9E4D8]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#fff8e9_0%,#e9e4d8_48%,#d9d3c5_100%)]" />
 
-            <p className="text-lg leading-8 text-[#62645B]">
-              We focus on property opportunities in and around the Jewar and
-              Jattari growth corridor, helping buyers understand locations,
-              property categories, connectivity and the factors that matter
-              before making a decision.
-            </p>
+              <div className="relative z-10 flex h-full flex-col justify-center px-6 py-10 sm:px-10 lg:px-16">
+                <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                  {/* Image 1 */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.94, y: 35 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.35 }}
+                    transition={{ duration: 0.8, delay: 0.55, ease: "easeOut" }}
+                    className="relative overflow-hidden rounded-[2rem] border-4 border-white/70 shadow-2xl"
+                  >
+                    <img
+                      src={corridorImage}
+                      alt="Jewar and Jattari growth corridor"
+                      className="h-[260px] w-full object-cover sm:h-[330px] lg:h-[390px]"
+                    />
 
-            <p className="mt-6 text-base leading-7 text-[#77786D]">
-              Our approach is centred around transparent communication,
-              property information, site-level understanding and practical
-              buying support. Whether someone is looking for a future home,
-              investment property or a commercial opportunity, the objective is
-              to make the property journey easier to understand.
-            </p>
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 pt-16 text-white">
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">
+                        Our region
+                      </p>
+                      <p className="mt-1 text-xl font-black">
+                        Jewar & Jattari Growth Corridor
+                      </p>
+                    </div>
+                  </motion.div>
 
-            <div className="mt-9 grid gap-4 sm:grid-cols-2">
+                  {/* Image 2 + content */}
+                  <div className="grid gap-5 sm:grid-cols-[0.9fr_1.1fr] lg:grid-cols-1">
+                    <motion.div
+                      initial={{ opacity: 0, x: 35 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.35 }}
+                      transition={{ duration: 0.8, delay: 0.72, ease: "easeOut" }}
+                      className="overflow-hidden rounded-[2rem] border-4 border-white/70 shadow-xl"
+                    >
+                      <img
+                        src={propertyShowcaseImage}
+                        alt="Anugrah Homes residential entrance"
+                        className="h-[190px] w-full object-cover sm:h-[250px] lg:h-[220px]"
+                      />
+                    </motion.div>
 
-              <div className="rounded-3xl border border-[#DDD6C8] bg-white p-6">
-                <SearchCheck
-                  size={24}
-                  className="text-[#C87550]"
-                />
+                    <motion.div
+                      initial={{ opacity: 0, y: 25 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.35 }}
+                      transition={{ duration: 0.7, delay: 0.85, ease: "easeOut" }}
+                      className="rounded-[2rem] border border-[#D5CCBC] bg-white/85 p-6 shadow-lg backdrop-blur-sm"
+                    >
+                      <p className="text-xs font-black uppercase tracking-[0.2em] text-[#C87550]">
+                        Inside our approach
+                      </p>
 
-                <h3 className="mt-5 text-lg font-black">
-                  Verify Before You Decide
-                </h3>
+                      <p className="mt-3 text-xl font-black text-[#272922]">
+                        Better information.
+                        <br />
+                        Better decisions.
+                      </p>
 
-                <p className="mt-2 text-sm leading-6 text-[#77786D]">
-                  Location and documentation checks are an important part of
-                  responsible property buying.
-                </p>
+                      <p className="mt-3 text-sm leading-6 text-[#77786D]">
+                        We help buyers understand location, property categories,
+                        connectivity and the practical factors that matter before
+                        making a decision.
+                      </p>
+                    </motion.div>
+                  </div>
+                </div>
               </div>
-
-              <div className="rounded-3xl border border-[#DDD6C8] bg-white p-6">
-                <Eye
-                  size={24}
-                  className="text-[#C87550]"
-                />
-
-                <h3 className="mt-5 text-lg font-black">
-                  Understand the Bigger Picture
-                </h3>
-
-                <p className="mt-2 text-sm leading-6 text-[#77786D]">
-                  Look beyond the plot and understand roads, infrastructure,
-                  development and surrounding activity.
-                </p>
-              </div>
-
             </div>
 
+            {/* Gate top branding */}
+            <motion.div
+              initial={{ opacity: 1 }}
+              whileInView={{ opacity: 0, y: -20 }}
+              viewport={{ once: true, amount: 0.45 }}
+              transition={{ duration: 0.45, delay: 1.15 }}
+              className="pointer-events-none absolute left-1/2 top-8 z-40 -translate-x-1/2 text-center text-white"
+            >
+              <div className="rounded-full border border-white/25 bg-black/20 px-5 py-2 backdrop-blur-sm">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em]">
+                  Discover More
+                </span>
+              </div>
+            </motion.div>
+
+            {/* LEFT GATE DOOR */}
+            <motion.div
+              initial={{ x: "0%" }}
+              whileInView={{ x: "-100%" }}
+              viewport={{ once: true, amount: 0.45 }}
+              transition={{
+                duration: 1.55,
+                delay: 0.25,
+                ease: [0.76, 0, 0.24, 1],
+              }}
+              className="absolute inset-y-0 left-0 z-30 w-1/2 origin-left overflow-hidden border-r border-black/30 bg-[#5A4937] shadow-[12px_0_35px_rgba(0,0,0,0.28)]"
+            >
+              {/* Gate texture */}
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.08),transparent_18%,rgba(0,0,0,0.18)_50%,transparent_82%,rgba(255,255,255,0.06))]" />
+
+              {/* Gate frame */}
+              <div className="absolute inset-4 rounded-[1.5rem] border-2 border-[#C5A66C]/60 sm:inset-7">
+                <div className="absolute inset-3 rounded-xl border border-[#D6BC88]/30" />
+
+                <div className="absolute inset-x-0 top-1/2 h-px bg-[#D6BC88]/30" />
+                <div className="absolute left-1/2 top-0 h-full w-px bg-[#D6BC88]/25" />
+
+                <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#D6BC88]/50 bg-[#4A3B2D]/80" />
+              </div>
+
+              {/* Door handle */}
+              <div className="absolute right-5 top-1/2 z-10 h-16 w-4 -translate-y-1/2 rounded-full bg-[#D9AA18] shadow-lg sm:right-8">
+                <div className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FFF1B8]" />
+              </div>
+
+              <div className="absolute bottom-10 left-6 right-6 text-white sm:left-10 sm:right-10">
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/55">
+                  Anugrah Homes
+                </p>
+                <p className="mt-2 text-2xl font-black sm:text-4xl">
+                  Who
+                </p>
+              </div>
+            </motion.div>
+
+            {/* RIGHT GATE DOOR */}
+            <motion.div
+              initial={{ x: "0%" }}
+              whileInView={{ x: "100%" }}
+              viewport={{ once: true, amount: 0.45 }}
+              transition={{
+                duration: 1.55,
+                delay: 0.25,
+                ease: [0.76, 0, 0.24, 1],
+              }}
+              className="absolute inset-y-0 right-0 z-30 w-1/2 origin-right overflow-hidden border-l border-black/30 bg-[#5A4937] shadow-[-12px_0_35px_rgba(0,0,0,0.28)]"
+            >
+              {/* Gate texture */}
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_18%,rgba(0,0,0,0.18)_50%,transparent_82%,rgba(255,255,255,0.07))]" />
+
+              {/* Gate frame */}
+              <div className="absolute inset-4 rounded-[1.5rem] border-2 border-[#C5A66C]/60 sm:inset-7">
+                <div className="absolute inset-3 rounded-xl border border-[#D6BC88]/30" />
+
+                <div className="absolute inset-x-0 top-1/2 h-px bg-[#D6BC88]/30" />
+                <div className="absolute left-1/2 top-0 h-full w-px bg-[#D6BC88]/25" />
+
+                <div className="absolute inset-x-5 top-1/2 h-1 -translate-y-1/2 rounded-full bg-[#D9AA18]/60 blur-[1px]" />
+              </div>
+
+              <div className="absolute bottom-10 left-6 right-6 text-right text-white sm:left-10 sm:right-10">
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/55">
+                  Property Guidance
+                </p>
+                <p className="mt-2 text-2xl font-black sm:text-4xl">
+                  We Are
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Center gate line / glow */}
+            <motion.div
+              initial={{ opacity: 1 }}
+              whileInView={{ opacity: 0 }}
+              viewport={{ once: true, amount: 0.45 }}
+              transition={{ duration: 0.45, delay: 1.1 }}
+              className="pointer-events-none absolute left-1/2 top-1/2 z-40 h-[82%] w-px -translate-x-1/2 -translate-y-1/2 bg-[#D9AA18]/70 shadow-[0_0_30px_rgba(217,170,24,0.5)]"
+            />
+
+            {/* Small helper text */}
+            <motion.p
+              initial={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 0, y: 15 }}
+              viewport={{ once: true, amount: 0.45 }}
+              transition={{ duration: 0.45, delay: 1.05 }}
+              className="pointer-events-none absolute bottom-6 left-1/2 z-40 -translate-x-1/2 text-center text-[10px] font-bold uppercase tracking-[0.25em] text-white/60"
+            >
+              Opening our story
+            </motion.p>
           </div>
 
-        </div>
+          {/* Information cards after the reveal */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="rounded-3xl border border-[#DDD6C8] bg-white p-6"
+            >
+              <SearchCheck size={24} className="text-[#C87550]" />
 
+              <h3 className="mt-5 text-lg font-black">
+                Verify Before You Decide
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-[#77786D]">
+                Location and documentation checks are an important part of
+                responsible property buying.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className="rounded-3xl border border-[#DDD6C8] bg-white p-6"
+            >
+              <Eye size={24} className="text-[#C87550]" />
+
+              <h3 className="mt-5 text-lg font-black">
+                Understand the Bigger Picture
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-[#77786D]">
+                Look beyond the plot and understand roads, infrastructure,
+                development and surrounding activity.
+              </p>
+            </motion.div>
+          </div>
+        </div>
       </section>
+
 
       {/* =========================================================
           TRUST STATS
@@ -549,7 +735,7 @@ function Aboutus() {
                 What We Offer
               </p>
 
-              <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
+              <h2 className="mt-4 text-4xl font-black leading-tight transition-transform duration-300 hover:-translate-y-1 sm:text-5xl">
                 One place for
                 <span className="block text-[#8C6E3F]">
                   multiple property needs.
@@ -854,7 +1040,7 @@ function Aboutus() {
       ========================================================== */}
       <section
         id="process"
-        className="scroll-mt-20 bg-[#272922] px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28"
+        className="scroll-mt-20 bg-[#eee8dc] px-5 py-20 text-[#292923] sm:px-8 lg:px-12 lg:py-28"
       >
 
         <div className="mx-auto max-w-[1400px]">
@@ -863,20 +1049,20 @@ function Aboutus() {
 
             <div>
 
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#D9A47D]">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#B95F3D]">
                 Simple Process
               </p>
 
               <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
                 From first
-                <span className="text-[#D9A47D]">
+                <span className="text-[#B95F3D]">
                   {" "}conversation
                 </span>
                 <br />
                 to property decision.
               </h2>
 
-              <p className="mt-6 max-w-md text-sm leading-6 text-white/50">
+              <p className="mt-6 max-w-md text-sm leading-6 text-[#6b6c65]">
                 A structured process helps buyers understand the property,
                 location and documentation before moving forward.
               </p>
@@ -888,13 +1074,13 @@ function Aboutus() {
               {processSteps.map((step, index) => (
 
                 <div
-                  key={step.number}
-                  className="group flex gap-5 rounded-2xl border border-white/10 bg-white/[0.05] p-5 transition hover:bg-white/[0.09]"
+                  key={step.title}
+                  className="group flex gap-5 rounded-2xl border border-[#ded5c5] bg-[#f8f5ed] p-5 text-[#292923] shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
                 >
 
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#D9A47D] font-black text-[#272922]">
-                    {step.number}
-                  </div>
+                  <span className="mt-0.5 w-8 shrink-0 text-sm font-black tracking-wider text-[#B95F3D]">
+                    0{index + 1}
+                  </span>
 
                   <div>
 
@@ -902,7 +1088,7 @@ function Aboutus() {
                       {step.title}
                     </h3>
 
-                    <p className="mt-1 text-sm leading-6 text-white/50">
+                    <p className="mt-1 text-sm leading-6 text-[#6b6c65]">
                       {step.text}
                     </p>
 
@@ -920,166 +1106,6 @@ function Aboutus() {
 
       </section>
 
-      {/* =========================================================
-          CONTACT / LEAD CTA
-      ========================================================== */}
-      <section className="px-5 pb-20 sm:px-8 lg:px-12 lg:pb-28">
-
-        <div className="mx-auto max-w-[1400px]">
-
-          <div className="overflow-hidden rounded-[40px] bg-[#272922] text-white">
-
-            <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
-
-              <div className="p-8 sm:p-12 lg:p-16">
-
-                <p className="text-xs font-black uppercase tracking-[0.25em] text-[#D9A47D]">
-                  Let's Connect
-                </p>
-
-                <h2 className="mt-5 text-4xl font-black leading-tight sm:text-5xl">
-                  Looking for property
-                  <span className="block text-[#D9A47D]">
-                    in the growth corridor?
-                  </span>
-                </h2>
-
-                <p className="mt-6 max-w-md text-sm leading-6 text-white/55">
-                  Tell us what you are looking for and start a conversation
-                  about suitable property options in Jewar, Jattari and nearby
-                  growth areas.
-                </p>
-
-                <div className="mt-8 space-y-3 text-sm text-white/70">
-
-                  <div className="flex items-center gap-3">
-                    <MapPin size={17} />
-                    Jewar & Jattari Region
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <Plane size={17} />
-                    Noida International Airport Corridor
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <PhoneCall size={17} />
-                    Property consultation & site visit
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div className="bg-white p-7 text-[#272922] sm:p-10 lg:p-12">
-
-                <form
-                  onSubmit={(e) => e.preventDefault()}
-                  className="grid gap-5"
-                >
-
-                  <div className="grid gap-5 sm:grid-cols-2">
-
-                    <div>
-
-                      <label className="mb-2 block text-xs font-black uppercase tracking-wider text-[#77786D]">
-                        Name
-                      </label>
-
-                      <input
-                        type="text"
-                        placeholder="Your name"
-                        className="w-full rounded-xl border border-[#DDD6C8] bg-[#F8F6F0] px-4 py-3.5 text-sm outline-none transition focus:border-[#C87550]"
-                      />
-
-                    </div>
-
-                    <div>
-
-                      <label className="mb-2 block text-xs font-black uppercase tracking-wider text-[#77786D]">
-                        Phone
-                      </label>
-
-                      <input
-                        type="tel"
-                        placeholder="+91"
-                        className="w-full rounded-xl border border-[#DDD6C8] bg-[#F8F6F0] px-4 py-3.5 text-sm outline-none transition focus:border-[#C87550]"
-                      />
-
-                    </div>
-
-                  </div>
-
-                  <div>
-
-                    <label className="mb-2 block text-xs font-black uppercase tracking-wider text-[#77786D]">
-                      Email
-                    </label>
-
-                    <input
-                      type="email"
-                      placeholder="you@example.com"
-                      className="w-full rounded-xl border border-[#DDD6C8] bg-[#F8F6F0] px-4 py-3.5 text-sm outline-none transition focus:border-[#C87550]"
-                    />
-
-                  </div>
-
-                  <div>
-
-                    <label className="mb-2 block text-xs font-black uppercase tracking-wider text-[#77786D]">
-                      Requirement
-                    </label>
-
-                    <select
-                      className="w-full rounded-xl border border-[#DDD6C8] bg-[#F8F6F0] px-4 py-3.5 text-sm outline-none focus:border-[#C87550]"
-                    >
-                      <option>Residential Plot</option>
-                      <option>Commercial Property</option>
-                      <option>Investment Property</option>
-                      <option>Site Visit</option>
-                      <option>General Enquiry</option>
-                    </select>
-
-                  </div>
-
-                  <div>
-
-                    <label className="mb-2 block text-xs font-black uppercase tracking-wider text-[#77786D]">
-                      Message
-                    </label>
-
-                    <textarea
-                      rows="4"
-                      placeholder="Tell us about your requirement..."
-                      className="w-full resize-none rounded-xl border border-[#DDD6C8] bg-[#F8F6F0] px-4 py-3.5 text-sm outline-none transition focus:border-[#C87550]"
-                    />
-
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="mt-1 inline-flex items-center justify-center gap-3 rounded-xl bg-[#C87550] px-6 py-4 text-sm font-black text-white transition hover:bg-[#272922]"
-                  >
-                    Send Enquiry
-                    <Send size={17} />
-                  </button>
-
-                  <p className="text-center text-[11px] text-[#999A91]">
-                    Please verify property ownership, approvals and relevant
-                    documents independently before purchase.
-                  </p>
-
-                </form>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
 
     </main>
   );

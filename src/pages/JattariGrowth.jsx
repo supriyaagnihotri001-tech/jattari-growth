@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import growthCorridorImage from "../assets/Images/corridor.png";
+import growthRegionImage from "../assets/Images/growth.png";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -188,79 +191,75 @@ function GrowthCard({ item }) {
   );
 }
 
+function HeroCylinderImage({ src, alt, className, duration }) {
+  return (
+    <div className={"relative overflow-hidden [perspective:1000px] " + className}>
+      <motion.div
+        animate={{ rotateY: 360 }}
+        transition={{ duration, ease: "linear", repeat: Infinity }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="absolute inset-0"
+      >
+        <img
+          src={src}
+          alt={alt}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ backfaceVisibility: "hidden" }}
+        />
+        <img
+          src={src}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden" }}
+        />
+      </motion.div>
+    </div>
+  );
+}
+
 function JattariGrowth() {
   const [openFaq, setOpenFaq] = useState(0);
 
   return (
     <main className="overflow-hidden bg-[#F5F2EA] text-[#272922]">
       {/* HERO */}
-      <section className="relative min-h-[720px] overflow-hidden border-b border-[#ddd3c1]">
-        <div className="absolute inset-0">
-          <img
-            src="/Images/Heroimg.png"
-            alt="Jattari growth region"
-            className="h-full w-full object-cover"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f5f2ea] via-[#f5f2ea]/90 to-[#f5f2ea]/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#f5f2ea] via-transparent to-transparent" />
-        </div>
-
-        <div className="relative mx-auto flex min-h-[720px] max-w-7xl items-center px-5 py-28 sm:px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <SectionLabel>Jattari Growth Story</SectionLabel>
-
-            <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-[-0.055em] text-[#292b25] sm:text-6xl lg:text-8xl">
-              Where
-              <span className="block text-[#9b773b]">Jattari meets</span>
-              tomorrow.
-            </h1>
-
-            <p className="mt-7 max-w-2xl text-base leading-8 text-[#62645c] sm:text-lg">
-              Discover the infrastructure, connectivity and regional
-              developments shaping Jattari into an emerging growth destination
-              near the Jewar–Aligarh corridor.
-            </p>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link
-                to="/contact"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#9b773b]"
-              >
-                Explore Opportunities
-               
-              </Link>
-
-              <a
-                href="#growth"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#bda978] bg-[#f7f4ec]/80 px-6 py-3.5 text-sm font-semibold text-[#554b38] backdrop-blur-sm transition hover:bg-white"
-              >
-                Discover Jattari
-               
-              </a>
+                  <section className="bg-white px-5 pb-20 pt-28 sm:px-8 lg:px-12 lg:pb-28 lg:pt-36">
+        <div className="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-[0.95fr_1.25fr] lg:gap-16">
+          <div className="grid grid-cols-[1.05fr_0.95fr] items-center gap-4 sm:gap-6">
+            <HeroCylinderImage src={growthCorridorImage} alt="Regional road in the Jattari growth corridor" className="mt-12 h-[300px] w-full rounded-[1.5rem] sm:mt-16 sm:h-[430px] sm:rounded-[2rem]" duration={16} />
+            <div className="flex flex-col gap-4 sm:gap-6">
+              <HeroCylinderImage src={growthRegionImage} alt="Development and growth around Jattari" className="h-[205px] w-full rounded-[1.5rem] sm:h-[300px] sm:rounded-[2rem]" duration={20} />
+              <div className="rounded-[1.5rem] border border-[#DDD6C8] bg-[#F5F2EA] p-4 shadow-[0_16px_45px_rgba(39,41,34,0.06)] sm:rounded-[2rem] sm:p-6">
+                <p className="text-center text-2xl font-black tracking-tight text-[#9B773B] sm:text-4xl">Jattari</p>
+                <div className="mx-auto mt-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#9B773B] sm:h-12 sm:w-12"><TrendingUp size={22} /></div>
+                <p className="mt-3 text-center text-xs font-bold text-[#272922] sm:text-sm">A connected growth story</p>
+                <p className="mt-1 text-center text-[10px] leading-4 text-[#77786D] sm:text-xs">Airport · roads · regional development</p>
+              </div>
             </div>
-
-            <div className="mt-10 flex flex-wrap gap-3">
-              <span className="rounded-full border border-[#d8cdb8] bg-[#f8f5ed]/85 px-4 py-2 text-xs font-semibold text-[#625b4c] backdrop-blur">
-                Airport-led growth
-              </span>
-              <span className="rounded-full border border-[#d8cdb8] bg-[#f8f5ed]/85 px-4 py-2 text-xs font-semibold text-[#625b4c] backdrop-blur">
-                Regional connectivity
-              </span>
-              <span className="rounded-full border border-[#d8cdb8] bg-[#f8f5ed]/85 px-4 py-2 text-xs font-semibold text-[#625b4c] backdrop-blur">
-                Infrastructure
-              </span>
+          </div>
+          <div>
+            <div className="mb-4 flex items-center gap-3 text-sm font-bold uppercase tracking-wide text-[#9B773B]">Jattari Growth Story <span className="h-px w-12 bg-[#9B773B]" /></div>
+            <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-[-0.05em] text-[#202027] sm:text-5xl lg:text-6xl">Where Jattari meets <span className="text-[#9B773B]">tomorrow.</span></h1>
+            <p className="mt-6 text-base leading-7 text-[#777C89] sm:text-lg sm:leading-8">Discover the infrastructure, connectivity and regional developments shaping Jattari into an emerging growth destination near the Jewar–Aligarh corridor.</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#9B773B]">Explore Opportunities </Link>
+              <a href="#growth" className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D5C8B7] px-6 py-3.5 text-sm font-bold text-[#272922] transition hover:border-[#9B773B] hover:text-[#80652F]">Discover Jattari</a>
             </div>
           </div>
         </div>
       </section>
-
       {/* GROWTH SNAPSHOT */}
       <section
         id="growth"
-        className="border-b border-[#ddd3c1] bg-[#eee8dc] py-20 sm:py-24"
+        className="relative isolate overflow-hidden border-b border-[#ddd3c1] bg-[#eee8dc] py-20 sm:py-24"
+        style={{
+          backgroundImage: `linear-gradient(rgba(245, 242, 234, 0.48), rgba(245, 242, 234, 0.58)), url(${growthCorridorImage})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
       >
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+        <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
               <SectionLabel>Growth Snapshot</SectionLabel>

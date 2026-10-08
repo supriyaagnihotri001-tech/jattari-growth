@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -151,62 +153,66 @@ function Projects() {
     <main className="overflow-hidden bg-[#F5F2EA] text-[#272922]">
       {/* =========================================================
           HERO
-      ========================================================== */}
-      <section className="relative overflow-hidden border-b border-[#ddd3c1]">
-        <div className="absolute inset-0">
-          <img
-            src="/Images/Heroimg.png"
-            alt="Property projects in Jattari"
-            className="h-full w-full object-cover"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f5f2ea] via-[#f5f2ea]/95 to-[#f5f2ea]/35" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#f5f2ea] via-transparent to-transparent" />
-        </div>
-
-        <div className="relative mx-auto flex min-h-[650px] max-w-7xl items-center px-5 py-28 sm:px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <SectionLabel>Our Projects</SectionLabel>
-
-            <h1 className="text-5xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-8xl">
-              Projects
-              <span className="block text-[#9b773b]">shaping tomorrow.</span>
-            </h1>
-
-            <p className="mt-7 max-w-2xl text-base leading-8 text-[#64665e] sm:text-lg">
-              Explore our current property projects, upcoming developments and
-              the wider property opportunities emerging across Jattari and the
-              surrounding growth corridor.
-            </p>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#current-projects"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#292c26] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#9b773b]"
-              >
-                View Current Projects
-               
-              </a>
-
-              <a
-                href="#explore"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#c5b695] bg-[#f8f5ed]/80 px-6 py-3.5 text-sm font-semibold text-[#514a3c] backdrop-blur-sm transition hover:bg-white"
-              >
-                Explore Properties
-                
-                
-              </a>
+      ========================      <section className="relative isolate overflow-hidden bg-[#f5f2ea] px-5 pb-16 pt-28 sm:px-8 lg:px-12 lg:pb-24 lg:pt-32">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_35%,rgba(214,153,116,0.2),transparent_45%),linear-gradient(125deg,#fffefa_0%,#f5f2ea_60%,#ece3d6_100%)]" />
+        <div className="relative mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
+          <motion.div initial={{ opacity: 0, x: -55 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.35 }} className="relative z-10">
+            <div className="mb-4 flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#B95F3D]">Our Projects <span className="h-px w-12 bg-[#C87550]" /></div>
+            <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-[-0.05em] text-[#202027] sm:text-5xl lg:text-6xl">Find a place to <span className="text-[#B95F3D]">call your own.</span></h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-[#686c75] sm:text-lg sm:leading-8">Explore homes and property projects across Jattari’s growing corridor. Open the gate to see what’s taking shape.</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#current-projects" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#C87550]">View Current Projects <ArrowRight size={17} /></a>
+              <a href="#explore" className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D5C8B7] bg-white/70 px-6 py-3.5 text-sm font-bold text-[#272922] transition hover:-translate-y-1 hover:border-[#C87550] hover:text-[#B95F3D]">Explore Properties <ArrowUpRight size={16} /></a>
             </div>
+          </motion.div>
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              <ProjectTag>Upcoming Projects</ProjectTag>
-              <ProjectTag>Current Projects</ProjectTag>
-              <ProjectTag>Jattari Properties</ProjectTag>
+          <div className="relative mx-auto w-full max-w-[620px]" aria-label="Projects opening behind an animated property gate">
+            <div className="relative h-[390px] overflow-hidden rounded-[2.5rem] border border-white/80 bg-gradient-to-b from-[#cce6ee] via-[#f5e8d4] to-[#d9c8a6] shadow-[0_30px_80px_rgba(69,56,38,0.16)] sm:h-[470px]">
+              <div className="absolute inset-x-0 bottom-0 h-[27%] bg-gradient-to-b from-[#c8bc9d] to-[#a5a184]" />
+              <div className="absolute bottom-[13%] left-[10%] right-[10%] h-16 rounded-[50%] bg-[#fbf3e2]/70 blur-xl" />
+              <div className="absolute left-1/2 top-[8%] h-[38%] w-[72%] -translate-x-1/2">
+                <div className="absolute inset-x-0 top-0 h-[43%] bg-[#9e6649] [clip-path:polygon(50%_0,100%_100%,0_100%)] drop-shadow-lg" />
+                <div className="absolute inset-x-[7%] bottom-0 top-[28%] rounded-t-[1.2rem] border-x-[10px] border-t-[10px] border-[#fff7e8] bg-[#d9c8aa] shadow-[0_16px_25px_rgba(81,58,38,0.18)] sm:border-x-[14px] sm:border-t-[14px]">
+                  <div className="absolute inset-x-[12%] top-[16%] flex h-[42%] gap-3">
+                    <div className="flex-1 rounded-t-lg border-[5px] border-[#fff7e8] bg-gradient-to-br from-[#8fc0c4] to-[#c9e2d8]" />
+                    <div className="flex-1 rounded-t-lg border-[5px] border-[#fff7e8] bg-gradient-to-br from-[#8fc0c4] to-[#c9e2d8]" />
+                  </div>
+                  <div className="absolute bottom-0 left-1/2 h-[44%] w-[24%] -translate-x-1/2 rounded-t-[2rem] border-[6px] border-b-0 border-[#fff7e8] bg-[#9a6c50]" />
+                </div>
+              </div>
+              <div className="absolute bottom-[7%] left-1/2 z-[1] h-[47%] w-[88%] -translate-x-1/2 [clip-path:polygon(15%_0,85%_0,100%_100%,0_100%)] bg-[#ded0b6]/75" />
+
+              <div className="absolute bottom-[16%] left-[16%] right-[16%] top-[49%] z-[4] overflow-hidden rounded-t-[1.1rem] border-x-[10px] border-t-[10px] border-[#f4e3c9] bg-[#272922] shadow-[0_12px_30px_rgba(39,41,34,0.22)] sm:border-x-[13px] sm:border-t-[13px]">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.a key={currentProjects[projectSlide].title} href={currentProjects[projectSlide].url} target="_blank" rel="noopener noreferrer" aria-label={'Explore '+currentProjects[projectSlide].title} initial={{ x: 170, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -170, opacity: 0 }} transition={{ duration: 0.72, ease: [0.22, 0.75, 0.25, 1] }} className="absolute inset-0 block">
+                    <img src={currentProjects[projectSlide].image} alt={currentProjects[projectSlide].title} className="h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#191c18]/85 via-transparent to-transparent" />
+                    <div className="absolute bottom-3 left-3 right-3 text-white sm:bottom-5 sm:left-5 sm:right-5">
+                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#f0c08a] sm:text-[10px]">{currentProjects[projectSlide].status}</p>
+                      <p className="mt-1 text-sm font-bold sm:text-lg">{currentProjects[projectSlide].title}</p>
+                    </div>
+                  </motion.a>
+                </AnimatePresence>
+              </div>
+
+              <motion.div initial={{ rotateY: 0 }} animate={{ rotateY: -78 }} transition={{ duration: 1.25, delay: 0.65, ease: [0.65, 0, 0.35, 1] }} style={{ transformOrigin: 'left center', transformStyle: 'preserve-3d' }} className="absolute bottom-[16%] left-[16%] top-[49%] z-[8] w-[34%] overflow-hidden rounded-t-[0.8rem] border-[8px] border-b-0 border-[#bb835c] bg-[repeating-linear-gradient(90deg,#8d563d_0px,#8d563d_7px,#c18b62_8px,#c18b62_11px)] shadow-[8px_8px_18px_rgba(49,35,25,0.24)] sm:border-[10px] sm:border-b-0">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/15 to-black/20" />
+                <div className="absolute right-3 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-[#f4d38b] shadow-[0_0_8px_#f4d38b]" />
+              </motion.div>
+              <motion.div initial={{ rotateY: 0 }} animate={{ rotateY: 78 }} transition={{ duration: 1.25, delay: 0.65, ease: [0.65, 0, 0.35, 1] }} style={{ transformOrigin: 'right center', transformStyle: 'preserve-3d' }} className="absolute bottom-[16%] right-[16%] top-[49%] z-[8] w-[34%] overflow-hidden rounded-t-[0.8rem] border-[8px] border-b-0 border-[#bb835c] bg-[repeating-linear-gradient(90deg,#8d563d_0px,#8d563d_7px,#c18b62_8px,#c18b62_11px)] shadow-[-8px_8px_18px_rgba(49,35,25,0.24)] sm:border-[10px] sm:border-b-0">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/15 to-black/20" />
+                <div className="absolute left-3 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-[#f4d38b] shadow-[0_0_8px_#f4d38b]" />
+              </motion.div>
+
+              <div className="absolute bottom-[15%] left-[8%] z-10 h-[30%] w-7 rounded-t-lg border-x-4 border-t-4 border-[#f4ead8] bg-[#c0a77c] shadow-md sm:w-9" />
+              <div className="absolute bottom-[15%] right-[8%] z-10 h-[30%] w-7 rounded-t-lg border-x-4 border-t-4 border-[#f4ead8] bg-[#c0a77c] shadow-md sm:w-9" />
+              <div className="absolute bottom-[8%] left-[5%] right-[5%] z-[9] h-3 rounded-full bg-[#817a64] shadow-[0_5px_10px_rgba(39,41,34,0.18)]" />
+              <div className="absolute left-5 top-5 z-10 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/75 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.16em] text-[#75543c] shadow-sm backdrop-blur sm:left-7 sm:top-7 sm:px-4 sm:text-[10px]"><Building2 size={13} /> Welcome home</div>
             </div>
+            <div className="mt-4 flex items-center justify-between px-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#8c8173] sm:text-xs"><span>Jattari properties</span><span className="inline-flex items-center gap-2"><span className="h-2 w-2 animate-pulse rounded-full bg-[#c87550]" />Gate opening</span></div>
           </div>
         </div>
       </section>
-
       {/* =========================================================
           FEATURED PROJECTS / STICKY SCROLL
       ========================================================== */}

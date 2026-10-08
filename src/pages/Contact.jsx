@@ -183,54 +183,39 @@ function Contact() {
       {/* =========================================================
           HERO
       ========================================================== */}
-      <section className="relative overflow-hidden border-b border-[#ddd3c1]">
-        <div className="absolute inset-0">
-          <img
-            src="/Images/Heroimg.png"
-            alt="Contact Jattari property team"
-            className="h-full w-full object-cover"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f5f2ea] via-[#f5f2ea]/95 to-[#f5f2ea]/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#f5f2ea] via-transparent to-transparent" />
-        </div>
-
-        <div className="relative mx-auto flex min-h-[610px] max-w-7xl items-center px-5 py-28 sm:px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <SectionLabel>Get In Touch</SectionLabel>
-
-            <h1 className="text-5xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-8xl">
-              Let's talk about
-              <span className="block text-[#9b773b]">your next move.</span>
+      <section className="relative isolate min-h-[620px] overflow-hidden bg-[#F5F2EA] px-5 py-20 text-[#272922] sm:px-8 lg:min-h-[700px] lg:px-12 lg:py-24">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_84%_23%,rgba(200,117,80,0.16),transparent_28%),linear-gradient(135deg,#fffefa,#eee8dc)]" />
+        <div className="pointer-events-none absolute -left-[25%] -top-[34%] h-[80%] w-[88%] rounded-br-[48%] bg-[#E9E1D5] sm:-left-[20%] sm:-top-[38%] sm:h-[90%] sm:w-[78%]" />
+        <div className="pointer-events-none absolute -left-[34%] top-[-18%] h-[145%] w-[112%] rounded-[0_48%_50%_0/0_50%_50%_0] bg-white shadow-[28px_0_70px_rgba(255,255,255,0.25)] sm:-left-[29%] sm:w-[100%] lg:-left-[32%] lg:w-[91%]" />
+        <div className="relative mx-auto grid min-h-[500px] max-w-7xl items-center gap-14 lg:min-h-[520px] lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="relative z-10 max-w-3xl py-4">
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-[#B95F3D]"><MessageCircle size={16} /> Get in touch</div>
+            <h1 className="mt-6 max-w-3xl text-5xl font-extrabold leading-[1.04] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
+              Let’s talk about your <span className="relative inline-block text-[#292923]">next move.<svg aria-hidden="true" viewBox="0 0 220 14" className="absolute -bottom-2 left-0 h-3 w-full text-[#D28B65]" fill="none"><path d="M2 9C48 1 68 3 109 9s70 3 109-5" stroke="currentColor" strokeWidth="5" strokeLinecap="round" /></svg></span>
             </h1>
-
-            <p className="mt-7 max-w-2xl text-base leading-8 text-[#64665e] sm:text-lg">
-              Looking for a property in Jattari? Interested in Anugrah Homes,
-              Skyline Aero Homes or future opportunities? Send us your enquiry
-              and our team will help you take the next step.
+            <p className="mt-8 max-w-2xl text-base leading-8 text-[#536078] sm:text-lg">
+              Looking for a property in Jattari or exploring a new opportunity? Tell us what you have in mind. Our team can help with project details, site visits and the next steps.
             </p>
-
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#enquiry"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#292c26] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#9b773b]"
-              >
-                Send An Enquiry
-                
-              </a>
-
-              <a
-                href="tel:+919999999999"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#c4b594] bg-[#f8f5ed]/80 px-6 py-3.5 text-sm font-semibold text-[#514a3c] backdrop-blur-sm transition hover:bg-white"
-              >
-                <Phone size={17} />
-                Call Our Team
-              </a>
+              <a href="#enquiry" className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#C87550] to-[#B95F3D] px-7 py-4 text-sm font-bold text-white shadow-[0_16px_35px_rgba(150,85,55,0.24)] transition hover:-translate-y-1">Send an enquiry <ArrowRight size={18} /></a>
+              <a href="tel:+919999999999" className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D5C8B7] bg-white/80 px-7 py-4 text-sm font-semibold text-[#272922] transition hover:border-[#C87550] hover:text-[#B95F3D]"><Phone size={17} /> Call our team</a>
+            </div>
+          </div>
+          <div className="relative z-10 hidden min-h-[390px] items-center justify-center lg:flex">
+            <div className="absolute right-[12%] top-[8%] h-64 w-64 rounded-full border border-white/45" />
+            <div className="absolute right-[4%] top-[1%] h-80 w-80 rounded-full border border-white/30" />
+            <div className="absolute left-[5%] top-[17%] flex h-12 w-12 items-center justify-center rounded-2xl border border-white/70 bg-white/65 text-[#B95F3D] shadow-sm"><MapPin size={22} /></div>
+            <div className="absolute right-[4%] bottom-[16%] flex h-14 w-14 items-center justify-center rounded-2xl border border-white/70 bg-white/55 text-[#B95F3D]"><Building2 size={24} /></div>
+            <div className="relative flex h-64 w-64 items-center justify-center rounded-full border border-white/70 bg-white/35 shadow-[0_30px_90px_rgba(150,85,55,0.12)] backdrop-blur-sm">
+              <div className="flex h-44 w-44 items-center justify-center rounded-full border border-white/80 bg-white/65 text-[#B95F3D] shadow-xl"><div className="flex h-24 w-24 items-center justify-center rounded-full bg-white text-[#B95F3D]"><Phone size={34} /></div></div>
+            </div>
+            <div className="absolute bottom-[4%] left-[13%] rounded-2xl border border-white/80 bg-white/90 px-5 py-4 shadow-xl shadow-[#8C8173]/10">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B95F3D]">Local guidance</p>
+              <p className="mt-1 text-sm font-semibold text-[#272922]">Jattari, Aligarh</p>
             </div>
           </div>
         </div>
       </section>
-
       {/* =========================================================
           CONTACT SNAPSHOT
       ========================================================== */}
@@ -448,7 +433,7 @@ function Contact() {
                     </p>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form onSubmit={handleSubmit} className="contact-enquiry-form space-y-5">
                     {/* NAME + PHONE */}
                     <div className="grid gap-5 sm:grid-cols-2">
                       <div>
