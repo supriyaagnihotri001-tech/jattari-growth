@@ -64,7 +64,6 @@ const airportStats = [
 const developmentPhases = [
   {
     
-    status: "Operational",
     title: "Phase One",
     capacity: "12 Million Passengers",
     description:
@@ -72,7 +71,6 @@ const developmentPhases = [
   },
   {
    
-    status: "Expansion",
     title: "Phase Two",
     capacity: "30 Million Passengers",
     description:
@@ -80,7 +78,6 @@ const developmentPhases = [
   },
   {
     
-    status: "Growth",
     title: "Phase Three",
     capacity: "50 Million Passengers",
     description:
@@ -88,7 +85,6 @@ const developmentPhases = [
   },
   {
    
-    status: "Long Term",
     title: "Phase Four",
     capacity: "70 Million Passengers",
     description:
@@ -258,7 +254,6 @@ function JewarAirport() {
             </div>
           </div>
           <div>
-            <div className="mb-4 flex items-center gap-3 text-sm font-bold uppercase tracking-wide text-[#B95F3D]">Regional Gateway <span className="h-px w-12 bg-[#C87550]" /></div>
             <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-[-0.05em] text-[#202027] sm:text-5xl lg:text-6xl">Jewar Airport <span className="red-text-blink text-[#B95F3D]">connecting the region.</span></h1>
             <p className="mt-6 text-base leading-7 text-[#777C89] sm:text-lg sm:leading-8">Noida International Airport is reshaping connectivity across Jewar, the Yamuna corridor and Western Uttar Pradesh, opening a new gateway for the wider region.</p>
             <a href="#airport-overview" className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#C87550]">Explore Airport </a>
@@ -293,10 +288,6 @@ function JewarAirport() {
                     <Icon size={19} />
                   </div>
 
-                  <span className="text-xs text-white/20">
-                    0{index + 1}
-                  </span>
-
                 </div>
 
                 <p className="mt-8 text-3xl font-medium tracking-tight text-white sm:text-4xl">
@@ -325,7 +316,6 @@ function JewarAirport() {
 
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">Beyond Aviation</span>
             <h2 className="mt-5 text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
               Where connectivity becomes <span className="text-[#C87550]">opportunity.</span>
             </h2>
@@ -379,10 +369,6 @@ function JewarAirport() {
           <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
 
             <div>
-
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-                Why DXN Matters
-              </span>
 
               <h2 className="mt-5 max-w-4xl text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
                 A new layer of
@@ -438,16 +424,6 @@ function JewarAirport() {
                 style={{ backgroundImage: "linear-gradient(to top, rgba(39, 41, 34, 0.97), rgba(39, 41, 34, 0.58)), url(" + item.image + ")" }}
               >
 
-                <div className="flex items-start justify-between">
-
-                  <span className="text-sm text-white/25">
-                    0{index + 1}
-                  </span>
-
-                 
-
-                </div>
-
                 <h3 className="mt-16 text-2xl font-medium">
                   {item.title}
                 </h3>
@@ -478,10 +454,6 @@ function JewarAirport() {
         <div className="mx-auto max-w-7xl">
 
           <div className="max-w-3xl">
-
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#D28B65]">
-              Long-Term Vision
-            </span>
 
             <h2 className="mt-5 text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
               Four phases.
@@ -516,10 +488,6 @@ function JewarAirport() {
 
                   <span className="text-sm font-bold text-[#D28B65]">
                     {phase.number}
-                  </span>
-
-                  <span className="rounded-full border border-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/40">
-                    {phase.status}
                   </span>
 
                 </div>
@@ -571,11 +539,6 @@ function JewarAirport() {
           <div className="grid items-start gap-14 lg:grid-cols-[0.8fr_1.2fr]">
 
             <div className="lg:sticky lg:top-28">
-
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-                Connected Region
-              </span>
-
               <h2 className="mt-5 text-5xl font-medium leading-[0.95] tracking-[-0.06em] sm:text-6xl">
                 The airport
                 <br />
@@ -610,15 +573,11 @@ function JewarAirport() {
                     className="group rounded-[2rem] border border-black/5 bg-white p-7 shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-xl"
                   >
 
-                    <div className="flex items-start justify-between">
+                    <div className="flex items-start">
 
                       <div className="rounded-xl bg-[#F5F2EA] p-3 text-[#C87550] transition group-hover:bg-[#C87550] group-hover:text-white">
                         <Icon size={21} />
                       </div>
-
-                      <span className="text-xs text-black/20">
-                        0{index + 1}
-                      </span>
 
                     </div>
 
@@ -664,12 +623,6 @@ function JewarAirport() {
             <div className="relative grid items-center gap-12 lg:grid-cols-[1fr_0.8fr]">
 
               <div>
-
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/60 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#55716B]">
-                  <Route size={14} />
-                  Airport  Jattari Corridor
-                </div>
-
                 <h2 className="mt-7 max-w-3xl text-4xl font-medium leading-[0.98] tracking-[-0.05em] sm:text-5xl lg:text-6xl">
                   Jattari is part of
                   <br />
@@ -705,11 +658,6 @@ function JewarAirport() {
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C87550]">
                       <Navigation size={23} />
                     </div>
-
-                    <span className="text-xs uppercase tracking-[0.2em] text-white/30">
-                      Regional Route
-                    </span>
-
                   </div>
 
                   <div className="mt-10 space-y-5">
@@ -778,10 +726,6 @@ function JewarAirport() {
 
           <div className="max-w-3xl">
 
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-              Passenger Experience
-            </span>
-
             <h2 className="mt-5 text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
               Designed for a
               <span className="text-[#C87550]">
@@ -803,15 +747,11 @@ function JewarAirport() {
                   className="group rounded-[2rem] bg-white p-7 transition duration-500 hover:-translate-y-1 hover:shadow-xl"
                 >
 
-                  <div className="flex items-start justify-between">
+                  <div className="flex items-start">
 
                     <div className="rounded-xl bg-[#F5F2EA] p-3 text-[#C87550] transition group-hover:bg-[#C87550] group-hover:text-white">
                       <Icon size={21} />
                     </div>
-
-                    <span className="text-xs text-black/20">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
 
                   </div>
 
@@ -850,11 +790,6 @@ function JewarAirport() {
           <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr]">
 
             <div>
-
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-                The Big Picture
-              </span>
-
               <h2 className="mt-5 text-5xl font-medium leading-[0.95] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
                 More than
                 <br />
@@ -928,10 +863,6 @@ function JewarAirport() {
 
             <div>
 
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#D28B65]">
-                Regional Reach
-              </span>
-
               <h2 className="mt-5 text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
                 Connected to
                 <br />
@@ -964,10 +895,6 @@ function JewarAirport() {
                     size={19}
                     className="text-[#D28B65]"
                   />
-
-                  <span className="text-xs text-white/20">
-                    0{index + 1}
-                  </span>
 
                 </div>
 
@@ -1060,11 +987,6 @@ function JewarAirport() {
               <div className="bg-white p-7 text-[#272922] sm:p-10 lg:p-12">
 
                 <div className="mb-8">
-
-                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#B95F3D]">
-                    Enquiry Form
-                  </p>
-
                   <h3 className="mt-3 text-3xl font-medium tracking-tight">
                     Tell us what you need.
                   </h3>

@@ -189,7 +189,6 @@ function Contact() {
         <div className="pointer-events-none absolute -left-[34%] top-[-18%] h-[145%] w-[112%] rounded-[0_48%_50%_0/0_50%_50%_0] bg-white shadow-[28px_0_70px_rgba(255,255,255,0.25)] sm:-left-[29%] sm:w-[100%] lg:-left-[32%] lg:w-[91%]" />
         <div className="relative mx-auto grid min-h-[500px] max-w-7xl items-center gap-14 lg:min-h-[520px] lg:grid-cols-[1.1fr_0.9fr]">
           <div className="relative z-10 max-w-3xl py-4">
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.24em] text-[#B95F3D]"><MessageCircle size={16} /> Get in touch</div>
             <h1 className="mt-6 max-w-3xl text-5xl font-extrabold leading-[1.04] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
               Let’s talk about your <span className="relative inline-block text-[#292923]">next move.<svg aria-hidden="true" viewBox="0 0 220 14" className="absolute -bottom-2 left-0 h-3 w-full text-[#D28B65]" fill="none"><path d="M2 9C48 1 68 3 109 9s70 3 109-5" stroke="currentColor" strokeWidth="5" strokeLinecap="round" /></svg></span>
             </h1>
@@ -210,7 +209,6 @@ function Contact() {
               <div className="flex h-44 w-44 items-center justify-center rounded-full border border-white/80 bg-white/65 text-[#B95F3D] shadow-xl"><div className="flex h-24 w-24 items-center justify-center rounded-full bg-white text-[#B95F3D]"><Phone size={34} /></div></div>
             </div>
             <div className="absolute bottom-[4%] left-[13%] rounded-2xl border border-white/80 bg-white/90 px-5 py-4 shadow-xl shadow-[#8C8173]/10">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B95F3D]">Local guidance</p>
               <p className="mt-1 text-sm font-semibold text-[#272922]">Jattari, Aligarh</p>
             </div>
           </div>
@@ -296,7 +294,7 @@ function Contact() {
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
             {/* LEFT CONTENT */}
             <div className="lg:sticky lg:top-28">
-              <SectionLabel>Property Enquiry</SectionLabel>
+              
 
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
                 Tell us what you're looking for.
@@ -353,9 +351,7 @@ function Contact() {
                   </div>
 
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#96743c]">
-                      Prefer WhatsApp?
-                    </p>
+                   
 
                     <p className="mt-1 text-sm font-semibold text-[#3c3e36]">
                       Message our team directly
@@ -420,9 +416,7 @@ function Contact() {
               ) : (
                 <>
                   <div className="mb-8">
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9b783e]">
-                      Start Here
-                    </p>
+                   
 
                     <h3 className="mt-2 text-2xl font-semibold tracking-tight">
                       Property Enquiry Form
@@ -650,8 +644,7 @@ function Contact() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
             <div>
-              <SectionLabel>Visit Us</SectionLabel>
-
+              
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
                 Come see the location for yourself.
               </h2>
@@ -774,7 +767,7 @@ function Contact() {
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="text-center">
-            <SectionLabel>Explore Before You Enquire</SectionLabel>
+            
 
             <h2 className="text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
               Know the projects.
@@ -861,8 +854,7 @@ function Contact() {
       <section className="border-t border-[#ddd3c1] bg-[#eee8dc] py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-5 sm:px-8">
           <div className="text-center">
-            <SectionLabel>Frequently Asked</SectionLabel>
-
+           
             <h2 className="text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
               Questions before you contact us.
             </h2>
@@ -913,14 +905,9 @@ function Contact() {
       {/* =========================================================
           FINAL CTA
       ========================================================== */}
-      <section className="bg-[#292e29] py-20 text-white sm:py-24">
+      <section className="bg-[#e4ddcf] py-20 text-[#272922] sm:py-24">
         <div className="mx-auto max-w-5xl px-5 text-center sm:px-8">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-[#d6bc7d]">
-            <MessageCircle size={23} />
-          </div>
-
-          <SectionLabel light>Start A Conversation</SectionLabel>
-
+         
           <h2 className="mx-auto max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
             Have a property question?
             <span className="block text-[#d5bb7b]">
@@ -928,7 +915,7 @@ function Contact() {
             </span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl leading-8 text-white/60">
+          <p className="mx-auto mt-6 max-w-2xl leading-8 text-[#66685f]">
             Whether you are buying your first property, looking for an
             investment opportunity or simply exploring Jattari, reach out to
             our team.
@@ -947,7 +934,7 @@ function Contact() {
               href="https://wa.me/919999999999"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-7 py-4 text-sm font-bold text-white transition hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#272922]/15 bg-white/40 px-7 py-4 text-sm font-bold text-[#272922] transition hover:bg-white/75"
             >
               <MessageCircle size={17} />
               WhatsApp Us
@@ -956,19 +943,7 @@ function Contact() {
         </div>
       </section>
 
-      {/* =========================================================
-          DISCLAIMER
-      ========================================================== */}
-      <section className="bg-[#f0ebe1] py-7">
-        <div className="mx-auto max-w-5xl px-5 text-center sm:px-8">
-          <p className="text-xs leading-6 text-[#85857d]">
-            Project availability, pricing, specifications and development
-            information may change over time. Please verify current project
-            information and all applicable property documents with the
-            concerned team before making any purchase decision.
-          </p>
-        </div>
-      </section>
+    
     </main>
   );
 }

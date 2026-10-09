@@ -172,14 +172,11 @@ function GrowthCard({ item }) {
 
   return (
     <div className="group rounded-[28px] border border-[#ded5c5] bg-[#fbf9f3] p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#b99552] hover:shadow-[0_20px_50px_rgba(73,62,42,0.10)]">
-      <div className="mb-8 flex items-start justify-between">
+      <div className="mb-8 flex items-start">
         <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e8e1d2] text-[#8b6b35] transition-colors group-hover:bg-[#b99552] group-hover:text-white">
           <Icon size={21} strokeWidth={1.7} />
         </div>
 
-        <span className="text-xs font-bold tracking-[0.18em] text-[#b2a48b]">
-          {item.number}
-        </span>
       </div>
 
       <h3 className="mb-3 text-xl font-semibold tracking-tight text-[#292b25]">
@@ -220,6 +217,7 @@ function HeroCylinderImage({ src, alt, className, duration }) {
 
 function JattariGrowth() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [showApproachDetails, setShowApproachDetails] = useState(false);
 
   return (
     <main className="overflow-hidden bg-[#F5F2EA] text-[#272922]">
@@ -239,7 +237,6 @@ function JattariGrowth() {
             </div>
           </div>
           <div>
-            <div className="mb-4 flex items-center gap-3 text-sm font-bold uppercase tracking-wide text-[#9B773B]">Jattari Growth Story <span className="h-px w-12 bg-[#9B773B]" /></div>
             <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-[-0.05em] text-[#202027] sm:text-5xl lg:text-6xl">Where Jattari meets <span className="text-[#9B773B]">tomorrow.</span></h1>
             <p className="mt-6 text-base leading-7 text-[#777C89] sm:text-lg sm:leading-8">Discover the infrastructure, connectivity and regional developments shaping Jattari into an emerging growth destination near the Jewar–Aligarh corridor.</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -262,8 +259,6 @@ function JattariGrowth() {
         <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
-              <SectionLabel>Growth Snapshot</SectionLabel>
-
               <h2 className="max-w-xl text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#292b25] sm:text-5xl">
                 Four forces changing the Jattari story.
               </h2>
@@ -290,8 +285,7 @@ function JattariGrowth() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
-              <SectionLabel>Why Jattari?</SectionLabel>
-
+              
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
                 A local town connected to a much larger regional story.
               </h2>
@@ -303,13 +297,43 @@ function JattariGrowth() {
                 development conversation.
               </p>
 
-              <Link
-                to="/about"
+              <button
+                type="button"
+                aria-expanded={showApproachDetails}
+                aria-controls="jattari-approach-details"
+                onClick={() => setShowApproachDetails((open) => !open)}
                 className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#80652f] transition hover:gap-3"
               >
-                Learn more about our approach
-               
-              </Link>
+                {showApproachDetails ? "Show less" : "Learn more about our approach"}
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${showApproachDetails ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {showApproachDetails && (
+                <div
+                  id="jattari-approach-details"
+                  className="mt-5 max-w-lg rounded-2xl border border-[#ded6c8] bg-white/70 p-5 text-sm leading-7 text-[#6b6c65]"
+                >
+                  <h3 className="font-semibold text-[#303129]">
+                    How we look at Jattari’s growth
+                  </h3>
+                  <p className="mt-2">
+                    We explain Jattari in the context of its connections with
+                    nearby towns and the wider Jewar region. Road access,
+                    everyday services and regional infrastructure all help
+                    shape how people live, travel and consider property here.
+                  </p>
+                  <p className="mt-3">
+                    Our approach is to share clear location information and
+                    practical property details, while distinguishing current
+                    connectivity from projects that are still developing. This
+                    helps families and buyers make informed decisions based on
+                    their own needs and independent checks.
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -345,10 +369,7 @@ function JattariGrowth() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-center">
             <div>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-[#dbc99f]">
-                <Plane size={14} />
-                Airport Effect
-              </div>
+              
 
               <h2 className="max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
                 Jewar Airport is changing the regional map.
@@ -400,9 +421,6 @@ function JattariGrowth() {
               </div>
 
               <div className="absolute -bottom-5 -left-4 rounded-2xl border border-white/10 bg-[#353d36] px-5 py-4 shadow-xl sm:left-5">
-                <p className="text-[10px] uppercase tracking-[0.2em] text-white/50">
-                  Phase I capacity
-                </p>
                 <p className="mt-1 text-2xl font-semibold">12M</p>
                 <p className="text-xs text-white/50">passengers annually</p>
               </div>
@@ -428,9 +446,7 @@ function JattariGrowth() {
 
                   <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/70">
-                        Regional Development
-                      </p>
+                      
                       <p className="mt-1 text-2xl font-semibold text-white">
                         International Film City
                       </p>
@@ -445,8 +461,7 @@ function JattariGrowth() {
             </div>
 
             <div className="order-1 lg:order-2">
-              <SectionLabel>Beyond Real Estate</SectionLabel>
-
+              
               <h2 className="max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
                 Film City adds another dimension to the region.
               </h2>
@@ -486,8 +501,7 @@ function JattariGrowth() {
       <section className="border-y border-[#ddd3c1] bg-[#eee8dc] py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="text-center">
-            <SectionLabel>Regional Connectivity</SectionLabel>
-
+            
             <h2 className="mx-auto max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
               Jattari sits inside a growing network.
             </h2>
@@ -504,7 +518,7 @@ function JattariGrowth() {
             <div className="absolute left-[12%] right-[12%] top-16 hidden h-px bg-[#c6b99e] lg:block" />
 
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {corridorPoints.map((item, index) => {
+              {corridorPoints.map((item) => {
                 const Icon = item.icon;
 
                 return (
@@ -515,10 +529,6 @@ function JattariGrowth() {
                     <div className="relative z-10 mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border-4 border-[#eee8dc] bg-[#b99552] text-white">
                       <Icon size={22} strokeWidth={1.7} />
                     </div>
-
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#a0834c]">
-                      0{index + 1}
-                    </span>
 
                     <h3 className="mt-2 text-lg font-semibold">
                       {item.title}
@@ -540,7 +550,7 @@ function JattariGrowth() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
-              <SectionLabel>Life Around Jattari</SectionLabel>
+             
 
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
                 Growth is not only about highways and buildings.
@@ -587,10 +597,9 @@ function JattariGrowth() {
       {/* PROPERTY POTENTIAL */}
       <section className="bg-[#e4ddcf] py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-          <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
             <div>
-              <SectionLabel>Property Perspective</SectionLabel>
-
+              
               <h2 className="max-w-2xl text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
                 What does regional growth mean for property?
               </h2>
@@ -627,10 +636,8 @@ function JattariGrowth() {
               </div>
             </div>
 
-            <div className="rounded-[34px] border border-[#d0c3ad] bg-[#f7f3ea] p-8 sm:p-10">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#2c312b] text-[#d9bd7e]">
-                <Sparkles size={23} />
-              </div>
+            <div className="flex h-full flex-col justify-center rounded-[34px] border border-[#d0c3ad] bg-[#f7f3ea] p-8 sm:p-10">
+             
 
               <h3 className="mt-8 text-2xl font-semibold">
                 Think beyond today's price.
@@ -643,10 +650,7 @@ function JattariGrowth() {
               </p>
 
               <div className="mt-8 border-t border-[#ded5c5] pt-7">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9b783e]">
-                  Smart buyer principle
-                </p>
-
+                
                 <p className="mt-3 text-lg font-medium leading-8 text-[#363830]">
                   “Look at the complete growth ecosystem, not just one
                   headline.”
@@ -661,7 +665,7 @@ function JattariGrowth() {
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="text-center">
-            <SectionLabel>The Bigger Picture</SectionLabel>
+           
 
             <h2 className="text-4xl font-semibold tracking-[-0.04em] sm:text-6xl">
               From local town to growth corridor.
@@ -728,8 +732,6 @@ function JattariGrowth() {
       <section className="border-t border-[#ddd3c1] bg-[#eee8dc] py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-5 sm:px-8">
           <div className="text-center">
-            <SectionLabel>Frequently Asked</SectionLabel>
-
             <h2 className="text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
               Understanding Jattari's growth.
             </h2>
@@ -776,20 +778,15 @@ function JattariGrowth() {
       </section>
 
       {/* LEAD CTA */}
-      <section className="bg-[#292e29] py-20 text-white sm:py-28">
+      <section className="bg-[#e4ddcf] py-20 text-[#272922] sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.75fr] lg:items-center">
             <div>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#d5bd83]">
-                <Navigation size={14} />
-                Explore Jattari
-              </div>
-
               <h2 className="max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
                 Want to understand the opportunity on the ground?
               </h2>
 
-              <p className="mt-6 max-w-2xl leading-8 text-white/60">
+              <p className="mt-6 max-w-2xl leading-8 text-[#66685f]">
                 Explore property options, understand the surrounding
                 development and plan a site visit before making a decision.
               </p>
@@ -805,7 +802,7 @@ function JattariGrowth() {
 
                 <a
                   href="tel:+919999999999"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#272922]/15 bg-white/40 px-6 py-3.5 text-sm font-semibold text-[#272922] transition hover:bg-white/75"
                 >
                   <PhoneCall size={17} />
                   Talk to Us
@@ -813,10 +810,8 @@ function JattariGrowth() {
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-white/10 bg-white/[0.06] p-7 backdrop-blur-sm">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#d4bd83]">
-                Before buying
-              </p>
+            <div className="rounded-[30px] border border-[#272922]/10 bg-white/45 p-7 backdrop-blur-sm">
+             
 
               <div className="mt-6 space-y-4">
                 {[
@@ -828,13 +823,13 @@ function JattariGrowth() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="flex items-start gap-3 border-b border-white/10 pb-4 last:border-0 last:pb-0"
+                    className="flex items-start gap-3 border-b border-[#272922]/10 pb-4 last:border-0 last:pb-0"
                   >
                     <CheckCircle2
                       size={18}
                       className="mt-0.5 shrink-0 text-[#d5bd83]"
                     />
-                    <span className="text-sm leading-6 text-white/70">
+                    <span className="text-sm leading-6 text-[#55574f]">
                       {item}
                     </span>
                   </div>
@@ -845,17 +840,7 @@ function JattariGrowth() {
         </div>
       </section>
 
-      {/* DISCLAIMER */}
-      <section className="bg-[#f0ebe1] py-7">
-        <div className="mx-auto max-w-5xl px-5 text-center sm:px-8">
-          <p className="text-xs leading-6 text-[#85857d]">
-            Property decisions should be based on independently verified
-            information. Buyers should verify ownership, title, land use,
-            approvals, access, registry records and all applicable documents
-            before purchasing any property.
-          </p>
-        </div>
-      </section>
+    
     </main>
   );
 }

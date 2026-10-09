@@ -69,8 +69,8 @@ function HeroImageRotator() {
         initial={{ opacity: 0, rotateY: 75, x: -36 }}
         animate={{ opacity: 1, rotateY: 0, x: 0 }}
         transition={{ duration: 0.9, ease: [0.22, 0.75, 0.25, 1] }}
-        style={{ transformOrigin: "right center", objectPosition: "right top", backfaceVisibility: "hidden" }}
-        className="h-full w-full object-contain object-right opacity-20 sm:opacity-35 lg:opacity-100"
+        style={{ transformOrigin: "right center", objectPosition: "right center", backfaceVisibility: "hidden" }}
+        className="h-full w-full object-cover object-right opacity-20 sm:opacity-35 lg:opacity-100"
       />
     </div>
   );
@@ -340,9 +340,7 @@ export default function Home() {
           >
             <div className="grid lg:grid-cols-[1.2fr_repeat(5,1fr)]">
                   <div className="border-b border-[#E9E1D5] p-6 sm:p-7 lg:border-b-0 lg:border-r">
-                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#8C8173]">
-                  Why Jattari?
-                </p>
+               
                 <h2 className="mt-3 max-w-[230px] text-2xl font-extrabold leading-tight tracking-[-0.03em] text-[#292923]">
                   A location full of possibilities.
                 </h2>
@@ -409,10 +407,6 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
 
           <div className="text-center">
-
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-              Explore Property
-            </span>
 
             <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-medium tracking-[-0.05em] sm:text-5xl">
               Looking for property around Jattari?
@@ -487,10 +481,6 @@ export default function Home() {
 
             <div>
 
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#8C8173]">
-                Life in Jattari
-              </span>
-
               <h2 className="mt-5 text-4xl font-medium tracking-[-0.05em] sm:text-5xl">
                 Education
                 <br />
@@ -558,9 +548,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_0.65fr] lg:items-end">
             <div>
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#8C634D]">
-                Everyday Jattari
-              </span>
+             
               <h2 className="mt-5 max-w-3xl text-4xl font-medium leading-[1.02] tracking-[-0.05em] sm:text-5xl lg:text-6xl">
                 Local life, <span className="text-[#B95F3D]">made easy.</span>
               </h2>
@@ -585,10 +573,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#1e211d]/90 via-[#1e211d]/25 to-transparent" />
                   <div className="relative z-20 p-7 sm:p-10">
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md">
-                      <FeaturedIcon size={15} />
-                      A closer look at Jattari
-                    </span>
+                    
                     <h3 className="mt-5 text-3xl font-semibold text-white sm:text-4xl">
                       {featured.title}
                     </h3>
@@ -644,9 +629,7 @@ export default function Home() {
       <section className="bg-[#F5F2EA] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-              A local useful-to-know
-            </span>
+           
             <h2 className="mt-4 text-4xl font-medium tracking-[-0.05em] sm:text-5xl">
               Everyday essentials, close to home.
             </h2>
@@ -735,9 +718,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_0.7fr] lg:items-end">
             <div>
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#A75D3E]">
-                Growth Anchor &amp; Story
-              </span>
+            
               <h2 className="mt-5 max-w-3xl text-4xl font-medium leading-[0.98] tracking-[-0.06em] sm:text-5xl lg:text-7xl">
                 One region,
                 <span className="text-[#B95F3D]"> multiple growth drivers.</span>
@@ -838,10 +819,6 @@ export default function Home() {
 
           <div className="max-w-3xl">
 
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#D28B65]">
-              Why Jattari?
-            </span>
-
             <h2 className="mt-5 text-4xl font-medium tracking-[-0.04em] sm:text-5xl lg:text-6xl">
               Four reasons to
               <br />
@@ -908,10 +885,6 @@ export default function Home() {
 
           <div className="mb-12">
 
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#C87550]">
-              Featured Residential Project
-            </span>
-
             <h2 className="mt-5 max-w-4xl text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
               Anugrah Homes
               <span className="text-[#C87550]">
@@ -938,13 +911,6 @@ export default function Home() {
             </a>
 
             <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
-
-              <div className="flex items-center gap-3 text-[#C87550]">
-                <Sparkles size={19} />
-                <span className="text-xs font-bold uppercase tracking-widest">
-                  Our Featured Option
-                </span>
-              </div>
 
               <h3 className="mt-6 text-3xl font-medium sm:text-4xl">
                 A residential opportunity positioned around the JattariJewar
@@ -1001,11 +967,6 @@ export default function Home() {
           <div className="grid items-center gap-14 lg:grid-cols-2">
 
             <div>
-
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#B95F3D]">
-                Featured Township
-              </span>
-
               <h2 className="mt-5 text-5xl font-medium tracking-[-0.06em] sm:text-6xl">
                 Skyline
                 <br />
@@ -1095,10 +1056,7 @@ export default function Home() {
 
           <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
             <div>
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#D99A78]">
-                Connected Region
-              </span>
-
+             
               <h2 className="mt-5 max-w-xl text-4xl font-medium leading-tight tracking-[-0.05em] sm:text-5xl lg:text-6xl">
                 Jattari is connected to a wider region.
               </h2>
@@ -1159,11 +1117,6 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
 
             <div className="max-w-3xl">
-
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-black/45">
-                Start Your Search
-              </span>
-
               <h2 className="mt-5 text-4xl font-medium leading-[0.95] tracking-[-0.06em] sm:text-5xl lg:text-7xl">
                 Jattari is changing.
                 <br />

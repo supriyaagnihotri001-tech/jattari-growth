@@ -232,10 +232,7 @@ function Aboutus() {
           </div>
 
           <div>
-            <div className="mb-4 flex items-center gap-3 text-sm font-bold uppercase tracking-wide text-[#D9AA18]">
-              About Us
-              <span className="h-px w-12 bg-[#C87550]" />
-            </div>
+           
 
             <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-[-0.05em] text-[#202027] sm:text-5xl lg:text-6xl">
               Your Trusted Property Partner in Jewar
@@ -278,14 +275,14 @@ function Aboutus() {
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#C87550]"
               >
                 Discover More
-                <ArrowRight size={17} />
+               
               </button>
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D5C8B7] px-6 py-3.5 text-sm font-bold text-[#272922] transition hover:border-[#C87550] hover:text-[#B95F3D]"
               >
                 Talk to Our Team
-                <ArrowUpRight size={17} />
+               
               </Link>
             </div>
           </div>
@@ -329,10 +326,6 @@ function Aboutus() {
         <div className="mx-auto max-w-[1400px]">
           {/* Heading */}
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#C87550]">
-              Who We Are
-            </p>
-
             <h2 className="mt-4 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
               Real estate guidance
               <span className="block text-[#8C6E3F]">
@@ -371,9 +364,7 @@ function Aboutus() {
                     />
 
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 pt-16 text-white">
-                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-                        Our region
-                      </p>
+                     
                       <p className="mt-1 text-xl font-black">
                         Jewar & Jattari Growth Corridor
                       </p>
@@ -403,10 +394,6 @@ function Aboutus() {
                       transition={{ duration: 0.7, delay: 0.85, ease: "easeOut" }}
                       className="rounded-[2rem] border border-[#D5CCBC] bg-white/85 p-6 shadow-lg backdrop-blur-sm"
                     >
-                      <p className="text-xs font-black uppercase tracking-[0.2em] text-[#C87550]">
-                        Inside our approach
-                      </p>
-
                       <p className="mt-3 text-xl font-black text-[#272922]">
                         Better information.
                         <br />
@@ -432,11 +419,7 @@ function Aboutus() {
               transition={{ duration: 0.45, delay: 1.15 }}
               className="pointer-events-none absolute left-1/2 top-8 z-40 -translate-x-1/2 text-center text-white"
             >
-              <div className="rounded-full border border-white/25 bg-black/20 px-5 py-2 backdrop-blur-sm">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em]">
-                  Discover More
-                </span>
-              </div>
+
             </motion.div>
 
             {/* LEFT GATE DOOR */}
@@ -617,15 +600,11 @@ function Aboutus() {
                 className="group rounded-[28px] border border-[#DDD5C6] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
 
-                <div className="flex items-start justify-between">
+                <div className="flex items-start">
 
                   <div className="rounded-2xl bg-[#F1E5D8] p-3 text-[#C87550]">
                     <Icon size={22} />
                   </div>
-
-                  <span className="text-xs font-black text-[#B7AE9D]">
-                    0{index + 1}
-                  </span>
 
                 </div>
 
@@ -656,11 +635,6 @@ function Aboutus() {
         <div className="mx-auto max-w-[1400px]">
 
           <div className="max-w-3xl">
-
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#D9A47D]">
-              Why Choose Our Approach
-            </p>
-
             <h2 className="mt-4 text-4xl font-black leading-tight tracking-tight sm:text-5xl">
               Property decisions
               <span className="block text-[#D9A47D]">
@@ -687,15 +661,11 @@ function Aboutus() {
                   className="group rounded-[28px] border border-white/10 bg-white/[0.05] p-6 transition duration-300 hover:-translate-y-2 hover:bg-white/[0.09]"
                 >
 
-                  <div className="flex items-start justify-between">
+                  <div className="flex items-start">
 
                     <div className="rounded-2xl bg-white/10 p-3">
                       <Icon size={22} />
                     </div>
-
-                    <span className="text-xs font-black text-white/25">
-                      0{index + 1}
-                    </span>
 
                   </div>
 
@@ -730,10 +700,6 @@ function Aboutus() {
           <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
 
             <div>
-
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#C87550]">
-                What We Offer
-              </p>
 
               <h2 className="mt-4 text-4xl font-black leading-tight transition-transform duration-300 hover:-translate-y-1 sm:text-5xl">
                 One place for
@@ -819,11 +785,6 @@ function Aboutus() {
         <div className="relative z-10 mx-auto max-w-[1400px]">
 
           <div className="max-w-3xl">
-
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#9B6A43]">
-              The Region
-            </p>
-
             <h2 className="mt-4 text-4xl font-black leading-tight tracking-tight sm:text-5xl">
               Why the Jewar–Jattari
               <span className="text-[#C87550]">
@@ -849,7 +810,7 @@ function Aboutus() {
                 <Link
                   key={item.title}
                   to={item.link}
-                  className="group rounded-[28px] border border-[#D3CCBC] bg-[#F8F6F0] p-6 transition duration-300 hover:-translate-y-2 hover:bg-white hover:shadow-xl"
+                  className="group flex h-full flex-col rounded-[28px] border border-[#D3CCBC] bg-[#F8F6F0] p-6 transition duration-300 hover:-translate-y-2 hover:bg-white hover:shadow-xl"
                 >
 
                   <div className="flex items-center justify-between">
@@ -870,7 +831,7 @@ function Aboutus() {
                     {item.text}
                   </p>
 
-                  <div className="mt-6 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#9A6E48]">
+                  <div className="mt-auto flex items-center gap-2 pt-6 text-xs font-black uppercase tracking-wider text-[#9A6E48]">
                     Explore
                     
                   </div>
@@ -893,10 +854,6 @@ function Aboutus() {
         <div className="mx-auto max-w-[1400px]">
 
           <div className="text-center">
-
-            <p className="text-xs font-black uppercase tracking-[0.25em] text-[#C87550]">
-              Who We Help
-            </p>
 
             <h2 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
               Different buyers.
@@ -957,11 +914,6 @@ function Aboutus() {
 
             <div className="p-8 sm:p-12 lg:p-16">
 
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs font-black uppercase tracking-wider text-[#66705E]">
-                <Target size={14} />
-                Vision & Commitment
-              </div>
-
               <h2 className="mt-6 text-4xl font-black leading-tight tracking-tight sm:text-5xl">
                 Build trust first.
                 <span className="block text-[#7C6242]">
@@ -1013,10 +965,6 @@ function Aboutus() {
 
                 <div className="rounded-3xl border border-white/20 bg-white/10 p-6 text-white backdrop-blur-md">
 
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/60">
-                    Our focus
-                  </p>
-
                   <p className="mt-3 text-2xl font-black">
                     Better information.
                     <br />
@@ -1048,11 +996,6 @@ function Aboutus() {
           <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
 
             <div>
-
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#B95F3D]">
-                Simple Process
-              </p>
-
               <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
                 From first
                 <span className="text-[#B95F3D]">
