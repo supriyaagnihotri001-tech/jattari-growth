@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -79,6 +79,7 @@ function SectionLabel({ children, light = false }) {
 
 function Contact() {
   const [searchParams] = useSearchParams();
+  const location = useLocation();
   const [formData, setFormData] = useState(() => ({
     name: "",
     phone: "",
@@ -92,6 +93,11 @@ function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (location.hash !== "#enquiry") return;
+    document.getElementById("enquiry")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [location.pathname, location.hash]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -294,6 +300,11 @@ function Contact() {
         className="scroll-mt-20 py-20 sm:py-28"
       >
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="mb-8 flex justify-end">
+            <Link to="/#properties" className="inline-flex items-center gap-2 rounded-full border border-[#D5C8B7] bg-white/80 px-5 py-3 text-sm font-semibold text-[#272922] shadow-sm transition hover:-translate-y-0.5 hover:border-[#C87550] hover:text-[#B95F3D]">
+              <ArrowRight size={17} className="rotate-180" /> Back to property options
+            </Link>
+          </div>
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
             {/* LEFT CONTENT */}
             <div className="lg:sticky lg:top-28">

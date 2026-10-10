@@ -15,6 +15,30 @@ import {
   Sparkles,
   TrendingUp,
 } from "lucide-react";
+import airportImage from "../assets/Images/airport.png";
+import yamunaExpresswayImage from "../assets/Images/yamunaexpressway.png";
+import connectivityImage from "../assets/Images/connectivity.png";
+
+const regionSlides = [
+  {
+    title: "Noida International Airport",
+    location: "Jewar · Gautam Buddha Nagar",
+    image: airportImage,
+    alt: "Noida International Airport development at Jewar",
+  },
+  {
+    title: "Yamuna Expressway corridor",
+    location: "Connecting Jewar with Greater Noida and Agra",
+    image: yamunaExpresswayImage,
+    alt: "Yamuna Expressway regional connectivity",
+  },
+  {
+    title: "A connected growth region",
+    location: "Jattari · Jewar · Greater Noida",
+    image: connectivityImage,
+    alt: "Regional connectivity around Jattari and Jewar",
+  },
+];
 
 const upcomingProjects = [
   {
@@ -120,25 +144,6 @@ const projectFactors = [
   },
 ];
 
-function SectionLabel({ children, light = false }) {
-  return (
-    <div
-      className={`mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.22em] ${
-        light
-          ? "border border-white/15 bg-white/10 text-[#dbc58f]"
-          : "border border-[#cbb98f] bg-[#eee7d8] text-[#80652f]"
-      }`}
-    >
-      <span
-        className={`h-1.5 w-1.5 rounded-full ${
-          light ? "bg-[#d5b875]" : "bg-[#a47732]"
-        }`}
-      />
-      {children}
-    </div>
-  );
-}
-
 function ProjectTag({ children }) {
   return (
     <span className="rounded-full border border-[#ddd2be] bg-[#f8f5ed] px-3 py-1.5 text-[11px] font-semibold text-[#696454]">
@@ -148,11 +153,11 @@ function ProjectTag({ children }) {
 }
 
 function Projects() {
-  const [projectSlide, setProjectSlide] = useState(0);
+  const [regionSlide, setRegionSlide] = useState(0);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setProjectSlide((current) => (current + 1) % currentProjects.length);
+      setRegionSlide((current) => (current + 1) % regionSlides.length);
     }, 5000);
     return () => window.clearInterval(intervalId);
   }, []);
@@ -171,17 +176,17 @@ function Projects() {
           >
             
             <h1 className="max-w-3xl text-4xl font-black leading-[1.04] tracking-[-0.055em] text-[#202027] sm:text-5xl lg:text-7xl">
-              Find a place to <span className="text-[#B95F3D]">call your own.</span>
+              Discover the <span className="text-[#B95F3D]">Jattari region.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-[#686c75] sm:text-lg sm:leading-8">
-              Explore residential projects in Jattari and the wider growth corridor. Compare locations, learn about each project and plan your next step.
+              Explore the places, transport links and major developments shaping Jattari and the wider Jewar corridor—from Noida International Airport to the Yamuna Expressway.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#current-projects" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#C87550]">
-                View Current Projects 
-              </a>
-              <a href="#explore" className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D5C8B7] bg-white/70 px-6 py-3.5 text-sm font-bold text-[#272922] transition hover:-translate-y-1 hover:border-[#C87550] hover:text-[#B95F3D]">
-                Explore Properties 
+              <Link to="/destinations/jewar" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#C87550]">
+                Explore Jewar <ArrowRight size={17} />
+              </Link>
+              <a href="#regional-development" className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D5C8B7] bg-white/70 px-6 py-3.5 text-sm font-bold text-[#272922] transition hover:-translate-y-1 hover:border-[#C87550] hover:text-[#B95F3D]">
+                Regional development
               </a>
             </div>
           </motion.div>
@@ -189,35 +194,32 @@ function Projects() {
           <div className="relative mx-auto w-full max-w-[680px]">
             <div className="relative h-[360px] overflow-hidden rounded-[2rem] bg-[#d8d0c2] shadow-[0_30px_80px_rgba(69,56,38,0.18)] sm:h-[470px] sm:rounded-[2.5rem]">
               <AnimatePresence mode="wait" initial={false}>
-                <motion.a
-                  key={currentProjects[projectSlide].title}
-                  href={currentProjects[projectSlide].url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Explore ${currentProjects[projectSlide].title}`}
+                <motion.div
+                  key={regionSlides[regionSlide].title}
                   initial={{ opacity: 0, scale: 1.03 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.45 }}
-                  className="absolute inset-0 block"
+                  className="absolute inset-0"
                 >
-                  <img src={currentProjects[projectSlide].image} alt={currentProjects[projectSlide].title} className="h-full w-full object-cover" />
+                  <img src={regionSlides[regionSlide].image} alt={regionSlides[regionSlide].alt} className="h-full w-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#171914]/85 via-[#171914]/10 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-9">
-                    <h2 className="mt-2 text-2xl font-bold sm:text-4xl">{currentProjects[projectSlide].title}</h2>
-                    <p className="mt-2 text-sm text-white/80 sm:text-base">{currentProjects[projectSlide].location}</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/75">Regional place</p>
+                    <h2 className="mt-2 text-2xl font-bold sm:text-4xl">{regionSlides[regionSlide].title}</h2>
+                    <p className="mt-2 text-sm text-white/80 sm:text-base">{regionSlides[regionSlide].location}</p>
                   </div>
-                </motion.a>
+                </motion.div>
               </AnimatePresence>
-              <div className="absolute right-5 top-5 flex gap-2 sm:right-7 sm:top-7" aria-label="Choose featured project">
-                {currentProjects.map((project, index) => (
+              <div className="absolute right-5 top-5 flex gap-2 sm:right-7 sm:top-7" aria-label="Choose featured regional place">
+                {regionSlides.map((place, index) => (
                   <button
-                    key={project.title}
+                    key={place.title}
                     type="button"
-                    onClick={() => setProjectSlide(index)}
-                    aria-label={`Show ${project.title}`}
-                    aria-pressed={projectSlide === index}
-                    className={`h-2.5 rounded-full transition-all ${projectSlide === index ? "w-8 bg-white" : "w-2.5 bg-white/55 hover:bg-white/80"}`}
+                    onClick={() => setRegionSlide(index)}
+                    aria-label={`Show ${place.title}`}
+                    aria-pressed={regionSlide === index}
+                    className={`h-2.5 rounded-full transition-all ${regionSlide === index ? "w-8 bg-white" : "w-2.5 bg-white/55 hover:bg-white/80"}`}
                   />
                 ))}
               </div>
@@ -303,7 +305,7 @@ function Projects() {
       {/* =========================================================
           UPCOMING PROJECT
       ========================================================== */}
-      <section className="border-y border-[#ddd3c1] bg-[#e9e1d2] py-20 sm:py-28">
+      <section id="regional-development" className="scroll-mt-20 border-y border-[#ddd3c1] bg-[#e9e1d2] py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div>
@@ -576,8 +578,6 @@ function Projects() {
       >
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="text-center">
-            <SectionLabel>Explore All Jattari</SectionLabel>
-
             <h2 className="mx-auto max-w-3xl text-4xl font-semibold tracking-[-0.04em] sm:text-6xl">
               More than individual projects.
             </h2>
@@ -645,8 +645,6 @@ function Projects() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
             <div>
-              <SectionLabel>Before You Buy</SectionLabel>
-
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">
                 Evaluate the complete project story.
               </h2>

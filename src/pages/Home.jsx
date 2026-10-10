@@ -1,5 +1,5 @@
 ﻿import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import airportImage from "../assets/Images/airport.png";
 import connectivityImage from "../assets/Images/connectivity.png";
@@ -240,6 +240,15 @@ const propertyOptions = [
 ];
 
 export default function Home() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash !== "#properties") return;
+    requestAnimationFrame(() => {
+      document.getElementById("properties")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [location.hash]);
+
   return (
     <>
      
@@ -470,7 +479,6 @@ export default function Home() {
                   key={isClone ? "property-copy" : "property-cards"}
                   className="property-marquee-group"
                   aria-hidden={isClone || undefined}
-                  inert={isClone || undefined}
                 >
                   {propertyOptions.map((item) => {
                     const CardLink = item.external ? "a" : Link;
@@ -687,10 +695,6 @@ export default function Home() {
             <div className="p-7 sm:p-10">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-[#E9E1D5] px-3 py-1.5 text-xs font-semibold text-[#766F66]">
-                    <span className="h-2 w-2 rounded-full bg-[#766F66]" />
-                    Local store guide
-                  </span>
                   <h3 className="mt-5 text-2xl font-semibold sm:text-3xl">
                     Patanjali Arogya Kendra
                   </h3>
