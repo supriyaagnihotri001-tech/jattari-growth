@@ -25,14 +25,14 @@ const upcomingProjects = [
     subtitle: "A major regional development opportunity",
     description:
       "The International Film City planned in the YEIDA region is one of the major developments shaping the wider Jewar growth corridor. Its location near Noida International Airport adds another important dimension to the region's future.",
-    location: "YEIDA Region · Near Noida International Airport",
+   
     highlights: [
       "Entertainment & media ecosystem",
       "Regional economic activity",
       "New business opportunities",
       "Airport-led development",
     ],
-    link: "/about",
+    link: "/jewar-development",
   },
 ];
 
@@ -44,8 +44,7 @@ const currentProjects = [
     subtitle: "Residential development in Jattari",
     description:
       "Anugrah Homes is one of our current residential property projects, created around the growing demand for well-connected homes and plots in the Jattari region.",
-    location: "Jattari, Aligarh, Uttar Pradesh",
-    icon: Home,
+   
     image: "/Images/Anugrahimg.webp",
     url: "https://www.anugrahhomes.com/",
     highlights: [
@@ -62,8 +61,8 @@ const currentProjects = [
     subtitle: "Residential opportunity near the airport growth corridor",
     description:
       "Skyline Aero Homes is another current project positioned around the changing real-estate landscape of the wider Jattari and Jewar-side growth region.",
-    location: "Jattari Growth Corridor",
-    icon: Plane,
+   
+    
     image: "/Images/skylinehomesimg1.jpg",
     url: "https://www.skylineaerohomes.com/",
     highlights: [
@@ -170,9 +169,7 @@ function Projects() {
             transition={{ duration: 0.7 }}
             className="relative z-10"
           >
-            <div className="mb-5 flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-[#B95F3D]">
-              Our Projects <span className="h-px w-12 bg-[#C87550]" />
-            </div>
+            
             <h1 className="max-w-3xl text-4xl font-black leading-[1.04] tracking-[-0.055em] text-[#202027] sm:text-5xl lg:text-7xl">
               Find a place to <span className="text-[#B95F3D]">call your own.</span>
             </h1>
@@ -181,10 +178,10 @@ function Projects() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a href="#current-projects" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#272922] px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-1 hover:bg-[#C87550]">
-                View Current Projects <ArrowRight size={17} />
+                View Current Projects 
               </a>
               <a href="#explore" className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D5C8B7] bg-white/70 px-6 py-3.5 text-sm font-bold text-[#272922] transition hover:-translate-y-1 hover:border-[#C87550] hover:text-[#B95F3D]">
-                Explore Properties <ArrowUpRight size={16} />
+                Explore Properties 
               </a>
             </div>
           </motion.div>
@@ -207,7 +204,6 @@ function Projects() {
                   <img src={currentProjects[projectSlide].image} alt={currentProjects[projectSlide].title} className="h-full w-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#171914]/85 via-[#171914]/10 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-9">
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#f0c08a]">{currentProjects[projectSlide].status}</p>
                     <h2 className="mt-2 text-2xl font-bold sm:text-4xl">{currentProjects[projectSlide].title}</h2>
                     <p className="mt-2 text-sm text-white/80 sm:text-base">{currentProjects[projectSlide].location}</p>
                   </div>
@@ -226,9 +222,7 @@ function Projects() {
                 ))}
               </div>
             </div>
-            <div className="mt-4 flex items-center justify-between px-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#8c8173] sm:text-xs">
-              <span>Jattari properties</span>
-              <span>Explore current projects</span>
+            <div className="mt-4 flex items-center justify-between px-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#8c8173] sm:text-xs"> 
             </div>
           </div>
         </div>
@@ -239,7 +233,7 @@ function Projects() {
       <section className="bg-white py-20 sm:py-24 lg:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-12">
           <div className="lg:sticky lg:top-28 lg:h-fit">
-            <SectionLabel>Featured Projects</SectionLabel>
+           
 
             <h2 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-[-0.05em] text-[#202027] sm:text-5xl lg:text-6xl">
               Property opportunities near Jewar Airport.
@@ -256,7 +250,7 @@ function Projects() {
               className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#E5B51B] px-7 py-4 text-sm font-bold text-white shadow-[0_12px_28px_rgba(190,148,18,0.22)] transition hover:-translate-y-1 hover:bg-[#D3A30B]"
             >
               View All Projects
-              <ArrowRight size={18} />
+             
             </a>
           </div>
 
@@ -285,15 +279,6 @@ function Projects() {
                       {project.description}
                     </p>
 
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Visit ${project.title} official website`}
-                      className="mt-7 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#E5B51B] text-white transition hover:-translate-y-1 hover:bg-[#D3A30B]"
-                    >
-                      <ArrowUpRight size={23} />
-                    </a>
                   </div>
 
                   <a
@@ -322,21 +307,15 @@ function Projects() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div>
-              <SectionLabel>Coming Next</SectionLabel>
+             
 
-              <h2 className="text-4xl font-semibold tracking-[-0.04em] sm:text-6xl">
-                Upcoming Project
-              </h2>
+             
             </div>
 
-            <div className="flex items-center gap-2 text-sm font-semibold text-[#80652f]">
-              <CalendarClock size={17} />
-              Future Development
-            </div>
           </div>
 
           {upcomingProjects.map((project) => {
-            const Icon = project.icon;
+            const Icon = project.icon || Home;
 
             return (
               <div
@@ -353,13 +332,6 @@ function Projects() {
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1f241f]/80 via-[#1f241f]/10 to-transparent" />
-
-                    <div className="absolute left-6 top-6">
-                      <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#292d28]/70 px-4 py-2 text-xs font-bold text-white backdrop-blur-md">
-                        <span className="h-2 w-2 rounded-full bg-[#d5bb78]" />
-                        UPCOMING PROJECT
-                      </span>
-                    </div>
 
                     <div className="absolute bottom-7 left-7 right-7">
                       <p className="text-xs uppercase tracking-[0.2em] text-white/65">
@@ -434,7 +406,7 @@ function Projects() {
       >
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
-            <SectionLabel>Available Now</SectionLabel>
+            
 
             <h2 className="text-4xl font-semibold tracking-[-0.04em] sm:text-6xl">
               Our Current Projects
@@ -449,7 +421,7 @@ function Projects() {
 
           <div className="mt-12 grid gap-7 lg:grid-cols-2">
             {currentProjects.map((project) => {
-              const Icon = project.icon;
+              const Icon = project.icon || Home;
 
               return (
                 <a
@@ -458,7 +430,7 @@ function Projects() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Visit ${project.title} website`}
-                  className="group block cursor-pointer overflow-hidden rounded-[32px] border border-[#ddd5c7] bg-[#fbf9f4] transition duration-300 hover:-translate-y-2 hover:border-[#b99552] hover:shadow-[0_25px_60px_rgba(70,59,40,0.10)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C87550]"
+                  className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-[32px] border border-[#ddd5c7] bg-[#fbf9f4] transition duration-300 hover:-translate-y-2 hover:border-[#b99552] hover:shadow-[0_25px_60px_rgba(70,59,40,0.10)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C87550]"
                 >
                   {/* Image */}
                   <div className="relative h-[310px] overflow-hidden">
@@ -469,12 +441,6 @@ function Projects() {
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-[#222720]/75 via-transparent to-transparent" />
-
-                    <div className="absolute left-5 top-5">
-                      <span className="rounded-full border border-white/20 bg-[#292d28]/70 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur">
-                        {project.status}
-                      </span>
-                    </div>
 
                     <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
                       <div>
@@ -494,22 +460,22 @@ function Projects() {
                   </div>
 
                   {/* Content */}
-                  <div className="p-7 sm:p-8">
-                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#9b783e]">
+                  <div className="flex flex-1 flex-col p-7 sm:p-8">
+                    <p className="min-h-10 text-xs font-bold uppercase tracking-[0.16em] text-[#9b783e]">
                       {project.subtitle}
                     </p>
 
-                    <p className="mt-4 text-sm leading-7 text-[#6d6e66]">
+                    <p className="mt-4 min-h-14 text-sm leading-7 text-[#6d6e66]">
                       {project.description}
                     </p>
 
-                    <div className="mt-6 flex flex-wrap gap-2">
+                    <div className="mt-6 flex min-h-10 flex-wrap content-start gap-2">
                       {project.highlights.map((highlight) => (
                         <ProjectTag key={highlight}>{highlight}</ProjectTag>
                       ))}
                     </div>
 
-                    <span className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#7e622f] transition group-hover:gap-3">
+                    <span className="mt-auto inline-flex items-center gap-2 pt-7 text-sm font-bold text-[#7e622f] transition group-hover:gap-3">
                       Visit Project Website
                       
                     </span>
@@ -528,7 +494,7 @@ function Projects() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
-              <SectionLabel light>Choose Your Direction</SectionLabel>
+              
 
               <h2 className="text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
                 Looking for the right property opportunity?
@@ -550,7 +516,7 @@ function Projects() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[26px] border border-white/10 bg-white/[0.06] p-7">
+              <div className="flex h-full flex-col rounded-[26px] border border-white/10 bg-white/[0.06] p-7">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-[#d6bb7d]">
                   <Home size={21} />
                 </div>
@@ -559,14 +525,14 @@ function Projects() {
                   I want a property
                 </h3>
 
-                <p className="mt-3 text-sm leading-7 text-white/55">
+                <p className="mt-3 flex-1 text-sm leading-7 text-white/55">
                   Explore residential projects and property options suitable
                   for your requirements.
                 </p>
 
                 <Link
                   to="/contact"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#d8bd80]"
+                  className="mt-6 inline-flex items-center gap-2 pt-2 text-sm font-semibold text-[#d8bd80]"
                 >
                   Find a property
                   
@@ -574,7 +540,7 @@ function Projects() {
                 </Link>
               </div>
 
-              <div className="rounded-[26px] border border-white/10 bg-white/[0.06] p-7">
+              <div className="flex h-full flex-col rounded-[26px] border border-white/10 bg-white/[0.06] p-7">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-[#d6bb7d]">
                   <TrendingUp size={21} />
                 </div>
@@ -583,14 +549,14 @@ function Projects() {
                   I want to invest
                 </h3>
 
-                <p className="mt-3 text-sm leading-7 text-white/55">
+                <p className="mt-3 flex-1 text-sm leading-7 text-white/55">
                   Understand the growth corridor and evaluate opportunities
                   based on your own investment criteria.
                 </p>
 
                 <Link
                   to="/jattari-growth"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#d8bd80]"
+                  className="mt-6 inline-flex items-center gap-2 pt-2 text-sm font-semibold text-[#d8bd80]"
                 >
                   Explore growth
                   
@@ -625,12 +591,12 @@ function Projects() {
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {exploreProperties.map((item) => {
-              const Icon = item.icon;
+              const Icon = item.icon || Home;
 
               return (
                 <div
                   key={item.title}
-                  className="group rounded-[27px] border border-[#d8cfbf] bg-[#f8f5ed] p-6 transition duration-300 hover:-translate-y-2 hover:border-[#b99552] hover:shadow-[0_20px_45px_rgba(72,61,42,0.09)]"
+                  className="group flex h-full flex-col rounded-[27px] border border-[#d8cfbf] bg-[#f8f5ed] p-6 transition duration-300 hover:-translate-y-2 hover:border-[#b99552] hover:shadow-[0_20px_45px_rgba(72,61,42,0.09)]"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e7dfcf] text-[#8b6b35]">
@@ -644,13 +610,13 @@ function Projects() {
                     {item.title}
                   </h3>
 
-                  <p className="mt-3 text-sm leading-7 text-[#707168]">
+                  <p className="mt-3 flex-1 text-sm leading-7 text-[#707168]">
                     {item.text}
                   </p>
 
                   <Link
                     to="/contact"
-                    className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-[#876934]"
+                    className="mt-6 inline-flex items-center gap-2 pt-2 text-xs font-bold uppercase tracking-[0.12em] text-[#876934]"
                   >
                     Explore
                    
@@ -695,7 +661,7 @@ function Projects() {
             <div className="grid gap-4 sm:grid-cols-2">
               {projectFactors.map((item) => (
                 <div
-                  key={item.number}
+                  key={item.title}
                   className="rounded-[25px] border border-[#ddd5c7] bg-[#fbf9f4] p-6"
                 >
                   <span className="text-xs font-bold tracking-[0.18em] text-[#a17e43]">
@@ -724,11 +690,9 @@ function Projects() {
         <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full border-[60px] border-[#c8b998]/20" />
 
         <div className="relative mx-auto max-w-5xl px-5 text-center sm:px-8">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#292e29] text-[#d5b978]">
-            <Sparkles size={23} />
-          </div>
+          
 
-          <SectionLabel>Let's Explore</SectionLabel>
+          
 
           <h2 className="mx-auto max-w-4xl text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">
             Your next property opportunity could start with one conversation.
@@ -759,19 +723,6 @@ function Projects() {
         </div>
       </section>
 
-      {/* =========================================================
-          DISCLAIMER
-      ========================================================== */}
-      <section className="bg-[#f0ebe1] py-7">
-        <div className="mx-auto max-w-5xl px-5 text-center sm:px-8">
-          <p className="text-xs leading-6 text-[#85857d]">
-            Project information, availability and development status may change
-            over time. Buyers should independently verify property ownership,
-            title, approvals, land use, access, registry records and other
-            applicable documents before making any property purchase decision.
-          </p>
-        </div>
-      </section>
     </main>
   );
 }

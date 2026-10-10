@@ -175,14 +175,15 @@ const education = [
   {  name: "Gurukul Academy", location: "Jattari", image: gurukulAcademyImage, href: "/contact#enquiry" },
 ];
 const nearbyCities = [
-  "Palwal",
-  "Aligarh",
-  "Khair",
-  "Jewar",
-  "Greater Noida",
-  "Mathura",
-  "Agra",
+  { name: "Palwal", slug: "palwal", image: "/Images/palwal.png" },
+  { name: "Aligarh", slug: "aligarh", image: "/Images/Aligarah.png" },
+  { name: "Khair", slug: "khair", image: "/Images/Khair.png" },
+  { name: "Jewar", slug: "jewar", image: "/Images/Jewar.png" },
+  { name: "Greater Noida", slug: "greater-noida", image: "/Images/GreaterNoida.png" },
+  { name: "Mathura", slug: "mathura", image: "/Images/Mathura.png" },
+  { name: "Agra", slug: "agra", image: "/Images/Agra.png" },
 ];
+const MotionLink = motion(Link);
 
 const localLife = [
   {
@@ -400,15 +401,58 @@ export default function Home() {
       </section>
 
       {/* =====================================================
+          NEARBY CITIES / LOCATION
+      ====================================================== */}
+      <section className="px-5 pt-12 pb-8 sm:px-8 sm:pt-16 sm:pb-10 lg:px-12 lg:pt-20 lg:pb-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-8 max-w-2xl">
+            <h2 className="text-3xl font-extrabold tracking-[-0.04em] text-[#292923] sm:text-4xl">
+              Nearby destinations
+            </h2>
+            <p className="mt-3 leading-7 text-[#766F66]">
+              Explore the cities and regional centres around Jattari.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3 lg:gap-6">
+            {nearbyCities.map((city, index) => (
+              <MotionLink
+                key={city.name}
+                to={`/destinations/${city.slug}`}
+                aria-label={`Explore ${city.name}`}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                whileHover={{ y: -7, scale: 1.015 }}
+                whileTap={{ scale: 0.99 }}
+                className={`group relative block h-56 overflow-hidden rounded-2xl bg-[#292e29] shadow-sm transition-shadow duration-300 hover:shadow-[0_22px_48px_rgba(39,41,34,0.2)] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#C87550] sm:h-72 lg:h-[340px] ${index === nearbyCities.length - 1 ? "lg:col-start-2" : ""}`}
+              >
+                <img
+                  src={city.image}
+                  alt={`${city.name} destination`}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:-translate-y-1 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+                <h3 className="absolute bottom-5 left-5 text-xl font-bold text-white sm:text-2xl">
+                  {city.name}
+                </h3>
+              </MotionLink>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
           PROPERTY DISCOVERY
       ====================================================== */}
-      <section id="properties" className="scroll-mt-28 bg-[#F5F2EA] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <section id="properties" className="scroll-mt-28 bg-[#F5F2EA] px-5 pt-10 pb-24 sm:px-8 sm:pt-12 lg:px-12 lg:pt-16 lg:pb-32">
 
         <div className="mx-auto max-w-7xl">
 
           <div className="text-center">
 
-            <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-medium tracking-[-0.05em] sm:text-5xl">
+            <h2 className="mx-auto max-w-3xl text-4xl font-medium tracking-[-0.05em] sm:text-5xl">
               Looking for property around Jattari?
             </h2>
 
@@ -873,234 +917,6 @@ export default function Home() {
 
           </motion.div>
 
-        </div>
-      </section>
-
-      {/* =====================================================
-          ANUGRAH HOMES
-      ====================================================== */}
-      <section className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-
-        <div className="mx-auto max-w-7xl">
-
-          <div className="mb-12">
-
-            <h2 className="mt-5 max-w-4xl text-4xl font-medium tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-              Anugrah Homes
-              <span className="text-[#C87550]">
-                {" "} Jattari
-              </span>
-            </h2>
-
-          </div>
-
-          <div className="grid overflow-hidden rounded-[3rem] bg-white shadow-xl shadow-black/5 lg:grid-cols-[1fr_0.85fr]">
-
-            <a
-              href="https://www.anugrahhomes.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit the official Anugrah Homes website"
-              className="group block min-h-[500px] overflow-hidden"
-            >
-              <img
-                src={anugrahHomesImage}
-                alt="Anugrah Homes residential property"
-                className="h-full min-h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-            </a>
-
-            <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
-
-              <h3 className="mt-6 text-3xl font-medium sm:text-4xl">
-                A residential opportunity positioned around the JattariJewar
-                growth corridor.
-              </h3>
-
-              <p className="mt-6 leading-7 text-black/50">
-                Anugrah Homes presents plotted-development options with a
-                location story centred around Jewar Airport, Film City and
-                regional connectivity.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-2">
-
-                {[
-                  "Residential Plots",
-                  "Prime Location",
-                  "Modern Amenities",
-                  "Site Visit",
-                ].map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full bg-[#E9E1D5] px-4 py-2 text-xs font-semibold text-[#B95F3D]"
-                  >
-                    {item}
-                  </span>
-                ))}
-
-              </div>
-
-              <a
-                href="https://www.anugrahhomes.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-9 inline-flex w-fit items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1 hover:bg-[#C87550]"
-              >
-                Explore Anugrah Homes
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* =====================================================
-          SKYLINE
-      ====================================================== */}
-      <section className="bg-[#F5F2EA] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-
-        <div className="mx-auto max-w-7xl">
-
-          <div className="grid items-center gap-14 lg:grid-cols-2">
-
-            <div>
-              <h2 className="mt-5 text-5xl font-medium tracking-[-0.06em] sm:text-6xl">
-                Skyline
-                <br />
-                <span className="text-[#B95F3D]">
-                  Aero Homes.
-                </span>
-              </h2>
-
-              <p className="mt-7 max-w-xl text-lg leading-8 text-black/50">
-                A residential township option positioned around the Jewar
-                Airport and Yamuna Expressway growth corridor.
-              </p>
-
-              <div className="mt-8 grid grid-cols-2 gap-3">
-
-                {[
-                  "Residential Plots",
-                  "Wide Roads",
-                  "Green Parks",
-                  "Security",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl bg-white/60 p-4 text-sm font-semibold"
-                  >
-                    {item}
-                  </div>
-                ))}
-
-              </div>
-
-              <a
-                href="https://www.skylineaerohomes.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-9 inline-flex items-center gap-3 rounded-full bg-[#272922] px-7 py-4 text-sm font-semibold text-white transition hover:-translate-y-1"
-              >
-                Explore Skyline Aero Homes
-              </a>
-
-            </div>
-
-            <div className="relative">
-
-              <div className="overflow-hidden rounded-[3rem]">
-                <a
-                  href="https://www.skylineaerohomes.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Visit the official Skyline Aero Homes website"
-                  className="group block min-h-[500px]"
-                >
-                  <img
-                    src={skylineAeroHomesImage}
-                    alt="Skyline Aero Homes residential property"
-                    className="h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </a>
-              </div>
-
-              <div className="pointer-events-none absolute -bottom-6 -left-4 rounded-2xl bg-white p-5 shadow-xl sm:left-6">
-
-                <p className="text-xs uppercase tracking-widest text-black/30">
-                  Location
-                </p>
-
-                <p className="mt-2 font-semibold">
-                  Near Jewar Airport
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* =====================================================
-          NEARBY CITIES / LOCATION
-      ====================================================== */}
-      <section className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
-        <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[#292e29] px-6 py-10 text-white sm:px-10 sm:py-14 lg:px-14 lg:py-16">
-          <div className="pointer-events-none absolute -right-24 -top-28 -z-10 h-80 w-80 rounded-full bg-[#C87550]/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-40 left-1/3 -z-10 h-80 w-80 rounded-full bg-[#D5C8B7]/10 blur-3xl" />
-
-          <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-            <div>
-             
-              <h2 className="mt-5 max-w-xl text-4xl font-medium leading-tight tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-                Jattari is connected to a wider region.
-              </h2>
-
-              <p className="mt-6 max-w-lg leading-7 text-white/60">
-                Explore the surrounding cities and destinations that shape the
-                broader geographic context of Jattari.
-              </p>
-
-              <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C87550] text-white">
-                  <MapPin size={18} />
-                </span>
-                <span>
-                  <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
-                    Regional hub
-                  </span>
-                  <span className="mt-0.5 block text-sm font-semibold">
-                    Jattari, Aligarh
-                  </span>
-                </span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-              {nearbyCities.map((city, index) => (
-                <motion.div
-                  key={city}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group flex min-h-24 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-4 transition duration-300 hover:-translate-y-1 hover:border-[#D99A78]/60 hover:bg-white/10 sm:min-h-28 sm:flex-col sm:items-start sm:justify-between sm:p-5"
-                >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#D99A78]/15 text-[#D99A78] transition-colors group-hover:bg-[#D99A78] group-hover:text-[#292e29]">
-                    <MapPin size={17} />
-                  </span>
-                  <span className="text-sm font-semibold text-white/90 sm:text-base">
-                    {city}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

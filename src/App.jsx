@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home.jsx";
 import JewarAirport from "./pages/JewarAirport";
+import JewarDevelopment from "./pages/JewarDevelopment.jsx";
+import DestinationDetail from "./pages/DestinationDetail.jsx";
 import Aboutus from "./pages/Aboutus.jsx";
 import JattariGrowth from "./pages/JattariGrowth";
 import Projects from "./pages/Projects";
@@ -122,6 +124,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/jewar-airport" element={<JewarAirport />} />
+        <Route path="/jewar-development" element={<JewarDevelopment />} />
+        <Route path="/destinations/:slug" element={<DestinationDetail />} />
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/jattari-growth" element={<JattariGrowth />} />
         <Route path="/projects" element={<Projects />} />
