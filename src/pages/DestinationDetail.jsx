@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ExternalLink, MapPin } from "lucide-react";
 import palwal from "../data/destinations/palwal";
 import aligarh from "../data/destinations/aligarh";
@@ -40,12 +41,6 @@ export default function DestinationDetail() {
       <section className="px-5 pb-14 pt-28 sm:px-8 lg:px-12 lg:pb-20 lg:pt-36">
         <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div>
-            <Link to="/" className="inline-flex items-center gap-2 text-sm font-semibold text-[#8A7259] hover:text-[#B95F3D]">
-              <ArrowLeft size={16} /> All nearby destinations
-            </Link>
-            <p className="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#9B783E]">
-              <MapPin size={15} /> {city.region}
-            </p>
             <h1 className="mt-4 text-5xl font-extrabold leading-[1.02] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
               {city.name}
             </h1>
@@ -62,7 +57,7 @@ export default function DestinationDetail() {
       <section className="bg-white px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:gap-16">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9B783E]">City overview</p>
+           
             <h2 className="mt-4 text-3xl font-bold tracking-[-0.04em] sm:text-4xl">A closer look at {city.name}</h2>
           </div>
           <p className="text-base leading-8 text-[#6D6E66]">{city.overview}</p>
@@ -72,13 +67,33 @@ export default function DestinationDetail() {
       <section className="px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <h2 className="text-3xl font-bold tracking-[-0.04em] sm:text-4xl">Famous places and local highlights</h2>
+          <p className="mt-4 max-w-3xl text-base leading-7 text-[#6D6E66]">
+            Get to know the landmarks, local life and regional character that make {city.name} distinctive. These highlights offer a starting point for exploring the area.
+          </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {city.highlights.map((item, index) => (
-              <article key={item.title} className="rounded-[24px] border border-[#ded5c5] bg-[#FBF9F4] p-6 sm:p-7">
-                <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#B98552]">0{index + 1}</span>
-                <h3 className="mt-4 text-xl font-bold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#6D6E66]">{item.text}</p>
-              </article>
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -6 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+                className="group overflow-hidden rounded-[24px] border border-[#ded5c5] bg-[#FBF9F4] transition-shadow duration-300 hover:shadow-[0_20px_45px_rgba(45,38,27,0.12)]"
+              >
+                <div className="h-48 overflow-hidden bg-[#e9e1d2]">
+                  <img
+                    src={item.image || city.gallery[index] || city.image}
+                    alt={`${item.title} in ${city.name}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6 sm:p-7">
+                  <h3 className="mt-4 text-xl font-bold">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-[#6D6E66]">{item.text}</p>
+                </div>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -87,7 +102,7 @@ export default function DestinationDetail() {
       {city.projects && (
         <section className="bg-[#292e29] px-5 py-16 text-white sm:px-8 lg:px-12 lg:py-20">
           <div className="mx-auto max-w-7xl">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#D99A78]">Residential projects around Jattari</p>
+            
             <h2 className="mt-4 text-3xl font-bold tracking-[-0.04em] sm:text-4xl">Anugrah Homes and Skyline Aero Homes</h2>
             <p className="mt-4 max-w-3xl leading-7 text-white/65">
               These residential projects are included as local property options in the wider Jewar and Jattari growth context. Visit each project website for its own current details.
@@ -140,14 +155,6 @@ export default function DestinationDetail() {
             <div className="flex flex-wrap gap-3">
               <Link to="/jattari-growth" className="inline-flex items-center gap-2 rounded-full bg-[#292e29] px-5 py-3 text-sm font-bold text-white hover:bg-[#C87550]">Jattari growth <ArrowRight size={16} /></Link>
               <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-[#cbbda8] px-5 py-3 text-sm font-bold text-[#292e29] hover:border-[#C87550]">Contact us</Link>
-            </div>
-          </div>
-          <div className="mt-8 border-t border-[#d8cfbf] pt-5">
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#8b8172]">Information sources</p>
-            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
-              {city.sources.map((source) => (
-                <a key={source.href} href={source.href} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-[#876934] underline decoration-[#cbbda8] underline-offset-4 hover:text-[#B95F3D]">{source.label}</a>
-              ))}
             </div>
           </div>
         </div>

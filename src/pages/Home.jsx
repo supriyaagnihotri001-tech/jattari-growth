@@ -217,25 +217,25 @@ const propertyOptions = [
     title: "Anugrah Homes",
     text: "Explore a residential community in the Jattari growth corridor.",
     image: anugrahHomesImage,
-    url: "/contact#enquiry",
+    url: "/contact?project=Anugrah%20Homes#enquiry",
   },
   {
     title: "Skyline Aero Homes",
     text: "Discover a township near Jewar Airport and Yamuna Expressway.",
     image: skylineAeroHomesImage,
-    url: "/contact#enquiry",
+    url: "/contact?project=Skyline%20Aero%20Homes#enquiry",
   },
   {
     title: "Golden City",
     text: "See another residential option around the Jattari region.",
     image: goldenCityImage,
-    url: "/contact#enquiry",
+    url: "/contact?project=Golden%20City#enquiry",
   },
   {
     title: "Terminal City",
     text: "Explore a destination connected to the Film City growth story.",
     image: terminalCityImage,
-    url: "/contact#enquiry",
+    url: "/contact?project=Terminal%20City#enquiry",
   },
 ];
 
@@ -413,7 +413,7 @@ export default function Home() {
               Explore the cities and regional centres around Jattari.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3 lg:gap-6">
+          <div className="grid grid-cols-2 gap-2.5 rounded-[22px] bg-[#EAE6DC] p-3 sm:grid-cols-3 sm:gap-3 lg:grid-cols-12 lg:gap-3.5 lg:p-4">
             {nearbyCities.map((city, index) => (
               <MotionLink
                 key={city.name}
@@ -425,16 +425,16 @@ export default function Home() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 whileHover={{ y: -7, scale: 1.015 }}
                 whileTap={{ scale: 0.99 }}
-                className={`group relative block h-56 overflow-hidden rounded-2xl bg-[#292e29] shadow-sm transition-shadow duration-300 hover:shadow-[0_22px_48px_rgba(39,41,34,0.2)] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#C87550] sm:h-72 lg:h-[340px] ${index === nearbyCities.length - 1 ? "lg:col-start-2" : ""}`}
+                className={`group relative block h-56 overflow-hidden rounded-xl bg-[#292e29] shadow-sm transition-shadow duration-300 hover:shadow-[0_22px_48px_rgba(39,41,34,0.2)] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-[#C87550] sm:h-72 lg:h-[300px] ${index < 4 ? "lg:col-span-3" : "lg:col-span-4 lg:h-[400px]"}`}
               >
                 <img
                   src={city.image}
                   alt={`${city.name} destination`}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:-translate-y-1 group-hover:scale-105"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-                <h3 className="absolute bottom-5 left-5 text-xl font-bold text-white sm:text-2xl">
+                <h3 className="absolute inset-x-1 bottom-1 rounded-lg bg-[#20211F] px-2.5 py-1.5 text-sm font-bold text-white sm:text-base">
                   {city.name}
                 </h3>
               </MotionLink>

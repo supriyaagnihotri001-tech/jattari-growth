@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -20,6 +20,8 @@ import {
 const projectOptions = [
   "Anugrah Homes",
   "Skyline Aero Homes",
+  "Golden City",
+  "Terminal City",
   "Film City / Upcoming Project",
   "Other Jattari Property",
   "Jattari Growth Enquiry",
@@ -76,15 +78,16 @@ function SectionLabel({ children, light = false }) {
 }
 
 function Contact() {
-  const [formData, setFormData] = useState({
+  const [searchParams] = useSearchParams();
+  const [formData, setFormData] = useState(() => ({
     name: "",
     phone: "",
     email: "",
-    project: "",
+    project: searchParams.get("project") || "",
     enquiryType: "",
     preferredDate: "",
     message: "",
-  });
+  }));
 
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);

@@ -1,21 +1,36 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, Plane, X } from "lucide-react";
 import logo from "../assets/Images/logo-transparent.png";
 
 const navItems = [
-  { name: "𝑯𝒐𝒎𝒆", path: "/" },
-  { name: " 𝑱𝒆𝒘𝒂𝒓 𝑨𝒊𝒓𝒑𝒐𝒓𝒕 ", path: "/jewar-airport" },
-  { name: "𝑨𝒃𝒐𝒖𝒕𝒖𝒔 ", path: "/aboutus" },
-  { name: " 𝑱𝒂𝒕𝒕𝒂𝒓𝒊 𝑮𝒓𝒐𝒘𝒕𝒉  ", path: "/jattari-growth" },
-  { name: "𝒑𝒓𝒐𝒋𝒆𝒄𝒕𝒔", path: "/projects" },
-  { name: "𝒄𝒐𝒏𝒕𝒂𝒄𝒕", path: "/contact" },
+  { name: "𝓗𝓸𝓶𝓮", path: "/" },
+  { name: "𝓭𝓮𝓼𝓽𝓲𝓷𝓪𝓽𝓲𝓸𝓷", dropdown: true },
+  { name: "𝓐𝓫𝓸𝓾𝓽 𝓤𝓼", path: "/aboutus" },
+  { name: "𝓙𝓪𝓽𝓽𝓪𝓻𝓲 𝓖𝓻𝓸𝔀𝓽𝓱", path: "/jattari-growth" },
+  { name: "𝓟𝓻𝓸𝓳𝓮𝓬𝓽𝓼", path: "/projects" },
+  { name: "𝓒𝓸𝓷𝓽𝓪𝓬𝓽", path: "/contact" },
+];
+
+const destinations = [
+  { name: "Jewar", path: "/destinations/jewar", region: "Airport & Yamuna region" },
+  { name: "Palwal", path: "/destinations/palwal", region: "Haryana" },
+  { name: "Aligarh", path: "/destinations/aligarh", region: "University & heritage" },
+  { name: "Khair", path: "/destinations/khair", region: "Aligarh district" },
+  { name: "Greater Noida", path: "/destinations/greater-noida", region: "Urban & business hub" },
+  { name: "Mathura", path: "/destinations/mathura", region: "Braj region" },
+  { name: "Agra", path: "/destinations/agra", region: "Heritage city" },
+];
+const destinationLinks = [
+  { name: "Jewar Airport", path: "/jewar-airport" },
+  ...destinations,
 ];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isCompact, setIsCompact] = useState(false);
+  const destinationsMenuRef = useRef(null);
 
   useEffect(() => {
     let previousScrollY = window.scrollY;
@@ -27,6 +42,25 @@ function Navbar() {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const closeOnOutsideClick = (event) => {
+      const menu = destinationsMenuRef.current;
+      if (menu?.open && !menu.contains(event.target)) menu.open = false;
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape" && destinationsMenuRef.current?.open) {
+        destinationsMenuRef.current.open = false;
+      }
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
   }, []);
 
   const closeMenu = () => {
@@ -68,22 +102,29 @@ function Navbar() {
 
             {/* ================= DESKTOP NAV ================= */}
             <div className="hidden items-center gap-1 lg:flex">
-              {navItems.map((item) => (
+              {navItems.map((item) => item.dropdown ? (
+                <details key={item.name} ref={destinationsMenuRef} className="group relative">
+                  <summary className="flex cursor-pointer list-none items-center gap-1 rounded-lg px-3 py-2 text-base font-bold text-[#5C574F] transition-all duration-300 hover:bg-[#F5F2EA] hover:text-[#B95F3D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C87550]">
+                    {item.name}<ChevronDown size={15} className="transition-transform group-open:rotate-180" />
+                  </summary>
+                  <div className="absolute left-0 top-full z-50 mt-2 w-60 rounded-2xl border border-[#D5C8B7] bg-[#FFFEFB] p-2 shadow-[0_14px_38px_rgba(64,48,32,0.16)]">
+                    {destinationLinks.map((destination) => (
+                      <NavLink
+                        key={destination.path}
+                        to={destination.path}
+                        onClick={(event) => { event.currentTarget.closest("details").open = false; }}
+                        className={({ isActive }) => `block rounded-xl px-4 py-2.5 text-sm font-semibold transition ${isActive ? "bg-[#F5F2EA] text-[#B95F3D]" : "text-[#5C574F] hover:bg-[#F5F2EA] hover:text-[#B95F3D]"}`}
+                      >
+                        {destination.name}
+                      </NavLink>
+                    ))}
+                  </div>
+                </details>
+              ) : (
                 <NavLink
                   key={item.name}
                   to={item.path}
-                  className={({ isActive }) =>
-                    `
-                    relative rounded-lg px-3 py-2
-                    text-[15px] font-bold
-                    transition-all duration-300
-                    ${
-                      isActive
-                        ? "text-[#B95F3D]"
-                        : "text-[#5C574F] hover:bg-[#F5F2EA] hover:text-[#B95F3D]"
-                    }
-                    `
-                  }
+                  className={({ isActive }) => `relative rounded-lg px-3 py-2 text-base font-bold transition-all duration-300 ${isActive ? "text-[#B95F3D]" : "text-[#5C574F] hover:bg-[#F5F2EA] hover:text-[#B95F3D]"}`}
                 >
                   {item.name}
                 </NavLink>
@@ -138,7 +179,7 @@ function Navbar() {
             overflow-hidden transition-all duration-300 lg:hidden
             ${
               isOpen
-                ? "mt-2 max-h-[500px] opacity-100"
+                ? "mt-2 max-h-[760px] opacity-100"
                 : "max-h-0 opacity-0"
             }
           `}
@@ -153,23 +194,35 @@ function Navbar() {
               backdrop-blur-xl
             "
           >
-            {navItems.map((item) => (
+            {navItems.map((item) => item.dropdown ? (
+              <div key={item.name} className="px-1 py-2">
+                <p className="px-3 pb-2 text-xs font-bold uppercase tracking-[0.15em] text-[#9B783E]">Destinations</p>
+                <div className="grid grid-cols-2 gap-1">
+                  {destinations.map((destination) => (
+                    <NavLink
+                      key={destination.path}
+                      to={destination.path}
+                      onClick={closeMenu}
+                      className={({ isActive }) => `block rounded-lg px-3 py-2.5 text-sm font-semibold transition ${isActive ? "bg-[#F5F2EA] text-[#B95F3D]" : "text-[#5C574F] hover:bg-[#F5F2EA] hover:text-[#B95F3D]"}`}
+                    >
+                      {destination.name}
+                    </NavLink>
+                  ))}
+                </div>
+                <NavLink
+                  to="/jewar-airport"
+                  onClick={closeMenu}
+                  className={({ isActive }) => `mt-2 flex items-center gap-2 rounded-xl bg-[#292e29] px-3 py-3 text-sm font-bold text-white transition hover:bg-[#3A4039] ${isActive ? "ring-2 ring-[#D99A78]" : ""}`}
+                >
+                  <Plane size={16} className="text-[#D99A78]" /> Jewar Airport overview <ArrowUpRight size={15} className="ml-auto text-[#D99A78]" />
+                </NavLink>
+              </div>
+            ) : (
               <NavLink
                 key={item.name}
                 to={item.path}
                 onClick={closeMenu}
-                className={({ isActive }) =>
-                  `
-                  block rounded-xl px-4 py-3
-                  text-[15px] font-bold
-                  transition-all duration-200
-                  ${
-                    isActive
-                      ? "bg-[#F5F2EA] text-[#B95F3D]"
-                      : "text-[#5C574F] hover:bg-[#F5F2EA] hover:text-[#B95F3D]"
-                  }
-                  `
-                }
+                className={({ isActive }) => `block rounded-xl px-4 py-3 text-base font-bold transition-all duration-200 ${isActive ? "bg-[#F5F2EA] text-[#B95F3D]" : "text-[#5C574F] hover:bg-[#F5F2EA] hover:text-[#B95F3D]"}`}
               >
                 {item.name}
               </NavLink>
